@@ -70,12 +70,13 @@ def get_letter_styles():
         styles,
         "Heading1",
         fontName=FONT_BOLD_NAME,
-        fontSize=18,
+        fontSize=14,  # Professional standard for subject lines
         textColor=COLOR_INDIGO,
-        spaceBefore=12,
-        spaceAfter=6,
+        spaceBefore=16,
+        spaceAfter=12,
+        alignment=TA_CENTER,  # Center-aligned for formal documents
     )
-    add_or_update_style(styles, "Body", spaceAfter=12)
+    add_or_update_style(styles, "Body", spaceAfter=14, fontSize=11, leading=16)  # Standard body text
     add_or_update_style(
         styles,
         "Footer",
@@ -198,6 +199,76 @@ def draw_header_footer(canv, doc):
     canv.restoreState()
 
 
+def generate_resolution_document(filename: str, content: dict):
+    """Generate a formal resolution document (not a letter format)"""
+    doc = SimpleDocTemplate(
+        filename,
+        pagesize=A4,
+        topMargin=1.6 * inch,
+        bottomMargin=1.25 * inch,
+        leftMargin=20 * mm,
+        rightMargin=20 * mm,
+    )
+
+    styles = get_letter_styles()
+    
+    # Add resolution-specific styles
+    add_or_update_style(
+        styles,
+        "ResolutionTitle",
+        fontName=FONT_BOLD_NAME,
+        fontSize=14,
+        textColor=COLOR_INDIGO,
+        spaceBefore=20,
+        spaceAfter=16,
+        alignment=TA_CENTER,
+    )
+    add_or_update_style(
+        styles,
+        "ResolutionBody",
+        fontSize=11,
+        leading=16,
+        spaceAfter=12,
+        alignment=TA_LEFT,
+    )
+    add_or_update_style(
+        styles,
+        "SignatureBlock",
+        fontSize=11,
+        leading=20,
+        spaceAfter=8,
+        alignment=TA_LEFT,
+    )
+    
+    story = []
+
+    # Small spacer so content doesn't touch header
+    story.append(Spacer(1, 0.2 * inch))
+
+    # Resolution title
+    story.append(Paragraph(str(content.get('title', '')), styles['ResolutionTitle']))
+    story.append(Spacer(1, 0.2 * inch))
+
+    # Resolution body content
+    body = content.get('body', [])
+    if isinstance(body, list):
+        for para in body:
+            story.append(Paragraph(str(para), styles['ResolutionBody']))
+
+    # Signature section
+    story.append(Spacer(1, 0.3 * inch))
+    signatures = content.get('signatures', [])
+    if isinstance(signatures, list):
+        for sig_line in signatures:
+            story.append(Paragraph(str(sig_line), styles['SignatureBlock']))
+
+    try:
+        doc.build(story, onFirstPage=draw_header_footer, onLaterPages=draw_header_footer)
+        print(f"Successfully generated '{filename}'")
+    except Exception as e:
+        print(f"Error generating PDF: {e}")
+
+
 def generate_document(filename: str, content: dict):
     doc = SimpleDocTemplate(
         filename,
@@ -257,27 +328,71 @@ def generate_document(filename: str, content: dict):
 
 # --- Example Usage ---
 if __name__ == "__main__":
-    letter_content = {
-        "date": datetime.now().strftime("%d %B %Y"),
+    # Generate both the submission letter and the actual board resolution
+    
+    # 1. Board Resolution Submission Letter
+    submission_letter_content = {
+        "date": "6 November 2025",
         "recipient": [
-            "Mr. John Doe",
-            "Chief Executive Officer",
-            "Innovate Corp.",
-            "123 Innovation Drive, Accra, Ghana"
+            "The Branch Manager",
+            "Fidelity Bank Ghana Limited",
+            "[Branch Name]",
+            "Accra, Ghana"
         ],
-        "title": "Proposal for Strategic Partnership",
-        "salutation": "Dear Mr. Doe,",
+        "title": "SUBMISSION OF BOARD RESOLUTION FOR THE OPENING OF A CORPORATE BANK ACCOUNT",
+        "salutation": "Dear Sir/Madam,",
         "body": [
-            "We are writing to propose a strategic partnership between Access DiscreetKit Ltd and Innovate Corp. Our analysis indicates that a collaboration could unlock significant value in the market. We have attached a detailed deck outlining the potential synergies, go-to-market strategy, and proposed financial arrangements.",
-            "This is a second paragraph to demonstrate text wrapping and flow. It will continue on as long as necessary, respecting the margins we've set. When this paragraph becomes too long for the current page, it will automatically break and continue on a new page, which will also feature the same header and footer.",
-            "Thank you for considering our proposal. We look forward to the possibility of working together.",
+            "We write to inform you that the board of directors of Access Discreetkit LTD have resolved on the 6th of November 2025 to open a corporate bank account with Fidelity Bank Ghana LTD in the name of the company.",
+            "Kindly find attached a certified true copy of the said board resolution duly signed by the directors. We request that the account be opened and all related banking arrangements be effected accordingly."
         ],
-        "closing": "Sincerely,",
+        "closing": "Yours faithfully,",
         "signature": [
-            "Jane Smith",
-            "Director of Business Development",
-            "Access DiscreetKit Ltd",
-        ],
+            "",
+            "",
+            "______________________________",
+            "Naeem Abdul-Aziz",
+            "Director",
+            "Access Discreetkit LTD"
+        ]
     }
 
-    generate_document("strategic_proposal.pdf", letter_content)
+    # 2. Actual Board Resolution Document
+    board_resolution_content = {
+        "title": "WRITTEN RESOLUTION OF THE BOARD OF DIRECTORS<br/>ACCESS DISCREETKIT LTD<br/>PURSUANT TO SECTION 188(2)(J) OF THE COMPANIES ACT, 2019 (ACT 992)",
+        "body": [
+            "We the undersigned being directors of Access Discreetkit Ltd, duly convened and held on 05-11-2025,",
+            "",
+            "<b>IT IS HEREBY RESOLVED THAT;</b>",
+            "",
+            "1. That a Current Account in the name of <b>ACCESS DISCREETKIT LTD</b> be opened with Fidelity Bank Ghana Ltd",
+            "",
+            "2. The following persons are hereby authorized as signatories to the said account:",
+            "",
+            "&nbsp;&nbsp;&nbsp;&nbsp;<b>Name:</b> Naeem Abdul-Aziz<br/>&nbsp;&nbsp;&nbsp;&nbsp;<b>Position:</b> Director",
+            "",
+            "&nbsp;&nbsp;&nbsp;&nbsp;<b>Name:</b> Derrick Kwadjo Debrah<br/>&nbsp;&nbsp;&nbsp;&nbsp;<b>Position:</b> Director",
+            "",
+            "&nbsp;&nbsp;&nbsp;&nbsp;<b>Name:</b> Benedict Dela Tordzro<br/>&nbsp;&nbsp;&nbsp;&nbsp;<b>Position:</b> Chief Operations Officer (COO)",
+            "",
+            "3. All cheques, withdrawals, and drafts shall be signed jointly by any two (2) of the authorized signatories, one of whom must be a Director.",
+            "",
+            "4. For operational efficiency, the CEO (Naeem Abdul-Aziz) and COO (Benedict Dela Tordzro) may each sign singly for transactions up to a limit of ₵2,000 (Two Thousand Ghana Cedis). Any transaction above this limit shall require joint authorization from both Directors.",
+            "",
+            "<b>DATED IN ACCRA THIS 6th DAY OF NOVEMBER, 2025</b>"
+        ],
+        "signatures": [
+            "<b>SIGNED BY:</b>",
+            "",
+            "",
+            "Naeem Abdul-Aziz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;____________________",
+            "DIRECTOR",
+            "",
+            "",
+            "Derrick Kwadjo Debrah&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;____________________",
+            "DIRECTOR"
+        ]
+    }
+
+    # Generate both documents
+    generate_document("board_resolution_submission_letter.pdf", submission_letter_content)
+    generate_resolution_document("board_resolution_document.pdf", board_resolution_content)

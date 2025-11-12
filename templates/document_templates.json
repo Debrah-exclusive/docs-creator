@@ -1,0 +1,176 @@
+{
+  "board_resolution": {
+    "title": "SUBMISSION OF BOARD RESOLUTION FOR THE OPENING OF A CORPORATE BANK ACCOUNT",
+    "recipient": {
+      "default": [
+        "The Branch Manager",
+        "Fidelity Bank Ghana Limited",
+        "[Branch Name]",
+        "Accra, Ghana"
+      ]
+    },
+    "salutation": "Dear Sir/Madam,",
+    "body": [
+      "We write to inform you that the board of directors of Access Discreetkit LTD have resolved on the 6th of November 2025 to open a corporate bank account with Fidelity Bank Ghana LTD in the name of the company.",
+      "Kindly find attached a certified true copy of the said board resolution duly signed by the directors. We request that the account be opened and all related banking arrangements be effected accordingly."
+    ],
+    "closing": "Yours faithfully,",
+    "signature": [
+      "",
+      "",
+      "______________________________",
+      "{{DIRECTOR_NAME}}",
+      "{{DIRECTOR_TITLE}}",
+      "{{COMPANY_NAME}}"
+    ]
+  },
+  
+  "partnership_proposal": {
+    "title": "PROPOSAL FOR STRATEGIC PARTNERSHIP",
+    "recipient": {
+      "default": [
+        "Mr. John Doe",
+        "Chief Executive Officer", 
+        "[Company Name]",
+        "[Company Address]",
+        "Accra, Ghana"
+      ]
+    },
+    "salutation": "Dear Mr. Doe,",
+    "body": [
+      "We are writing to propose a strategic partnership between {{COMPANY_NAME}} and your organization. Our analysis indicates that a collaboration could unlock significant value in the market.",
+      "{{COMPANY_NAME}} specializes in innovative solutions that help businesses navigate complex challenges with confidence and discretion. We believe our combined expertise could create substantial value for both organizations and the clients we serve.",
+      "We have prepared a detailed proposal outlining the potential synergies, go-to-market strategy, and proposed collaboration framework. We would welcome the opportunity to discuss this proposal further at your convenience.",
+      "Thank you for considering this partnership opportunity. We look forward to the possibility of working together to create meaningful impact in the market."
+    ],
+    "closing": "Sincerely,",
+    "signature": [
+      "",
+      "",
+      "______________________________",
+      "{{DIRECTOR_NAME}}",
+      "{{DIRECTOR_TITLE}}",
+      "{{COMPANY_NAME}}"
+    ]
+  },
+
+  "nda": {
+    "title": "NON-DISCLOSURE AGREEMENT (NDA)",
+    "recipient": {
+      "default": [
+        "[Recipient Name]",
+        "[Recipient Title]",
+        "[Company Name]",
+        "[Company Address]"
+      ]
+    },
+    "salutation": "Dear [Recipient Name],",
+    "body": [
+      "This Non-Disclosure Agreement ('Agreement') is entered into between {{COMPANY_NAME}} ('Disclosing Party') and [Recipient Company] ('Receiving Party') for the purpose of preventing the unauthorized disclosure of Confidential Information.",
+      "<b>1. Definition of Confidential Information:</b> For purposes of this Agreement, 'Confidential Information' shall include all information or material that has or could have commercial value or other utility in the business in which Disclosing Party is engaged.",
+      "<b>2. Exclusions from Confidential Information:</b> Receiving Party's obligations under this Agreement do not extend to information that is: (a) publicly known at the time of disclosure, (b) rightfully received from a third party, or (c) independently developed without use of Confidential Information.",
+      "<b>3. Obligations of Receiving Party:</b> Receiving Party agrees to hold and maintain the Confidential Information in strict confidence for the sole and exclusive benefit of the Disclosing Party.",
+      "<b>4. Time Periods:</b> This Agreement shall remain in effect for a period of three (3) years from the date of signature, unless terminated earlier by mutual written consent.",
+      "<b>5. Return of Materials:</b> All materials containing Confidential Information shall be returned to the Disclosing Party within ten (10) days of termination of discussions.",
+      "Please indicate your acceptance of these terms by signing and returning a copy of this Agreement."
+    ],
+    "closing": "Yours faithfully,",
+    "signature": [
+      "",
+      "",
+      "______________________________",
+      "{{DIRECTOR_NAME}}",
+      "{{DIRECTOR_TITLE}}",
+      "{{COMPANY_NAME}}",
+      "",
+      "Accepted and Agreed:",
+      "",
+      "______________________________",
+      "[Recipient Name]",
+      "[Title]",
+      "[Company]",
+      "",
+      "Date: _______________"
+    ]
+  },
+
+  "employment_contract": {
+    "title": "EMPLOYMENT CONTRACT",
+    "recipient": {
+      "default": [
+        "[Employee Name]",
+        "[Employee Address]",
+        "Accra, Ghana"
+      ]
+    },
+    "salutation": "Dear [Employee Name],",
+    "body": [
+      "We are pleased to offer you employment with {{COMPANY_NAME}} under the following terms and conditions:",
+      "<b>1. Position and Duties:</b> You will be employed as [Job Title] and will report to [Supervisor Title]. Your duties will include [Job Description].",
+      "<b>2. Commencement:</b> Your employment will commence on [Start Date] and will continue until terminated by either party in accordance with the terms of this contract.",
+      "<b>3. Remuneration:</b> Your gross monthly salary will be GHS [Amount] payable monthly in arrears by bank transfer.",
+      "<b>4. Working Hours:</b> Normal working hours are Monday to Friday, 8:00 AM to 5:00 PM with a one-hour lunch break.",
+      "<b>5. Annual Leave:</b> You are entitled to 21 working days of annual leave per calendar year, plus public holidays as declared by the Government of Ghana.",
+      "<b>6. Probationary Period:</b> Your employment will be subject to a probationary period of [X] months from your commencement date.",
+      "<b>7. Confidentiality:</b> You agree to maintain strict confidentiality regarding all company information and client matters.",
+      "<b>8. Termination:</b> Either party may terminate this employment by giving [Notice Period] written notice to the other party.",
+      "Please confirm your acceptance by signing and returning a copy of this letter."
+    ],
+    "closing": "We look forward to welcoming you to our team.",
+    "signature": [
+      "",
+      "Yours sincerely,",
+      "",
+      "",
+      "______________________________",
+      "{{DIRECTOR_NAME}}",
+      "{{DIRECTOR_TITLE}}",
+      "{{COMPANY_NAME}}",
+      "",
+      "I accept the terms and conditions of employment:",
+      "",
+      "______________________________",
+      "[Employee Name]",
+      "",
+      "Date: _______________"
+    ]
+  },
+
+  "investor_brief": {
+    "title": "INVESTMENT OPPORTUNITY - {{COMPANY_NAME}}",
+    "recipient": {
+      "default": [
+        "[Investor Name]",
+        "[Investment Firm/Individual]",
+        "[Address]",
+        "Accra, Ghana"
+      ]
+    },
+    "salutation": "Dear [Investor Name],",
+    "body": [
+      "We are pleased to present an investment opportunity in {{COMPANY_NAME}}, a rapidly growing company positioned at the forefront of innovative business solutions.",
+      "<b>Company Overview:</b> {{COMPANY_NAME}} specializes in providing discreet, professional services that help businesses navigate complex challenges. Our unique approach and proven track record have established us as a trusted partner in the market.",
+      "<b>Market Opportunity:</b> The market for our services is experiencing significant growth, driven by increasing demand for specialized business solutions and confidential advisory services.",
+      "<b>Investment Highlights:</b>",
+      "• Strong revenue growth trajectory",
+      "• Experienced management team",
+      "• Scalable business model", 
+      "• Clear competitive advantages",
+      "• Growing client base across multiple sectors",
+      "<b>Financial Summary:</b> [Include relevant financial metrics, projections, and use of funds]",
+      "<b>Investment Terms:</b> We are seeking [Investment Amount] in exchange for [Equity Percentage]% equity in the company.",
+      "We would welcome the opportunity to discuss this investment opportunity in greater detail and answer any questions you may have."
+    ],
+    "closing": "Thank you for your consideration.",
+    "signature": [
+      "",
+      "Sincerely,",
+      "",
+      "",
+      "______________________________",
+      "{{DIRECTOR_NAME}}",
+      "{{DIRECTOR_TITLE}}",
+      "{{COMPANY_NAME}}"
+    ]
+  }
+}
