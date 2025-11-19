@@ -1,2 +1,64 @@
+# Python
 __pycache__/
+*.py[cod]
+*$py.class
+.Python
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+wheels/
+pip-wheel-metadata/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Unit test / coverage
+.pytest_cache/
+.tox/
+.nox/
+coverage.xml
+.coverage*
+htmlcov/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.code-workspace
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Reports / logs
+*.log
+
+# Generated documents
 output/
+output/**
+!output/.gitkeep
+output/Board_Resolutions/**
+output/Partnership_Proposals/**
+output/Legal_Documents/**
+output/Employment_Contracts/**
+output/Investor_Relations/**
+output/General_Documents/**
+output/Contracts/**
+output/test documents/**
+
+# Cache
+**/__pycache__/
