@@ -1,3 +1,5 @@
+# Local config
+config/settings.py
 # Python
 __pycache__/
 *.py[cod]

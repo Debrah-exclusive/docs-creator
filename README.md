@@ -17,31 +17,39 @@ Before you begin, ensure you have the following installed:
 - Python 3.6+
 - pip (Python package installer)
 
+
 ## Quick Start
 
 1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/your-username/discreetkit-docs.git
-   cd discreetkit-docs
-   ```
+    ```bash
+    git clone https://github.com/your-username/discreetkit-docs.git
+    cd discreetkit-docs
+    ```
 
 2. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-3. **Generate a document:**
-   ```bash
-   # Generate a board resolution (prompts for missing info)
-   python generate_documents.py board_resolution --recipient "Branch Manager" --branch "Fidelity Bank"
+3. **Configure your environment:**
+    - Copy the example settings file:
+      ```bash
+      cp config/settings.example.py config/settings.py
+      ```
+    - Edit `config/settings.py` with your business, director, and branding details. This file is ignored by git and should be customized for each deployment.
 
-   # Generate a contributor charter with all details provided
-   python generate_documents.py contributor_charter --contributor_name "Jane Doe" --circle_name "Engineering"
+4. **Generate a document:**
+    ```bash
+    # Generate a board resolution (prompts for missing info)
+    python generate_documents.py board_resolution --recipient "Branch Manager" --branch "Fidelity Bank"
 
-   # Generate all available documents interactively
-   python generate_documents.py all
-   ```
-   Generated documents will be saved in the `output/` directory, organized by category.
+    # Generate a contributor charter with all details provided
+    python generate_documents.py contributor_charter --contributor_name "Jane Doe" --circle_name "Engineering"
+
+    # Generate all available documents interactively
+    python generate_documents.py all
+    ```
+    Generated documents will be saved in the `output/` directory, organized by category.
 
 ## CLI Usage
 
