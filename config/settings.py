@@ -2,20 +2,120 @@
 # ============================================
 
 import os
+
 from datetime import datetime
 
-# --- Company Information ---
-COMPANY_NAME = "ACCESS DISCREETKIT LTD"
+# --- Business Information ---
+BUSINESS_INFO = {
+    "business_name": "Access Discreetkit Ltd",
+    "house_number": "57",
+    "landmark": "Agrimat Irrigation",
+    "street_name": "Kofi Annan East Ave",
+    "town": "Accra",
+    "gps_address": "GM-033-9072",
+    "principal_activity": "To engage in the importation, distribution, supply, and redistribution of health kits, medical consumables, and related sanitary products.",
+    "post_office": "LG 918, Legon",
+    "email": "dscreetkit@gmail.com",
+    "office_phone": "0203001107",
+    "stated_capital": ""
+}
+
+# --- Directors ---
+DIRECTORS = [
+    {
+        "first_name": "NAEEM",
+        "middle_name": "_",
+        "last_name": "ABDUL-AZIZ",
+        "tin_number": "N/A",
+        "dob": "27/07/2005",
+        "place_of_birth": "TEMA",
+        "house_number": "GK 64, DUBLIN ST",
+        "landmark": "MICHEL CAMP",
+        "street_name": "DUBLIN ST",
+        "town": "TEMA",
+        "email": "naeemabdulaziz202@gmail.com",
+        "gps_address": "GK-0305-2694",
+        "post_office_box": "",
+        "occupation": "STUDENT",
+        "nationality": "GHANAIAN",
+        "phone": "0203001107",
+        "share_percentage": "40%"
+    },
+    {
+        "first_name": "Derrick",
+        "middle_name": "Kwadjo",
+        "last_name": "Debrah",
+        "tin_number": "P0065544242",
+        "dob": "12 September 2005",
+        "place_of_birth": "Accra",
+        "house_number": "57",
+        "landmark": "Agrimat Irrigation",
+        "street_name": "Kofi Annan East Ave",
+        "town": "Accra",
+        "email": "dk.debrah747@gmail.com",
+        "gps_address": "GM-033-9072",
+        "post_office_box": "P.O. Box LG 25, Legon Accra, Ghana",
+        "occupation": "Student",
+        "nationality": "Ghanaian",
+        "phone": "0535407104",
+        "share_percentage": "30%"
+    }
+]
+
+# --- Additional Shareholders ---
+SHAREHOLDERS = [
+    {
+        "first_name": "Benedict",
+        "middle_name": "Dela",
+        "last_name": "Tordzro",
+        "tin_number": "N/A",
+        "dob": "02-10-2005",
+        "place_of_birth": "Hohoe (Hohoe District)",
+        "house_number": "5 Yellowwood",
+        "landmark": "UPSA",
+        "street_name": "Yellowwood Street",
+        "town": "Accra",
+        "email": "dt.benedict@icloud.com",
+        "gps_address": "GA-517-8422",
+        "post_office_box": "LG 918, Legon .",
+        "occupation": "Student",
+        "nationality": "Ghanaian",
+        "phone": "0200811683",
+        "share_percentage": "30%"
+    }
+]
+
+# --- Secretary ---
+SECRETARY = {
+    "first_name": "NAEEM",
+    "middle_name": "_",
+    "last_name": "ABDUL-AZIZ",
+    "tin_number": "N/A",
+    "dob": "25/07/2005",
+    "place_of_birth": "TEMA",
+    "house_number": "GK 64, DUBLIN ST",
+    "landmark": "MICHEL CAMP",
+    "street_name": "DUBLIN ST",
+    "town": "TEMA",
+    "gps_address": "GK-0305-2694",
+    "post_office_box": "",
+    "occupation": "STUDENT",
+    "nationality": "GHANAIAN",
+    "email": "naeemabdulaziz202@gmail.com",
+    "phone": "0203001107"
+}
+
+
+# --- Company Information (for templates) ---
+COMPANY_NAME = BUSINESS_INFO["business_name"]
 COMPANY_TAGLINE = "Skip the Awkward"
-COMPANY_ADDRESS = "House No. 57, Kofi Annan East Avenue, Madina, Accra, Ghana"
-COMPANY_EMAIL = "discreetkit@gmail.com"
-COMPANY_PHONE = "+233 20 300 1107"
+COMPANY_ADDRESS = f"House No. {BUSINESS_INFO['house_number']}, {BUSINESS_INFO['street_name']}, {BUSINESS_INFO['town']}"
+COMPANY_EMAIL = BUSINESS_INFO["email"]
+COMPANY_PHONE = BUSINESS_INFO["office_phone"]
 COMPANY_TWITTER = "@discreetkit"
 COMPANY_LINKEDIN = "/company/discreetkit"
-
-# --- Default Signatories ---
-DEFAULT_DIRECTOR = "Naeem Abdul-Aziz"
-DEFAULT_DIRECTOR_TITLE = "Director"
+DEFAULT_DIRECTOR = DIRECTORS[0]["first_name"] + " " + DIRECTORS[0]["last_name"]
+DEFAULT_DIRECTOR_TITLE = "CEO"
 
 # --- File Paths ---
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

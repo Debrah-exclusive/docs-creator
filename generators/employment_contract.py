@@ -8,14 +8,26 @@ from datetime import datetime
 class EmploymentContractGenerator(DocumentTemplate):
     """Generator for Employment Contract documents."""
     
-    def generate_employment_contract(self, contract_data=None):
-        """Generate an employment contract document."""
-        if contract_data is None:
-            contract_data = self.get_default_contract_data()
-        
-        filename = f"employment_contract_{datetime.now().strftime('%Y%m%d')}.pdf"
-        self.generate_document(filename, contract_data)
-        return filename
+    def generate_employment_contract(self, custom_data=None):
+        """Generate an employment contract document using custom_data."""
+        if custom_data is None:
+            custom_data = {}
+        template_content = self.get_template_content('employment_contract', custom_data)
+        if template_content is None:
+            print("❌ No template found for employment_contract")
+            return None
+        content = {
+            "date": custom_data.get('date', datetime.now().strftime("%d %B %Y")),
+            "recipient": [custom_data.get('employee_name', r) for r in template_content.get('recipient', {}).get('default', [])],
+            "title": template_content.get('title', ''),
+            "salutation": template_content.get('salutation', ''),
+            "body": template_content.get('body', []),
+            "closing": template_content.get('closing', ''),
+            "signature": template_content.get('signature', [])
+        }
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        filename = f"employment_contract_{timestamp}.pdf"
+        return self.generate_document(filename, content, "employment_contract")
     
     def get_default_contract_data(self):
         """Default employment contract content."""

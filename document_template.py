@@ -1,7 +1,6 @@
 import os
 import sys
 from datetime import datetime
-from typing import List, Dict
 import json
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_LEFT, TA_RIGHT, TA_CENTER
@@ -13,27 +12,47 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 
+# Load external settings (single source of truth for customization)
+try:
+    from config import settings as cfg
+except ImportError:  # Fallback if settings not found
+    class FallbackCfg:  # minimal defaults
+        COMPANY_NAME = "YOUR COMPANY LTD"
+        COMPANY_TAGLINE = "Your Tagline"
+        DEFAULT_DIRECTOR = "Jane Doe"
+        DEFAULT_DIRECTOR_TITLE = "Director"
+        COLORS = {
+            'cyan_turquoise': "#187f76",
+            'indigo': "#1e3a5f",
+            'aztec_gold': "#c48c52",
+            'metallic_yellow': "#ffce07",
+            'light_silver': "#d7d9db"
+        }
+        ASSETS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets')
+        TEMPLATES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
+    cfg = FallbackCfg()
+
 # --- Configuration ---
-COLOR_CYAN_TURQUOISE = colors.HexColor("#187f76")
-COLOR_INDIGO = colors.HexColor("#1e3a5f")
-COLOR_AZTEC_GOLD = colors.HexColor("#c48c52")
-COLOR_METALLIC_YELLOW = colors.HexColor("#ffce07")
-COLOR_LIGHT_SILVER = colors.HexColor("#d7d9db")
+COLOR_CYAN_TURQUOISE = colors.HexColor(cfg.COLORS.get('cyan_turquoise', "#187f76"))
+COLOR_INDIGO = colors.HexColor(cfg.COLORS.get('indigo', "#1e3a5f"))
+COLOR_AZTEC_GOLD = colors.HexColor(cfg.COLORS.get('aztec_gold', "#c48c52"))
+COLOR_METALLIC_YELLOW = colors.HexColor(cfg.COLORS.get('metallic_yellow', "#ffce07"))
+COLOR_LIGHT_SILVER = colors.HexColor(cfg.COLORS.get('light_silver', "#d7d9db"))
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-OUTPUT_DIR = os.path.join(BASE_DIR, "output")
-ASSETS_DIR = os.path.join(BASE_DIR, "assets")
-TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
+OUTPUT_DIR = os.path.join(BASE_DIR, "output")  # Output stays internal; not user-configurable yet
+ASSETS_DIR = getattr(cfg, 'ASSETS_DIR', os.path.join(BASE_DIR, "assets"))
+TEMPLATES_DIR = getattr(cfg, 'TEMPLATES_DIR', os.path.join(BASE_DIR, "templates"))
 
 FONT_REGULAR_PATH = os.path.join(ASSETS_DIR, "Satoshi-Regular.ttf")
 FONT_BOLD_PATH = os.path.join(ASSETS_DIR, "Satoshi-Bold.ttf")
 LOGO_PATH = os.path.join(ASSETS_DIR, "logo.png")
 
-# --- Company Defaults (used for placeholder replacement) ---
-COMPANY_NAME = "ACCESS DISCREETKIT LTD"
-COMPANY_TAGLINE = "Skip the Awkward"
-DEFAULT_DIRECTOR = "Naeem Abdul-Aziz"
-DEFAULT_DIRECTOR_TITLE = "CEO"
+# --- Company Defaults now sourced from settings ---
+COMPANY_NAME = getattr(cfg, 'COMPANY_NAME', 'YOUR COMPANY LTD')
+COMPANY_TAGLINE = getattr(cfg, 'COMPANY_TAGLINE', 'Your Tagline')
+DEFAULT_DIRECTOR = getattr(cfg, 'DEFAULT_DIRECTOR', 'Jane Doe')
+DEFAULT_DIRECTOR_TITLE = getattr(cfg, 'DEFAULT_DIRECTOR_TITLE', 'Director')
 
 # Mapping document types to output subfolders
 CATEGORY_MAP = {
@@ -156,27 +175,27 @@ def draw_header_footer(canv, doc):
     company_name_y = height - (header_height / 2) + (4 * mm)
     try:
         canv.setFont(FONT_BOLD_NAME, 12)
-        company_name_width = canv.stringWidth("ACCESS DISCREETKIT LTD", FONT_BOLD_NAME, 12)
+        company_name_width = canv.stringWidth(COMPANY_NAME, FONT_BOLD_NAME, 12)
     except Exception:
         canv.setFont('Helvetica-Bold', 12)
-        company_name_width = canv.stringWidth("ACCESS DISCREETKIT LTD", 'Helvetica-Bold', 12)
+        company_name_width = canv.stringWidth(COMPANY_NAME, 'Helvetica-Bold', 12)
     
     company_name_x = right_margin_x - company_name_width
     canv.setFillColor(COLOR_INDIGO)
-    canv.drawString(company_name_x, company_name_y, "ACCESS DISCREETKIT LTD")
+    canv.drawString(company_name_x, company_name_y, COMPANY_NAME)
     
     # Tagline - right-aligned below company name
     tagline_y = company_name_y - (6 * mm)
     try:
         canv.setFont(FONT_REGULAR_NAME, 10)
-        tagline_width = canv.stringWidth("Skip the Awkward", FONT_REGULAR_NAME, 10)
+        tagline_width = canv.stringWidth(COMPANY_TAGLINE, FONT_REGULAR_NAME, 10)
     except Exception:
         canv.setFont('Helvetica', 10)
         tagline_width = canv.stringWidth("Skip the Awkward", 'Helvetica', 10)
     
     tagline_x = right_margin_x - tagline_width
     canv.setFillColor(COLOR_AZTEC_GOLD)
-    canv.drawString(tagline_x, tagline_y, "Skip the Awkward")
+    canv.drawString(tagline_x, tagline_y, COMPANY_TAGLINE)
 
     # Separator line beneath complete layout
     header_bottom = height - header_height - (2 * mm)
@@ -201,10 +220,17 @@ def draw_header_footer(canv, doc):
     styles = get_document_styles()
     footer_style = styles['Footer']
 
+    # Footer content derived from settings (with graceful fallbacks)
+    address = getattr(cfg, 'COMPANY_ADDRESS', 'Company Address Line')
+    email = getattr(cfg, 'COMPANY_EMAIL', 'email@example.com')
+    phone = getattr(cfg, 'COMPANY_PHONE', '+000 000 0000')
+    twitter = getattr(cfg, 'COMPANY_TWITTER', '@company')
+    linkedin = getattr(cfg, 'COMPANY_LINKEDIN', '/company/example')
+
     cols = [
-        "<b>Address</b><br/>House No. 57, Kofi Annan East Avenue,<br/>Madina, Accra, Ghana",
-        "<b>Contact</b><br/>Email: discreetkit@gmail.com<br/>Phone: +233 20 300 1107",
-        "<b>Follow Us</b><br/>Twitter: @discreetkit<br/>LinkedIn: /company/discreetkit",
+        f"<b>Address</b><br/>{address}",
+        f"<b>Contact</b><br/>Email: {email}<br/>Phone: {phone}",
+        f"<b>Follow Us</b><br/>Twitter: {twitter}<br/>LinkedIn: {linkedin}",
     ]
 
     col_width = usable_width / 3.0

@@ -37,9 +37,11 @@ Output Structure:
     └── General_Documents/
 """
 
+
 import os
 import sys
 from datetime import datetime
+import argparse
 
 # Add the current directory to the path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -190,28 +192,92 @@ class DocumentSuite:
         print()
         print("📁 All files are organized in output/ folders by category")
 
+
+def get_placeholders_for_type(doc_type):
+    """Define required placeholders for each document type."""
+    mapping = {
+        'board_resolution': ['recipient', 'branch', 'date'],
+        'partnership_proposal': ['partner', 'company', 'date'],
+        'nda': ['recipient_name', 'recipient_company', 'date'],
+        'employment_contract': ['employee_name', 'job_title', 'start_date', 'amount', 'supervisor_title', 'notice_period', 'date'],
+        'investor_brief': ['investor_name', 'investment_firm', 'date'],
+        'contributor_charter': ['contributor_name', 'circle_name', 'date'],
+    }
+    return mapping.get(doc_type, [])
+
 def main():
-    """Main function to handle command line arguments."""
+    """Main function to handle command line arguments with argparse."""
     suite = DocumentSuite()
-    
-    if len(sys.argv) < 2:
-        print(__doc__)
-        suite.list_available()
-        return
-    
-    doc_type = sys.argv[1].lower()
-    
-    if doc_type == 'all':
+    parser = argparse.ArgumentParser(description="DiscreetKit Document Generator")
+    parser.add_argument('doc_type', type=str, help='Type of document to generate')
+    parser.add_argument('--all', action='store_true', help='Generate all documents')
+    parser.add_argument('--structure', action='store_true', help='Show output structure')
+    parser.add_argument('--list', action='store_true', help='List available document types')
+
+    # Accept arbitrary placeholder arguments
+    parser.add_argument('--recipient', type=str)
+    parser.add_argument('--branch', type=str)
+    parser.add_argument('--partner', type=str)
+    parser.add_argument('--company', type=str)
+    parser.add_argument('--recipient_name', type=str)
+    parser.add_argument('--recipient_company', type=str)
+    parser.add_argument('--employee_name', type=str)
+    parser.add_argument('--job_title', type=str)
+    parser.add_argument('--start_date', type=str)
+    parser.add_argument('--amount', type=str)
+    parser.add_argument('--supervisor_title', type=str)
+    parser.add_argument('--notice_period', type=str)
+    parser.add_argument('--investor_name', type=str)
+    parser.add_argument('--investment_firm', type=str)
+    parser.add_argument('--contributor_name', type=str)
+    parser.add_argument('--circle_name', type=str)
+    parser.add_argument('--date', type=str)
+
+    args = parser.parse_args()
+
+    doc_type = args.doc_type.lower()
+
+    if args.all or doc_type == 'all':
         suite.generate_all()
-    elif doc_type in ['help', '-h', '--help']:
-        print(__doc__)
-        suite.list_available()
-    elif doc_type == 'structure':
+        return
+    if args.structure:
         print("📁 Current Output Structure:")
         print("=" * 35)
         suite.show_output_structure()
+        return
+    if args.list or doc_type in ['help', '-h', '--help']:
+        print(__doc__)
+        suite.list_available()
+        return
+
+    # Collect placeholders for this document type
+    required_placeholders = get_placeholders_for_type(doc_type)
+    custom_data = {}
+    for placeholder in required_placeholders:
+        value = getattr(args, placeholder, None)
+        if not value:
+            value = input(f"Enter value for '{placeholder}': ")
+        custom_data[placeholder] = value
+
+    # Pass custom_data to generator
+    if doc_type in suite.generators:
+        generator = suite.generators[doc_type]
+        # Use correct method for each generator
+        if doc_type == 'board_resolution':
+            generator.generate_board_resolution(custom_data)
+        elif doc_type == 'partnership_proposal':
+            generator.generate_partnership_proposal(custom_data)
+        elif doc_type == 'nda':
+            generator.generate_nda(custom_data)
+        elif doc_type == 'employment_contract':
+            generator.generate_employment_contract(custom_data)
+        elif doc_type == 'investor_brief':
+            generator.generate_investor_brief(custom_data)
+        elif doc_type == 'contributor_charter':
+            generator.generate_charter(custom_data.get('contributor_name', '[Contributor Name]'), custom_data.get('circle_name', '[Circle Name]'))
     else:
-        suite.generate_document(doc_type)
+        print(f"❌ Unknown document type: {doc_type}")
+        suite.list_available()
 
 if __name__ == "__main__":
     main()
