@@ -260,7 +260,8 @@ class DocumentTemplate:
         """Load document templates from JSON file."""
         templates_file = os.path.join(TEMPLATES_DIR, "document_templates.json")
         try:
-            with open(templates_file, 'r') as f:
+            # FIX: Added encoding='utf-8' to handle bullet points and special chars correctly
+            with open(templates_file, 'r', encoding='utf-8') as f:
                 self.templates = json.load(f)
         except FileNotFoundError:
             self.templates = {}
