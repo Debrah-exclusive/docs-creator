@@ -1,116 +1,6 @@
 {
-  "contributor_charter": {
-    "title": "DISCREETKIT CONTRIBUTOR AGREEMENT",
-    "recipient": {
-      "default": [
-        "Date: {{DATE}}",
-        "Name: [Contributor Name]",
-        "Circle: [Circle Name]"
-      ]
-    },
-    "salutation": "",
-    "body": [
-      "<b>1. THE GOAL</b>",
-      "We are building DiscreetKit to solve a simple problem: People need health products (like HIV tests and contraceptives) but are too shy to buy them in person. We make it private, safe, and easy.",
-      "<b>2. YOUR ROLE</b>",
-      "You are joining us as a <b>Voluntary Contributor</b>. We are a startup at Day One. We don't have salaries yet, but we have a massive opportunity.",
-      "<b>The Deal (What You Get):</b>",
-      "• <b>Credit:</b> You can put every piece of work you do here in your portfolio.",
-      "• <b>Future Hiring:</b> When we raise money, we hire our Contributors first.",
-      "• <b>References:</b> The Founders will give you strong recommendations for your career.",
-      "• <b>Commissions:</b> Sales/Growth roles get paid commissions on the sales they bring in.",
-      "<b>3. THE ONE BIG RULE: PRIVACY</b>",
-      "We sell privacy. <b>Never share customer data.</b> If you see a name, location, or order, keep it 100% secret. Leaking data destroys our business and gets us sued.",
-      "<b>4. WHO OWNS THE WORK?</b>",
-      "To raise money from investors, the company needs to own the code and designs. By signing this, you agree that the work you create for DiscreetKit belongs to <b>Access Discreetkit Ltd</b>.",
-      "<b>5. FREEDOM</b>",
-      "You can leave anytime. Just give us a heads-up so we can cover your tasks.",
-      "<b>6. AGREEMENT</b>",
-      "I’m in. I understand this is a volunteer role for now. I promise to keep company secrets safe."
-    ],
-    "closing": "",
-    "signature": [
-      "Signed:",
-      "",
-      "______________________________",
-      "[Contributor Name]",
-      "",
-      "",
-      "______________________________",
-      "{{DIRECTOR_NAME}}",
-      "CEO, {{COMPANY_NAME}}"
-    ]
-  },
-  "partnership_proposal": {
-    "title": "PARTNERSHIP PROPOSAL: INCREASE YOUR SALES",
-    "recipient": {
-      "default": [
-        "The Manager",
-        "[Pharmacy Name]",
-        "[Partner Address]",
-        "Accra, Ghana"
-      ]
-    },
-    "salutation": "Dear Manager,",
-    "body": [
-      "We want to help you sell more products to customers who are currently too shy to walk into your shop.",
-      "<b>The Missed Opportunity:</b> Thousands of young people in Ghana need reproductive health products but fear judgment. They are hiding, and that means lost sales for you.",
-      "<b>The Solution:</b> <b>DiscreetKit.</b> We are an online ordering platform. Customers order privately on their phones, and we send the orders to you.",
-      "<b>How We Work Together:</b>",
-      "1. <b>We Bring the Customers:</b> We handle the marketing and the online order.",
-      "2. <b>You Pack the Order:</b> We send the order details to your pharmacy.",
-      "3. <b>We Handle Delivery:</b> Our rider picks it up and delivers it anonymously.",
-      "<b>Why Partner?</b>",
-      "• <b>More Revenue:</b> You get sales you wouldn't get otherwise.",
-      "• <b>No Cost:</b> We don't charge you to join.",
-      "• <b>Zero Hassle:</b> You just sell the product. We do the logistics.",
-      "Let's discuss how we can start sending orders to you."
-    ],
-    "closing": "Best regards,",
-    "signature": [
-      "",
-      "",
-      "______________________________",
-      "{{DIRECTOR_NAME}}",
-      "{{DIRECTOR_TITLE}}",
-      "{{COMPANY_NAME}}"
-    ]
-  },
-  "investor_brief": {
-    "title": "INVESTMENT OPPORTUNITY: DISCREETKIT",
-    "recipient": {
-      "default": [
-        "[Investor Name]",
-        "[Investment Firm]",
-        "Accra, Ghana"
-      ]
-    },
-    "salutation": "Hi [Investor Name],",
-    "body": [
-      "<b>The Problem:</b>",
-      "There is a huge market of young people in Ghana who need health products (HIV tests, contraceptives) but are terrified of the 'pharmacy stare.' They want to buy, but they don't want to be seen. <b>This is millions in lost revenue.</b>",
-      "<b>The Solution:</b>",
-      "<b>DiscreetKit.</b> We are the 'Uber for Privacy.' We let customers order sensitive products anonymously and get them delivered in plain, unbranded packages.",
-      "<b>Why We Make Money:</b>",
-      "• <b>No Inventory Cost:</b> We don't buy stock. We partner with pharmacies and use their inventory.",
-      "• <b>High Trust = High Retention:</b> Once a user trusts us with their privacy, they stick with us.",
-      "• <b>Ready to Scale:</b> We are a registered company (Access Discreetkit Ltd) with a working product and a dedicated team.",
-      "<b>The Ask:</b>",
-      "We are raising <b>[Investment Amount]</b> to launch aggressively on university campuses in Accra. This money covers marketing and setting up our delivery network.",
-      "We have the tech. We have the team. We just need the fuel to grow."
-    ],
-    "closing": "Let's make this happen,",
-    "signature": [
-      "",
-      "",
-      "______________________________",
-      "{{DIRECTOR_NAME}}",
-      "{{DIRECTOR_TITLE}}",
-      "{{COMPANY_NAME}}"
-    ]
-  },
   "board_resolution": {
-    "title": "BOARD RESOLUTION: OPENING OF CORPORATE ACCOUNT",
+    "title": "SUBMISSION OF BOARD RESOLUTION FOR THE OPENING OF A CORPORATE BANK ACCOUNT",
     "recipient": {
       "default": [
         "The Branch Manager",
@@ -121,14 +11,46 @@
     },
     "salutation": "Dear Sir/Madam,",
     "body": [
-      "<b>RE: CORPORATE BANK ACCOUNT FOR {{COMPANY_NAME}}</b>",
-      "This letter confirms that the Board of Directors of {{COMPANY_NAME}} has agreed to open a corporate bank account with Fidelity Bank Ghana LTD.",
-      "<b>Details:</b>",
-      "1. Account Name: <b>{{COMPANY_NAME}}</b>.",
-      "2. Authorized Signatories:",
+      "<b>RE: OPENING OF CORPORATE ACCOUNT – {{COMPANY_NAME}}</b>",
+      "We write to inform you that the board of directors of {{COMPANY_NAME}} have resolved on [Date] to open a corporate bank account with Fidelity Bank Ghana LTD.",
+      "<b>It was resolved that:</b>",
+      "1. An account be opened in the name of <b>{{COMPANY_NAME}}</b>.",
+      "2. The authorized signatories to the account shall be:",
       "   • <b>Naeem Abdul-Aziz (CEO)</b> – Primary Signatory",
       "   • <b>Benedict Dela Tordzro (COO)</b> – Co-Signatory",
-      "Please find attached our Certificate of Incorporation and Company Regulations."
+      "Kindly find attached the Certificate of Incorporation, Company Constitution, and the specific Board Resolution signed by the directors."
+    ],
+    "closing": "Yours faithfully,",
+    "signature": [
+      "",
+      "",
+      "______________________________",
+      "{{DIRECTOR_NAME}}",
+      "{{DIRECTOR_TITLE}}",
+      "{{COMPANY_NAME}}"
+    ]
+  },
+  "partnership_proposal": {
+    "title": "PROPOSAL FOR STRATEGIC FULFILLMENT PARTNERSHIP",
+    "recipient": {
+      "default": [
+        "The Chief Pharmacist / Manager",
+        "[Pharmacy Name]",
+        "[Partner Address]"
+      ]
+    },
+    "salutation": "Dear Manager,",
+    "body": [
+      "We are writing to propose a strategic partnership between <b>{{COMPANY_NAME}}</b> and <b>[Pharmacy Name]</b>.",
+      "<b>The Problem: Lost Revenue.</b>",
+      "There is a huge market of young people who need health products (HIV tests, contraceptives) but are terrified of the 'pharmacy stare.' Data shows that <b>60% of customers</b> prefer confidential access. They want to buy, but they don't want to be seen. Currently, that money is walking away from your door.",
+      "<b>The Solution: DiscreetKit.</b>",
+      "We are the <b>'Uber for Privacy.'</b> We let customers order sensitive products anonymously from our platform, and we route those orders directly to you for fulfillment.",
+      "<b>Why Partner?</b>",
+      "• <b>New Sales, No Work:</b> We bring you the customers who are too shy to visit. You just pack the item.",
+      "• <b>Zero Logistics:</b> Our unbranded riders handle the pickup and delivery. You have no delivery headaches.",
+      "• <b>Brand Protection:</b> All deliveries are 100% unbranded. We protect your reputation and the customer's privacy.",
+      "We would welcome the opportunity to discuss a commission structure."
     ],
     "closing": "Sincerely,",
     "signature": [
@@ -152,14 +74,14 @@
     },
     "salutation": "Dear [Recipient Name],",
     "body": [
-      "This agreement is between {{COMPANY_NAME}} and [Recipient Company] to protect confidential information.",
-      "<b>1. What is Confidential?</b> Any business plans, customer lists, financial data, or trade secrets shared by {{COMPANY_NAME}}.",
-      "<b>2. Your Duty:</b> You agree to keep this information secret. You cannot share it with anyone else or use it for your own benefit.",
-      "<b>3. Duration:</b> This agreement lasts for 3 years.",
-      "<b>4. Return of Data:</b> If we stop working together, you must return or delete our data immediately.",
-      "By signing below, you agree to these terms."
+      "This Non-Disclosure Agreement ('Agreement') is entered into between {{COMPANY_NAME}} ('Disclosing Party') and [Recipient Company] ('Receiving Party') to protect our proprietary business information.",
+      "<b>1. Confidential Information:</b> This includes our proprietary logistics models, user data privacy protocols, partnership strategies, and unreleased technical architecture.",
+      "<b>2. Obligations:</b> The Receiving Party agrees to maintain this information in strict confidence and shall not disclose, sell, or utilize it for competitive purposes.",
+      "<b>3. Term:</b> This Agreement shall remain in effect for a period of three (3) years from the date of execution.",
+      "<b>4. Data Return:</b> Upon termination of discussions, the Receiving Party agrees to return or destroy all confidential materials within ten (10) days.",
+      "Please indicate your acceptance by signing below."
     ],
-    "closing": "Sincerely,",
+    "closing": "Yours faithfully,",
     "signature": [
       "",
       "",
@@ -168,7 +90,7 @@
       "{{DIRECTOR_TITLE}}",
       "{{COMPANY_NAME}}",
       "",
-      "Agreed and Accepted:",
+      "Accepted and Agreed:",
       "",
       "______________________________",
       "[Recipient Name]",
@@ -179,7 +101,7 @@
     ]
   },
   "employment_contract": {
-    "title": "CASUAL WORKER AGREEMENT",
+    "title": "CASUAL WORKER ENGAGEMENT LETTER",
     "recipient": {
       "default": [
         "[Worker Name]",
@@ -189,19 +111,17 @@
     },
     "salutation": "Dear [Worker Name],",
     "body": [
-      "We are happy to hire you as a <b>Casual Worker</b> for {{COMPANY_NAME}}.",
-      "<b>1. Your Role:</b> You will work as a <b>[Role]</b>. This is a flexible, seasonal job to help us with specific tasks.",
-      "<b>2. Start Date:</b> You start on [Start Date]. Since this is casual work, either of us can end this agreement with [Notice Period] notice.",
-      "<b>3. Pay (No Salary):</b> There is <b>no monthly salary</b>. You are paid based on performance.",
-      "   • Rate: <b>[Rate]</b> per [Unit]",
-      "   • Payment Schedule: [Payment Frequency]",
-      "<b>4. Privacy:</b> Privacy is our business. You must keep all customer information 100% secret. If you share customer data, you will be fired and face legal action.",
-      "<b>5. Agreement:</b> By signing below, you agree to these terms."
+      "We are pleased to engage you as a <b>Casual Worker</b> with {{COMPANY_NAME}} under the following terms:",
+      "<b>1. Role & Nature of Engagement:</b> You will serve as <b>[Role]</b>. This is a casual, seasonal engagement to support specific operational needs. It is <b>not</b> a permanent employment contract.",
+      "<b>2. Commencement:</b> This engagement is effective from [Start Date]. As a casual worker, your engagement is tied to available work and may be terminated by either party with [Notice Period] notice.",
+      "<b>3. Remuneration (No Fixed Salary):</b> Please note that there is <b>no monthly salary</b> attached to this role. Compensation is strictly performance-based at a rate of <b>[Rate]</b> per [Unit]. Payments will be processed [Payment Frequency] based on completed tasks.",
+      "<b>4. Confidentiality:</b> You agree to maintain strict confidentiality regarding all company strategies and customer data. Privacy is our core product; any breach here will lead to immediate termination and legal action.",
+      "<b>5. Acceptance:</b> By signing below, you acknowledge that you understand the casual nature of this role and agree to these terms."
     ],
-    "closing": "Welcome to the team,",
+    "closing": "Welcome to the team.",
     "signature": [
       "",
-      "Sincerely,",
+      "Yours sincerely,",
       "",
       "",
       "______________________________",
@@ -209,12 +129,93 @@
       "{{DIRECTOR_TITLE}}",
       "{{COMPANY_NAME}}",
       "",
-      "I accept this offer:",
+      "I accept the terms of this casual engagement:",
       "",
       "______________________________",
       "[Worker Name]",
       "",
       "Date: _______________"
+    ]
+  },
+  "investor_brief": {
+    "title": "INVESTMENT OPPORTUNITY: DISCREETKIT",
+    "recipient": {
+      "default": [
+        "[Investor Name]",
+        "[Investment Firm]",
+        "Accra, Ghana"
+      ]
+    },
+    "salutation": "Hi [Investor Name],",
+    "body": [
+      "<b>The Problem:</b>",
+      "There is a huge market of young people in Ghana who need health products (HIV tests, contraceptives) but are terrified of the 'pharmacy stare.' With over <b>334,000 HIV cases</b> and 40% of the market avoiding physical shops due to stigma, this is millions in lost revenue.",
+      "<b>The Solution:</b>",
+      "<b>DiscreetKit.</b> We are the <b>'Uber for Privacy.'</b> We let customers order sensitive products anonymously and get them delivered in plain, unbranded packages.",
+      "<b>Why We Make Money:</b>",
+      "• <b>No Inventory Cost:</b> We don't buy stock. We partner with pharmacies and use their inventory.",
+      "• <b>High Trust = High Retention:</b> Once a user trusts us with their privacy, they stick with us (Global benchmarks suggest 80%+ retention for privacy services).",
+      "• <b>Ready to Scale:</b> We are a registered company (Access Discreetkit Ltd) with a working product and a dedicated team.",
+      "<b>The Ask:</b>",
+      "We are raising <b>[Investment Amount]</b> to launch aggressively on university campuses in Accra. This money covers marketing and setting up our delivery network.",
+      "We have the tech. We have the team. We just need the fuel to grow."
+    ],
+    "closing": "Let's build this,",
+    "signature": [
+      "",
+      "",
+      "______________________________",
+      "{{DIRECTOR_NAME}}",
+      "{{DIRECTOR_TITLE}}",
+      "{{COMPANY_NAME}}"
+    ]
+  },
+  "contributor_charter": {
+    "title": "ACCESS DISCREETKIT LTD CONTRIBUTOR ENGAGEMENT CHARTER & NDA",
+    "recipient": {
+      "default": [
+        "Date: {{DATE}}",
+        "Name: [Contributor Name]",
+        "Circle: [Circle Name]"
+      ]
+    },
+    "salutation": "",
+    "body": [
+      "<b>1. THE MISSION</b>",
+      "You are joining DiscreetKit at its most critical stage: Day One. We are not just building a delivery service; we are building a privacy infrastructure for health in Ghana. We exist to remove the embarrassment, judgment, and stigma that stops people from getting the care they need. By signing this, you are joining a team that values <b>Speed, Privacy, and Empathy</b> above all else.",
+      "<b>2. THE RELATIONSHIP</b>",
+      "You are joining us as a <b>Voluntary Contributor</b>. We are currently a pre-revenue, bootstrapped startup. This means there is no fixed salary right now. Instead, we offer a platform for you to build high-impact work, gain direct operational experience, and be part of our founding story.",
+      "<b>The Value Exchange (What You Get):</b>",
+      "• <b>Portfolio Rights:</b> You have the explicit right to showcase the work you create here in your personal portfolio (once the product is public).",
+      "• <b>First Right of Hire:</b> As we scale and raise capital, active Contributors get first priority for paid full-time roles.",
+      "• <b>Reference & Reputation:</b> The Founders commit to providing detailed, high-level recommendations and referrals for your future career steps.",
+      "• <b>Commissions:</b> Specific roles (like sales/growth) may be eligible for performance-based commissions as defined in separate memos.",
+      "<b>3. THE CODE OF SILENCE (Confidentiality)</b>",
+      "We deal with sexual health. <b>Privacy is our product.</b>",
+      "• <b>User Data is Sacred:</b> You may never, under any circumstances, share, save, or discuss customer data (names, locations, orders). A breach here is not just a firing offense; it is a legal one under the Data Protection Act, 2012 (Act 843).",
+      "• <b>Trade Secrets:</b> Our strategy, partner lists, code, and unreleased designs are confidential. Keep them inside the Circle.",
+      "<b>4. INTELLECTUAL PROPERTY (Who Owns What)</b>",
+      "To build a company that can scale and protect itself, the company must own what it creates.",
+      "<b>Assignment:</b> Any code, design, copy, or strategy you create specifically for DiscreetKit belongs to <b>Access Discreetkit Ltd</b>.",
+      "<b>Why?</b> Investors and partners require us to have clean ownership of our tech and brand. This protects the platform you are helping to build.",
+      "<b>5. THE \"NO HARD FEELINGS\" CLAUSE</b>",
+      "We respect your time and freedom.",
+      "• <b>Leaving:</b> You can step back at any time. We just ask for a quick heads-up so we can hand over your tasks.",
+      "• <b>Removal:</b> We reserve the right to remove contributors who are inactive or violate our values (especially regarding privacy).",
+      "<b>6. ACCEPTANCE</b>",
+      "I understand that I am contributing to build something meaningful. I agree to keep DiscreetKit’s secrets safe and assign the rights to my contributions to the company."
+    ],
+    "closing": "",
+    "signature": [
+      "Signed:",
+      "",
+      "______________________________",
+      "[Contributor Name]",
+      "",
+      "",
+      "______________________________",
+      "{{DIRECTOR_NAME}}",
+      "CEO, {{COMPANY_NAME}}"
     ]
   }
 }
