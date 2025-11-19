@@ -29,31 +29,27 @@ FONT_REGULAR_PATH = os.path.join(ASSETS_DIR, "Satoshi-Regular.ttf")
 FONT_BOLD_PATH = os.path.join(ASSETS_DIR, "Satoshi-Bold.ttf")
 LOGO_PATH = os.path.join(ASSETS_DIR, "logo.png")
 
-# Company Information
+# --- Company Defaults (used for placeholder replacement) ---
 COMPANY_NAME = "ACCESS DISCREETKIT LTD"
 COMPANY_TAGLINE = "Skip the Awkward"
 DEFAULT_DIRECTOR = "Naeem Abdul-Aziz"
-DEFAULT_DIRECTOR_TITLE = "Director"
+DEFAULT_DIRECTOR_TITLE = "CEO"
 
-# Document Categories for Output Organization
-DOCUMENT_CATEGORIES = {
-    'board_resolution': 'Board_Resolutions',
-    'employment_contract': 'Employment_Contracts',
-    'partnership_proposal': 'Partnership_Proposals',
-    'nda': 'Legal_Documents',
-    'investor_brief': 'Investor_Relations',
-    'contract': 'Contracts',
-    'letterhead': 'General_Documents'
+# Mapping document types to output subfolders
+CATEGORY_MAP = {
+    "board_resolution": "Board_Resolutions",
+    "partnership_proposal": "Partnership_Proposals",
+    "nda": "Legal_Documents",
+    "employment_contract": "Employment_Contracts",
+    "investor_brief": "Investor_Relations",
+    "contributor_charter": "General_Documents"
 }
 
-def get_output_path(document_type):
-    """Get the appropriate output path for a document type."""
-    category = DOCUMENT_CATEGORIES.get(document_type, 'General_Documents')
+def get_output_path(document_type: str) -> str:
+    """Resolve the output folder for a given document type, creating it if needed."""
+    category = CATEGORY_MAP.get(document_type, "General_Documents")
     folder_path = os.path.join(OUTPUT_DIR, category)
-    
-    # Create folder if it doesn't exist
     os.makedirs(folder_path, exist_ok=True)
-    
     return folder_path
 
 # --- Font Registration with fallbacks ---
@@ -248,9 +244,9 @@ class DocumentTemplate:
         """Get template content for a specific document type."""
         if document_type not in self.templates:
             return None
-        
+
         template = self.templates[document_type].copy()
-        
+
         # Replace placeholders with actual values
         replacements = {
             '{{COMPANY_NAME}}': COMPANY_NAME,
@@ -259,22 +255,34 @@ class DocumentTemplate:
             '{{DIRECTOR_TITLE}}': DEFAULT_DIRECTOR_TITLE,
             '{{DATE}}': datetime.now().strftime("%d %B %Y")
         }
-        
+
         # Add custom replacements
         if custom_data:
             replacements.update(custom_data)
-        
+
         # Replace placeholders in title
         if 'title' in template and isinstance(template['title'], str):
             for placeholder, value in replacements.items():
                 template['title'] = template['title'].replace(placeholder, str(value))
-        
+
+        # Replace placeholders in recipient lines
+        if 'recipient' in template and isinstance(template['recipient'], dict):
+            for key, lines in template['recipient'].items():
+                if isinstance(lines, list):
+                    new_lines = []
+                    for line in lines:
+                        updated_line = line
+                        for placeholder, value in replacements.items():
+                            updated_line = updated_line.replace(placeholder, str(value))
+                        new_lines.append(updated_line)
+                    template['recipient'][key] = new_lines
+
         # Replace placeholders in salutation and closing
         for key in ['salutation', 'closing']:
             if key in template and isinstance(template[key], str):
                 for placeholder, value in replacements.items():
                     template[key] = template[key].replace(placeholder, str(value))
-        
+
         # Replace placeholders in body paragraphs
         if 'body' in template and isinstance(template['body'], list):
             for i, item in enumerate(template['body']):
@@ -283,7 +291,7 @@ class DocumentTemplate:
                     for placeholder, value in replacements.items():
                         updated_item = updated_item.replace(placeholder, str(value))
                     template['body'][i] = updated_item
-        
+
         # Replace placeholders in signature lines
         if 'signature' in template and isinstance(template['signature'], list):
             for i, item in enumerate(template['signature']):
@@ -292,7 +300,7 @@ class DocumentTemplate:
                     for placeholder, value in replacements.items():
                         updated_item = updated_item.replace(placeholder, str(value))
                     template['signature'][i] = updated_item
-        
+
         return template
     
     def generate_document(self, filename: str, content: dict, document_type: str = ""):

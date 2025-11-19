@@ -50,6 +50,7 @@ from generators.partnership_proposal import PartnershipProposalGenerator
 from generators.nda import NDAGenerator
 from generators.employment_contract import EmploymentContractGenerator
 from generators.investor_brief import InvestorBriefGenerator
+from generators.contributor_charter import ContributorCharterGenerator
 
 class DocumentSuite:
     """Enhanced document generation suite with organized output."""
@@ -60,7 +61,8 @@ class DocumentSuite:
             'partnership_proposal': PartnershipProposalGenerator(),
             'nda': NDAGenerator(),
             'employment_contract': EmploymentContractGenerator(),
-            'investor_brief': InvestorBriefGenerator()
+            'investor_brief': InvestorBriefGenerator(),
+            'contributor_charter': ContributorCharterGenerator()
         }
         
         # Ensure output directory structure exists
@@ -103,6 +105,9 @@ class DocumentSuite:
                 filename = self.generators[doc_type].generate_employment_contract()
             elif doc_type == 'investor_brief':
                 filename = self.generators[doc_type].generate_investor_brief()
+            elif doc_type == 'contributor_charter':
+                # Default placeholders can be overridden by command-line args later
+                filename = self.generators[doc_type].generate_charter()
             
             if filename:
                 # Extract just the filename for display
@@ -171,7 +176,8 @@ class DocumentSuite:
             'partnership_proposal': 'Strategic partnership proposals',
             'nda': 'Non-disclosure agreements',
             'employment_contract': 'Staff employment contracts', 
-            'investor_brief': 'Investment opportunity briefs'
+            'investor_brief': 'Investment opportunity briefs',
+            'contributor_charter': 'Contributor Engagement Charter & NDA'
         }
         
         for doc_type, description in descriptions.items():

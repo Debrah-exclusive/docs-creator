@@ -24,13 +24,12 @@
       "{{COMPANY_NAME}}"
     ]
   },
-  
   "partnership_proposal": {
     "title": "PROPOSAL FOR STRATEGIC PARTNERSHIP",
     "recipient": {
       "default": [
         "Mr. John Doe",
-        "Chief Executive Officer", 
+        "Chief Executive Officer",
         "[Company Name]",
         "[Company Address]",
         "Accra, Ghana"
@@ -53,7 +52,6 @@
       "{{COMPANY_NAME}}"
     ]
   },
-
   "nda": {
     "title": "NON-DISCLOSURE AGREEMENT (NDA)",
     "recipient": {
@@ -93,7 +91,6 @@
       "Date: _______________"
     ]
   },
-
   "employment_contract": {
     "title": "EMPLOYMENT CONTRACT",
     "recipient": {
@@ -135,7 +132,6 @@
       "Date: _______________"
     ]
   },
-
   "investor_brief": {
     "title": "INVESTMENT OPPORTUNITY - {{COMPANY_NAME}}",
     "recipient": {
@@ -154,7 +150,7 @@
       "<b>Investment Highlights:</b>",
       "• Strong revenue growth trajectory",
       "• Experienced management team",
-      "• Scalable business model", 
+      "• Scalable business model",
       "• Clear competitive advantages",
       "• Growing client base across multiple sectors",
       "<b>Financial Summary:</b> [Include relevant financial metrics, projections, and use of funds]",
@@ -171,6 +167,54 @@
       "{{DIRECTOR_NAME}}",
       "{{DIRECTOR_TITLE}}",
       "{{COMPANY_NAME}}"
+    ]
+  },
+  "contributor_charter": {
+    "title": "ACCESS DISCREETKIT LTD CONTRIBUTOR ENGAGEMENT CHARTER & NDA",
+    "recipient": {
+      "default": [
+        "Date: {{DATE}}",
+        "Name: [Contributor Name]",
+        "Circle: [Circle Name]"
+      ]
+    },
+    "salutation": "",
+    "body": [
+      "<b>1. The Mission</b>",
+      "You are joining DiscreetKit at its most critical stage: Day One. We are not just building a delivery service; we are building a privacy infrastructure for health. We exist to remove the embarrassment, judgment, and stigma that stops people from getting the care they need. By signing this, you are joining a team that values Speed, Privacy, and Empathy above all else.",
+      "<b>2. The Relationship</b>",
+      "You are joining us as a Voluntary Contributor. We are currently a pre-revenue, bootstrapped startup. This means there is no fixed salary right now. Instead, we offer a platform for you to build high-impact work, gain direct operational experience, and be part of our founding story.",
+      "<b>What You Get from Us:</b>",
+      "<b>Portfolio Rights:</b> You have the right to showcase the work you do here in your personal portfolio (once the product is public).",
+      "<b>First Right of Hire:</b> As we scale and raise capital, active Contributors get first priority for paid full-time roles.",
+      "<b>Reference & Reputation:</b> The Founders commit to providing detailed, high-level recommendations and referrals for your future career steps.",
+      "<b>Commissions (Where applicable):</b> Specific roles (like sales/growth) may be eligible for performance-based commissions as defined in separate memos.",
+      "<b>3. The Code of Silence (Confidentiality)</b>",
+      "We deal with sexual health. Privacy is our product.",
+      "<b>User Data is Sacred:</b> You may never, under any circumstances, share, save, or discuss customer data (names, locations, orders). A breach here is not just a firing offense; it is a legal one.",
+      "<b>Trade Secrets:</b> Our strategy, partner lists, code, and unreleased designs are confidential. Keep them inside the Circle.",
+      "<b>4. Intellectual Property (Who Owns What)</b>",
+      "To build a company that can scale and protect itself, the company must own what it creates.",
+      "<b>Assignment:</b> Any code, design, copy, or strategy you create specifically for DiscreetKit belongs to Access Discreetkit Ltd.",
+      "<b>Why?</b> Investors and partners require us to have clean ownership of our tech and brand. This protects the platform you are helping to build.",
+      "<b>5. The \"No Hard Feelings\" Clause</b>",
+      "We respect your time and freedom.",
+      "<b>Leaving:</b> You can step back at any time. We just ask for a quick heads-up so we can hand over your tasks.",
+      "<b>Removal:</b> We reserve the right to remove contributors who are inactive or violate our values (especially regarding privacy).",
+      "<b>6. Acceptance</b>",
+      "I understand that I am contributing to build something meaningful. I agree to keep DiscreetKit’s secrets safe and assign the rights to my contributions to the company."
+    ],
+    "closing": "",
+    "signature": [
+      "Signed:",
+      "",
+      "______________________________",
+      "[Contributor Name]",
+      "",
+      "",
+      "______________________________",
+      "{{DIRECTOR_NAME}}",
+      "CEO, {{COMPANY_NAME}}"
     ]
   }
 }

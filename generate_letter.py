@@ -199,76 +199,6 @@ def draw_header_footer(canv, doc):
     canv.restoreState()
 
 
-def generate_resolution_document(filename: str, content: dict):
-    """Generate a formal resolution document (not a letter format)"""
-    doc = SimpleDocTemplate(
-        filename,
-        pagesize=A4,
-        topMargin=1.6 * inch,
-        bottomMargin=1.25 * inch,
-        leftMargin=20 * mm,
-        rightMargin=20 * mm,
-    )
-
-    styles = get_letter_styles()
-    
-    # Add resolution-specific styles
-    add_or_update_style(
-        styles,
-        "ResolutionTitle",
-        fontName=FONT_BOLD_NAME,
-        fontSize=14,
-        textColor=COLOR_INDIGO,
-        spaceBefore=20,
-        spaceAfter=16,
-        alignment=TA_CENTER,
-    )
-    add_or_update_style(
-        styles,
-        "ResolutionBody",
-        fontSize=11,
-        leading=16,
-        spaceAfter=12,
-        alignment=TA_LEFT,
-    )
-    add_or_update_style(
-        styles,
-        "SignatureBlock",
-        fontSize=11,
-        leading=20,
-        spaceAfter=8,
-        alignment=TA_LEFT,
-    )
-    
-    story = []
-
-    # Small spacer so content doesn't touch header
-    story.append(Spacer(1, 0.2 * inch))
-
-    # Resolution title
-    story.append(Paragraph(str(content.get('title', '')), styles['ResolutionTitle']))
-    story.append(Spacer(1, 0.2 * inch))
-
-    # Resolution body content
-    body = content.get('body', [])
-    if isinstance(body, list):
-        for para in body:
-            story.append(Paragraph(str(para), styles['ResolutionBody']))
-
-    # Signature section
-    story.append(Spacer(1, 0.3 * inch))
-    signatures = content.get('signatures', [])
-    if isinstance(signatures, list):
-        for sig_line in signatures:
-            story.append(Paragraph(str(sig_line), styles['SignatureBlock']))
-
-    try:
-        doc.build(story, onFirstPage=draw_header_footer, onLaterPages=draw_header_footer)
-        print(f"Successfully generated '{filename}'")
-    except Exception as e:
-        print(f"Error generating PDF: {e}")
-
-
 def generate_document(filename: str, content: dict):
     doc = SimpleDocTemplate(
         filename,
@@ -328,10 +258,8 @@ def generate_document(filename: str, content: dict):
 
 # --- Example Usage ---
 if __name__ == "__main__":
-    # Generate both the submission letter and the actual board resolution
-    
-    # 1. Board Resolution Submission Letter
-    submission_letter_content = {
+    # Clean Board Resolution Submission Letter
+    board_resolution_content = {
         "date": "6 November 2025",
         "recipient": [
             "The Branch Manager",
@@ -356,43 +284,4 @@ if __name__ == "__main__":
         ]
     }
 
-    # 2. Actual Board Resolution Document
-    board_resolution_content = {
-        "title": "WRITTEN RESOLUTION OF THE BOARD OF DIRECTORS<br/>ACCESS DISCREETKIT LTD<br/>PURSUANT TO SECTION 188(2)(J) OF THE COMPANIES ACT, 2019 (ACT 992)",
-        "body": [
-            "We the undersigned being directors of Access Discreetkit Ltd, duly convened and held on 05-11-2025,",
-            "",
-            "<b>IT IS HEREBY RESOLVED THAT;</b>",
-            "",
-            "1. That a Current Account in the name of <b>ACCESS DISCREETKIT LTD</b> be opened with Fidelity Bank Ghana Ltd",
-            "",
-            "2. The following persons are hereby authorized as signatories to the said account:",
-            "",
-            "&nbsp;&nbsp;&nbsp;&nbsp;<b>Name:</b> Naeem Abdul-Aziz<br/>&nbsp;&nbsp;&nbsp;&nbsp;<b>Position:</b> Director",
-            "",
-            "&nbsp;&nbsp;&nbsp;&nbsp;<b>Name:</b> Derrick Kwadjo Debrah<br/>&nbsp;&nbsp;&nbsp;&nbsp;<b>Position:</b> Director",
-            "",
-            "&nbsp;&nbsp;&nbsp;&nbsp;<b>Name:</b> Benedict Dela Tordzro<br/>&nbsp;&nbsp;&nbsp;&nbsp;<b>Position:</b> Chief Operations Officer (COO)",
-            "",
-            "3. All cheques, withdrawals, and drafts shall be signed jointly by any two (2) of the authorized signatories, one of whom must be a Director.",
-            "",
-            "4. For operational efficiency, the CEO (Naeem Abdul-Aziz) and COO (Benedict Dela Tordzro) may each sign singly for transactions up to a limit of ₵2,000 (Two Thousand Ghana Cedis). Any transaction above this limit shall require joint authorization from both Directors.",
-            "",
-            "<b>DATED IN ACCRA THIS 6th DAY OF NOVEMBER, 2025</b>"
-        ],
-        "signatures": [
-            "<b>SIGNED BY:</b>",
-            "",
-            "",
-            "Naeem Abdul-Aziz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;____________________",
-            "DIRECTOR",
-            "",
-            "",
-            "Derrick Kwadjo Debrah&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;____________________",
-            "DIRECTOR"
-        ]
-    }
-
-    # Generate both documents
-    generate_document("board_resolution_submission_letter.pdf", submission_letter_content)
-    generate_resolution_document("board_resolution_document.pdf", board_resolution_content)
+    generate_document("board_resolution_submission.pdf", board_resolution_content)
