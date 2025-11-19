@@ -30,8 +30,14 @@ class ContributorCharterGenerator(DocumentTemplate):
             "signature": template_content.get('signature', [])
         }
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        safe_name = contributor_name.replace(" ", "_").replace("[", "").replace("]", "")
-        filename = f"contributor_charter_{safe_name}_{timestamp}.pdf"
+        safe_contributor = contributor_name.strip().replace(' ', '_').replace('[', '').replace(']', '').lower()
+        safe_circle = circle_name.strip().replace(' ', '_').replace('[', '').replace(']', '').lower()
+        if safe_contributor and safe_circle:
+            filename = f"contributor_charter_{safe_contributor}_{safe_circle}.pdf"
+        elif safe_contributor:
+            filename = f"contributor_charter_{safe_contributor}.pdf"
+        else:
+            filename = "contributor_charter_document.pdf"
         return self.generate_document(filename, content, "contributor_charter")
     
 if __name__ == "__main__":

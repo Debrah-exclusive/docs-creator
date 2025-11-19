@@ -26,8 +26,15 @@ class BoardResolutionGenerator(DocumentTemplate):
             "closing": template_content.get('closing', ''),
             "signature": template_content.get('signature', [])
         }
-        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        filename = f"board_resolution_{timestamp}.pdf"
+        # Use recipient/branch for filename if provided
+        recipient = custom_data.get('recipient', '').strip().replace(' ', '_').lower() if custom_data.get('recipient') else None
+        branch = custom_data.get('branch', '').strip().replace(' ', '_').lower() if custom_data.get('branch') else None
+        if branch:
+            filename = f"board_resolution_{branch}.pdf"
+        elif recipient:
+            filename = f"board_resolution_{recipient}.pdf"
+        else:
+            filename = "board_resolution_document.pdf"
         return self.generate_document(filename, content, "board_resolution")
 
 if __name__ == "__main__":

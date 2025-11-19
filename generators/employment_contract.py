@@ -25,8 +25,11 @@ class EmploymentContractGenerator(DocumentTemplate):
             "closing": template_content.get('closing', ''),
             "signature": template_content.get('signature', [])
         }
-        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        filename = f"employment_contract_{timestamp}.pdf"
+        employee_name = custom_data.get('employee_name', '').strip().replace(' ', '_').lower() if custom_data.get('employee_name') else None
+        if employee_name:
+            filename = f"employment_contract_{employee_name}.pdf"
+        else:
+            filename = "employment_contract_document.pdf"
         return self.generate_document(filename, content, "employment_contract")
     
     def get_default_contract_data(self):

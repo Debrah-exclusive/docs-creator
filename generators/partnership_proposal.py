@@ -25,8 +25,14 @@ class PartnershipProposalGenerator(DocumentTemplate):
             "closing": template_content.get('closing', ''),
             "signature": template_content.get('signature', [])
         }
-        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        filename = f"partnership_proposal_{timestamp}.pdf"
+        partner = custom_data.get('partner', '').strip().replace(' ', '_').lower() if custom_data.get('partner') else None
+        company = custom_data.get('company', '').strip().replace(' ', '_').lower() if custom_data.get('company') else None
+        if partner:
+            filename = f"partnership_proposal_{partner}.pdf"
+        elif company:
+            filename = f"partnership_proposal_{company}.pdf"
+        else:
+            filename = "partnership_proposal_document.pdf"
         return self.generate_document(filename, content, "partnership_proposal")
 
 if __name__ == "__main__":

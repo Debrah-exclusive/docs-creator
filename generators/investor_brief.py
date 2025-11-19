@@ -25,8 +25,14 @@ class InvestorBriefGenerator(DocumentTemplate):
             "closing": template_content.get('closing', ''),
             "signature": template_content.get('signature', [])
         }
-        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        filename = f"investor_brief_{timestamp}.pdf"
+        investor_name = custom_data.get('investor_name', '').strip().replace(' ', '_').lower() if custom_data.get('investor_name') else None
+        investment_firm = custom_data.get('investment_firm', '').strip().replace(' ', '_').lower() if custom_data.get('investment_firm') else None
+        if investment_firm:
+            filename = f"investor_brief_{investment_firm}.pdf"
+        elif investor_name:
+            filename = f"investor_brief_{investor_name}.pdf"
+        else:
+            filename = "investor_brief_document.pdf"
         return self.generate_document(filename, content, "investor_brief")
     
 if __name__ == "__main__":
