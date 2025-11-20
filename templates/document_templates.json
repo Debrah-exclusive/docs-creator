@@ -31,19 +31,20 @@
     ]
   },
   "partnership_proposal": {
-    "title": "PROPOSAL FOR STRATEGIC FULFILLMENT PARTNERSHIP",
+    "title": "PROPOSAL FOR FULFILLMENT PARTNERSHIP",
     "recipient": {
       "default": [
         "The Chief Pharmacist / Manager",
         "[Pharmacy Name]",
-        "[Partner Address]"
+        "[Partner Address]",
+        "Accra, Ghana"
       ]
     },
     "salutation": "Dear Manager,",
     "body": [
-      "We are writing to propose a strategic partnership between <b>{{COMPANY_NAME}}</b> and <b>[Pharmacy Name]</b>.",
-      "<b>The Problem: Lost Revenue.</b>",
-      "There is a huge market of young people who need health products (HIV tests, contraceptives) but are terrified of the 'pharmacy stare.' Data shows that <b>60% of customers</b> prefer confidential access. They want to buy, but they don't want to be seen. Currently, that money is walking away from your door.",
+      "We are writing to propose a fulfillment partnership between <b>{{COMPANY_NAME}}</b> and <b>[Pharmacy Name]</b>.",
+      "<b>The Problem: Money Walking Away.</b>",
+      "There is a huge market of young people in Ghana who need health products (HIV tests, contraceptives) but are terrified of the 'pharmacy stare.' They want to buy, but they don't want to be seen. Currently, that money is walking away from your door.",
       "<b>The Solution: DiscreetKit.</b>",
       "We are the <b>'Uber for Privacy.'</b> We let customers order sensitive products anonymously from our platform, and we route those orders directly to you for fulfillment.",
       "<b>Why Partner?</b>",
@@ -149,7 +150,7 @@
     "salutation": "Hi [Investor Name],",
     "body": [
       "<b>The Problem:</b>",
-      "There is a huge market of young people in Ghana who need health products (HIV tests, contraceptives) but are terrified of the 'pharmacy stare.' With over <b>334,000 HIV cases</b> and 40% of the market avoiding physical shops due to stigma, this is millions in lost revenue.",
+      "There is a huge market of young people in Ghana who need health products (HIV tests, contraceptives) but are terrified of the 'pharmacy stare.' They want to buy, but they don't want to be seen. With over <b>334,000 HIV cases</b> and 40% of the market avoiding physical shops due to stigma, this is millions in lost revenue.",
       "<b>The Solution:</b>",
       "<b>DiscreetKit.</b> We are the <b>'Uber for Privacy.'</b> We let customers order sensitive products anonymously and get them delivered in plain, unbranded packages.",
       "<b>Why We Make Money:</b>",
@@ -216,6 +217,127 @@
       "______________________________",
       "{{DIRECTOR_NAME}}",
       "CEO, {{COMPANY_NAME}}"
+    ]
+  },
+  "pitch_deck": {
+    "title": "INVESTMENT PITCH DECK",
+    "recipient": {
+      "default": [
+        "Confidential Business Plan",
+        "{{COMPANY_NAME}}",
+        "{{DATE}}"
+      ]
+    },
+    "salutation": "",
+    "body": [
+      "<b>COMPANY:</b> {{COMPANY_NAME}}",
+      "<b>Tagline:</b> Skip the Awkward.",
+      "<b>One-Liner:</b> The Uber for Privacy.",
+      "",
+      "<b>THE PROBLEM</b>",
+      "<b>Stigma is Expensive:</b> Young people in Ghana need health products (HIV tests, contraceptives) but are terrified of the 'pharmacy stare.'",
+      "<b>The Data:</b>",
+      "• 40% of HIV-positive individuals remain undiagnosed due to fear.",
+      "• Condom use among youth is falling because purchasing in public is 'embarrassing.'",
+      "• This stigma blocks millions in potential revenue.",
+      "",
+      "<b>THE OPPORTUNITY</b>",
+      "<b>Massive Unmet Demand:</b>",
+      "• 334,000+ people living with HIV in Ghana.",
+      "• 15,290 new infections in 2024.",
+      "• 1.7 Million annual HIV tests, yet 60%+ prefer confidential methods.",
+      "<b>Government Validation:</b> The Ghana AIDS Commission's rollout of condom vending machines proves that privacy is the solution.",
+      "",
+      "<b>THE SOLUTION</b>",
+      "<b>DiscreetKit:</b> The 'Uber for Privacy.'",
+      "<b>How it Works:</b>",
+      "1. <b>Order:</b> Customer orders anonymously online (No account needed).",
+      "2. <b>Fulfillment:</b> We route the order to a partner pharmacy.",
+      "3. <b>Delivery:</b> Our riders deliver in 100% unbranded, plain packaging.",
+      "<b>Result:</b> Dignity for the user, revenue for the partner.",
+      "",
+      "<b>BUSINESS MODEL</b>",
+      "<b>Asset-Light:</b> We do not buy stock. We utilize partner pharmacy inventory.",
+      "<b>Revenue Streams:</b>",
+      "• Margin on products",
+      "• Partner commissions",
+      "• Delivery fees",
+      "<b>High Retention:</b> Trust = Loyalty. Global benchmarks show 80%+ retention for privacy-first services.",
+      "",
+      "<b>THE TEAM</b>",
+      "• <b>Naeem Abdul-Aziz (CEO):</b> Vision, Investor Relations, Strategy.",
+      "• <b>Benedict Dela Tordzro (COO):</b> Operations, Compliance, Partnerships.",
+      "• <b>Derrick Kwadjo Debrah (CTO):</b> Technology, Product Security, Systems Architecture.",
+      "",
+      "<b>THE ASK</b>",
+      "<b>We are raising:</b> $40,000.00",
+      "<b>Deployment:</b>",
+      "• <b>Marketing:</b> Aggressive campus takeover (Legon, UPSA)",
+      "• <b>Network:</b> Setting up the initial delivery fleet",
+      "• <b>Inventory Deposits:</b> Securing stock availability"
+    ],
+    "closing": "Ready to transform healthcare privacy in Africa.",
+    "signature": [
+      "",
+      "",
+      "______________________________",
+      "{{DIRECTOR_NAME}}",
+      "{{DIRECTOR_TITLE}}",
+      "{{COMPANY_NAME}}"
+    ]
+  },
+  "company_profile": {
+    "title": "COMPANY PROFILE",
+    "recipient": {
+      "default": [
+        "{{COMPANY_NAME}}",
+        "Corporate Information Document",
+        "{{DATE}}"
+      ]
+    },
+    "salutation": "",
+    "body": [
+      "<b>BUSINESS SUMMARY</b>",
+      "{{COMPANY_NAME}} is a Ghanaian health-tech company building the privacy layer for healthcare delivery. We enable young adults to access sensitive reproductive health products without fear, judgment, or stigma. Incorporated under the Companies Act, 2019 (Act 992).",
+      "",
+      "<b>MISSION & TAGLINE</b>",
+      "<b>Mission:</b> To remove the social barriers to healthcare by providing a dignified, anonymous, and fast access route to essential products.",
+      "<b>Tagline:</b> Skip the awkward.",
+      "",
+      "<b>MARKET OPPORTUNITY</b>",
+      "The consumer health market is losing revenue to stigma. With 15,290 new HIV infections recorded in 2024 and over 334,000 people living with HIV in Ghana, the need for testing is critical. However, social embarrassment prevents thousands from entering pharmacies. Government data confirms that 60% of users prefer confidential testing. We capture this 'hidden' market.",
+      "",
+      "<b>WHAT WE DO</b>",
+      "We operate a digital ordering platform for:",
+      "• HIV Self-Test Kits",
+      "• Pregnancy Test Kits",
+      "• Emergency Contraceptives & Condoms",
+      "• Lubricants & Intimate Care",
+      "",
+      "<b>HOW WE OPERATE</b>",
+      "<b>No Inventory Risk:</b> We partner with licensed pharmacies to hold stock.",
+      "<b>Tech-Enabled:</b> Orders are routed via our secure platform.",
+      "<b>Anonymous Logistics:</b> Delivery is handled by unbranded riders in plain packaging.",
+      "",
+      "<b>LEADERSHIP TEAM</b>",
+      "• <b>Naeem Abdul-Aziz (CEO):</b> leads strategy and partnerships.",
+      "• <b>Benedict Dela Tordzro (COO):</b> oversees operations and regulatory compliance.",
+      "• <b>Derrick Kwadjo Debrah (CTO):</b> manages the technology stack and data security.",
+      "",
+      "<b>CONTACT DETAILS</b>",
+      "<b>Address:</b> House No 57, Kofi Annan East Ave, Madina (Near Agrimat Irrigation), Accra.",
+      "<b>Post:</b> P.O. Box LG 918, Legon.",
+      "<b>Phone:</b> 0203001107",
+      "<b>Email:</b> dscreetkit@gmail.com"
+    ],
+    "closing": "",
+    "signature": [
+      "",
+      "",
+      "______________________________",
+      "{{DIRECTOR_NAME}}",
+      "{{DIRECTOR_TITLE}}",
+      "{{COMPANY_NAME}}"
     ]
   }
 }

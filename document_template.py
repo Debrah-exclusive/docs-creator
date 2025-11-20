@@ -61,7 +61,9 @@ CATEGORY_MAP = {
     "nda": "Legal_Documents",
     "employment_contract": "Employment_Contracts",
     "investor_brief": "Investor_Relations",
-    "contributor_charter": "General_Documents"
+    "contributor_charter": "General_Documents",
+    "pitch_deck": "Pitch_Decks",
+    "company_profile": "General_Documents"
 }
 
 def get_output_path(document_type: str) -> str:

@@ -32,6 +32,8 @@ from generators.nda import NDAGenerator
 from generators.employment_contract import EmploymentContractGenerator
 from generators.investor_brief import InvestorBriefGenerator
 from generators.contributor_charter import ContributorCharterGenerator
+from generators.pitch_deck import PitchDeckGenerator
+from generators.company_profile import CompanyProfileGenerator
 
 # --- CONFIGURATION: CLI TO TEMPLATE MAPPING ---
 # This maps the variable name in this script to the [Placeholder] in your JSON template.
@@ -98,6 +100,8 @@ def get_placeholders_for_type(doc_type):
         'employment_contract': ['worker_name', 'worker_address', 'role', 'start_date', 'rate', 'unit', 'basis', 'payment_frequency', 'notice_period', 'date'],
         'investor_brief': ['investor_name', 'investment_firm', 'investment_amount', 'date'],
         'contributor_charter': ['contributor_name', 'circle_name', 'date'],
+        'pitch_deck': ['date'],
+        'company_profile': ['date'],
     }
     return mapping.get(doc_type, [])
 
@@ -111,7 +115,9 @@ class DocumentSuite:
             'nda': NDAGenerator(),
             'employment_contract': EmploymentContractGenerator(),
             'investor_brief': InvestorBriefGenerator(),
-            'contributor_charter': ContributorCharterGenerator()
+            'contributor_charter': ContributorCharterGenerator(),
+            'pitch_deck': PitchDeckGenerator(),
+            'company_profile': CompanyProfileGenerator()
         }
         self.setup_output_directories()
     
@@ -124,7 +130,8 @@ class DocumentSuite:
             'Legal_Documents',
             'Employment_Contracts',
             'Investor_Relations',
-            'General_Documents'
+            'General_Documents',
+            'Pitch_Decks'
         ]
         for directory in directories:
             dir_path = os.path.join(base_output, directory)
@@ -154,6 +161,10 @@ class DocumentSuite:
                 c_name = custom_data.get('contributor_name', '[Contributor Name]') if custom_data else '[Contributor Name]'
                 c_circle = custom_data.get('circle_name', '[Circle Name]') if custom_data else '[Circle Name]'
                 filename = self.generators[doc_type].generate_charter(c_name, c_circle, custom_data)
+            elif doc_type == 'pitch_deck':
+                filename = self.generators[doc_type].generate_pitch_deck(custom_data)
+            elif doc_type == 'company_profile':
+                filename = self.generators[doc_type].generate_company_profile(custom_data)
             
             if filename:
                 display_name = os.path.basename(filename)
@@ -192,7 +203,9 @@ class DocumentSuite:
             'nda': 'Standard NDA',
             'employment_contract': 'Casual Worker Agreements',
             'investor_brief': 'Seed Round Brief',
-            'contributor_charter': 'Contributor Onboarding'
+            'contributor_charter': 'Contributor Onboarding',
+            'pitch_deck': 'Investment Pitch Deck',
+            'company_profile': 'Company Profile Document'
         }
         for dt, desc in types.items():
             print(f"  • {dt:<22} - {desc}")
