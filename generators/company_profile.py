@@ -16,13 +16,24 @@ class CompanyProfileGenerator(DocumentTemplate):
             return None
         if custom_data is None:
             custom_data = {}
+        sections = template_content.get('sections', [])
+        body = []
+        for section in sections:
+            heading = section.get('heading', '').strip()
+            content_text = section.get('content', '').strip()
+            if heading:
+                body.append(f"<b>{heading}</b>")
+            if content_text:
+                # Preserve line breaks using <br/>
+                body.append(content_text.replace('\n', '<br/>'))
+            body.append("")
         content = {
             "date": custom_data.get('date', datetime.now().strftime("%d %B %Y")),
-            "recipient": [custom_data.get('recipient', r) for r in template_content.get('recipient', {}).get('default', [])],
+            "recipient": [],
             "title": template_content.get('title', ''),
-            "salutation": template_content.get('salutation', ''),
-            "body": template_content.get('body', []),
-            "closing": template_content.get('closing', ''),
+            "salutation": '',
+            "body": body,
+            "closing": '',
             "signature": template_content.get('signature', [])
         }
         filename = "company_profile_document.pdf"

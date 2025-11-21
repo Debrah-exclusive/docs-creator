@@ -31,7 +31,7 @@
     ]
   },
   "partnership_proposal": {
-    "title": "PROPOSAL FOR FULFILLMENT PARTNERSHIP",
+    "title": "PROPOSAL FOR STRATEGIC FULFILLMENT PARTNERSHIP",
     "recipient": {
       "default": [
         "The Chief Pharmacist / Manager",
@@ -42,15 +42,15 @@
     },
     "salutation": "Dear Manager,",
     "body": [
-      "We are writing to propose a fulfillment partnership between <b>{{COMPANY_NAME}}</b> and <b>[Pharmacy Name]</b>.",
-      "<b>The Problem: Money Walking Away.</b>",
-      "There is a huge market of young people in Ghana who need health products (HIV tests, contraceptives) but are terrified of the 'pharmacy stare.' They want to buy, but they don't want to be seen. Currently, that money is walking away from your door.",
-      "<b>The Solution: DiscreetKit.</b>",
-      "We are the <b>'Uber for Privacy.'</b> We let customers order sensitive products anonymously from our platform, and we route those orders directly to you for fulfillment.",
-      "<b>Why Partner?</b>",
-      "• <b>New Sales, No Work:</b> We bring you the customers who are too shy to visit. You just pack the item.",
-      "• <b>Zero Logistics:</b> Our unbranded riders handle the pickup and delivery. You have no delivery headaches.",
-      "• <b>Brand Protection:</b> All deliveries are 100% unbranded. We protect your reputation and the customer's privacy.",
+      "We are writing to propose a strategic partnership between <b>{{COMPANY_NAME}}</b> and <b>[Pharmacy Name]</b>.",
+      "<b>The Invisible Customer:</b>",
+      "Every day, young people walk past your pharmacy, needing HIV tests or contraceptives, but they don't come in. Why? Because they are terrified of being seen. With <b>15,290 new HIV infections</b> last year and <b>60% of users preferring confidential testing</b>, this stigma is blocking millions in sales.",
+      "<b>The Solution: We Bring Them to You.</b>",
+      "DiscreetKit is the digital bridge. We let customers order anonymously online, and we route those orders directly to you. We are the <b>'Uber for Privacy.'</b>",
+      "<b>Partnership Benefits:</b>",
+      "• <b>New Revenue Stream:</b> We capture the 635,000+ tertiary students who are currently too shy to buy. You get the sale; we handle the customer.",
+      "• <b>Zero Logistics:</b> Our unbranded riders handle the pickup and delivery. You just pack the item.",
+      "• <b>Future-Proof:</b> The Govt is rolling out vending machines to fight stigma. Partnering with us puts your pharmacy ahead of the curve.",
       "We would welcome the opportunity to discuss a commission structure."
     ],
     "closing": "Sincerely,",
@@ -139,7 +139,7 @@
     ]
   },
   "investor_brief": {
-    "title": "INVESTMENT OPPORTUNITY: DISCREETKIT",
+    "title": "DISCREETKIT: THE 12.7M GHS OPPORTUNITY",
     "recipient": {
       "default": [
         "[Investor Name]",
@@ -149,19 +149,20 @@
     },
     "salutation": "Hi [Investor Name],",
     "body": [
-      "<b>The Problem:</b>",
-      "There is a huge market of young people in Ghana who need health products (HIV tests, contraceptives) but are terrified of the 'pharmacy stare.' They want to buy, but they don't want to be seen. With over <b>334,000 HIV cases</b> and 40% of the market avoiding physical shops due to stigma, this is millions in lost revenue.",
-      "<b>The Solution:</b>",
-      "<b>DiscreetKit.</b> We are the <b>'Uber for Privacy.'</b> We let customers order sensitive products anonymously and get them delivered in plain, unbranded packages.",
-      "<b>Why We Make Money:</b>",
-      "• <b>No Inventory Cost:</b> We don't buy stock. We partner with pharmacies and use their inventory.",
-      "• <b>High Trust = High Retention:</b> Once a user trusts us with their privacy, they stick with us (Global benchmarks suggest 80%+ retention for privacy services).",
-      "• <b>Ready to Scale:</b> We are a registered company (Access Discreetkit Ltd) with a working product and a dedicated team.",
+      "<b>The Moment of Dread:</b>",
+      "Imagine walking into a quiet pharmacy. You ask for an HIV test. Heads turn. The silence is deafening. That single moment of shame is <b>friction</b>. And right now, that friction is blocking millions in healthcare transactions.",
+      "<b>The 12.7 Million GHS Math:</b>",
+      "Ghana has <b>635,000 tertiary students</b>. They are young, sexually active, and live on their phones. If we capture just 20% of this market buying 2 discreet kits a year, that is <b>GHS 12.7 Million in revenue.</b>",
+      "<b>Why We Win (The Moat):</b>",
+      "Competitors focus on medicine delivery; we focus on <b>dignity</b>. With <b>334,000+ HIV cases</b> and 40% undiagnosed due to fear, the market is screaming for privacy. The Govt is validating us by rolling out vending machines—we are the scalable, digital version of that solution.",
+      "<b>The Model:</b>",
+      "• <b>Asset-Light:</b> We partner with pharmacies. Zero inventory cost.",
+      "• <b>High Trust:</b> 100% unbranded delivery means 80%+ retention.",
+      "• <b>Team:</b> Built by students, for students. Roots in Tech, Law, and Business.",
       "<b>The Ask:</b>",
-      "We are raising <b>[Investment Amount]</b> to launch aggressively on university campuses in Accra. This money covers marketing and setting up our delivery network.",
-      "We have the tech. We have the team. We just need the fuel to grow."
+      "We are raising <b>[Investment Amount]</b> to dominate the Accra campus market. We have the tech. We have the team. We just need the fuel."
     ],
-    "closing": "Let's build this,",
+    "closing": "Let's talk numbers,",
     "signature": [
       "",
       "",
@@ -221,67 +222,73 @@
   },
   "pitch_deck": {
     "title": "INVESTMENT PITCH DECK",
-    "recipient": {
-      "default": [
-        "Confidential Business Plan",
-        "{{COMPANY_NAME}}",
-        "{{DATE}}"
-      ]
-    },
-    "salutation": "",
-    "body": [
-      "<b>COMPANY:</b> {{COMPANY_NAME}}",
-      "<b>Tagline:</b> Skip the Awkward.",
-      "<b>One-Liner:</b> The Uber for Privacy.",
-      "",
-      "<b>THE PROBLEM</b>",
-      "<b>Stigma is Expensive:</b> Young people in Ghana need health products (HIV tests, contraceptives) but are terrified of the 'pharmacy stare.'",
-      "<b>The Data:</b>",
-      "• 40% of HIV-positive individuals remain undiagnosed due to fear.",
-      "• Condom use among youth is falling because purchasing in public is 'embarrassing.'",
-      "• This stigma blocks millions in potential revenue.",
-      "",
-      "<b>THE OPPORTUNITY</b>",
-      "<b>Massive Unmet Demand:</b>",
-      "• 334,000+ people living with HIV in Ghana.",
-      "• 15,290 new infections in 2024.",
-      "• 1.7 Million annual HIV tests, yet 60%+ prefer confidential methods.",
-      "<b>Government Validation:</b> The Ghana AIDS Commission's rollout of condom vending machines proves that privacy is the solution.",
-      "",
-      "<b>THE SOLUTION</b>",
-      "<b>DiscreetKit:</b> The 'Uber for Privacy.'",
-      "<b>How it Works:</b>",
-      "1. <b>Order:</b> Customer orders anonymously online (No account needed).",
-      "2. <b>Fulfillment:</b> We route the order to a partner pharmacy.",
-      "3. <b>Delivery:</b> Our riders deliver in 100% unbranded, plain packaging.",
-      "<b>Result:</b> Dignity for the user, revenue for the partner.",
-      "",
-      "<b>BUSINESS MODEL</b>",
-      "<b>Asset-Light:</b> We do not buy stock. We utilize partner pharmacy inventory.",
-      "<b>Revenue Streams:</b>",
-      "• Margin on products",
-      "• Partner commissions",
-      "• Delivery fees",
-      "<b>High Retention:</b> Trust = Loyalty. Global benchmarks show 80%+ retention for privacy-first services.",
-      "",
-      "<b>THE TEAM</b>",
-      "• <b>Naeem Abdul-Aziz (CEO):</b> Vision, Investor Relations, Strategy.",
-      "• <b>Benedict Dela Tordzro (COO):</b> Operations, Compliance, Partnerships.",
-      "• <b>Derrick Kwadjo Debrah (CTO):</b> Technology, Product Security, Systems Architecture.",
-      "",
-      "<b>THE ASK</b>",
-      "<b>We are raising:</b> $40,000.00",
-      "<b>Deployment:</b>",
-      "• <b>Product Development:</b> Scale website infrastructure, secure hosting, and integrate seamless payments & SMS automation.",
-      "• <b>Compliance & Legal:</b> Finalize contracts, NDAs, and MOUs; ensure full regulatory alignment for health products.",
-      "• <b>Market Expansion:</b> Execute aggressive campus activations, digital campaigns, and ambassador programs at Legon, UPSA, KNUST and other major campuses nationwide.",
-      "• <b>Partnerships:</b> Onboard network of pharmacies for inventory and labs/hospitals for referral care.",
-      "• <b>Operations:</b> Establish customer support channels, upgrade to custom discreet packaging, and optimize rider logistics.",
-      "• <b>Data & Research:</b> Track health statistics and impact metrics to support future fundraising and government collaboration."
+    "company": "Access Discreetkit Ltd",
+    "tagline": "Skip the Awkward.",
+    "one_liner": "The Uber for Privacy.",
+    "slides": [
+      {
+        "title": "THE PROBLEM",
+        "headline": "Stigma is Expensive.",
+        "body": [
+          "Young people in Ghana need health products (HIV tests, contraceptives) but are terrified of the 'pharmacy stare.'",
+          "The Data:",
+          "• 40% of HIV-positive individuals remain undiagnosed due to fear.",
+          "• Condom use among youth is falling because purchasing in public is 'embarrassing.'",
+          "• This stigma blocks millions in potential revenue."
+        ]
+      },
+      {
+        "title": "THE OPPORTUNITY",
+        "headline": "Massive Unmet Demand",
+        "body": [
+          "• 334,000+ people living with HIV in Ghana.",
+          "• 15,290 new infections in 2024.",
+          "• 1.7 Million annual HIV tests, yet 60%+ prefer confidential methods.",
+          "Government Validation: The Ghana AIDS Commission's rollout of condom vending machines proves that privacy is the solution."
+        ]
+      },
+      {
+        "title": "THE SOLUTION",
+        "headline": "DiscreetKit: The 'Uber for Privacy.'",
+        "body": [
+          "How it Works:",
+          "1. Order: Customer orders anonymously online (No account needed).",
+          "2. Fulfillment: We route the order to a partner pharmacy.",
+          "3. Delivery: Our riders deliver in 100% unbranded, plain packaging.",
+          "Result: Dignity for the user, revenue for the partner."
+        ]
+      },
+      {
+        "title": "BUSINESS MODEL",
+        "headline": "Asset-Light & Scalable",
+        "body": [
+          "• Zero Inventory Risk: We partner with licensed pharmacies to hold stock.",
+          "• Revenue Streams: Margin on products + Partner commissions + Delivery fees.",
+          "• High Retention: Trust = Loyalty. Global benchmarks show 80%+ retention for privacy-first services."
+        ]
+      },
+      {
+        "title": "THE TEAM",
+        "headline": "Built by Students, For Students",
+        "body": [
+          "• Naeem Abdul-Aziz (CEO): Vision, Investor Relations, Strategy.",
+          "• Benedict Dela Tordzro (COO): Operations, Compliance, Partnerships.",
+          "• Derrick Kwadjo Debrah (CTO): Technology, Product Security, Systems Architecture."
+        ]
+      },
+      {
+        "title": "THE ASK",
+        "headline": "We are raising: GHS 500,000.00",
+        "body": [
+          "Deployment:",
+          "• Market Expansion: Aggressive campus activations at Legon & UPSA.",
+          "• Infrastructure: Setting up the initial delivery fleet.",
+          "• Operations: Securing inventory deposits and custom packaging."
+        ]
+      }
     ],
-    "closing": "Ready to transform healthcare privacy in Africa.",
     "signature": [
-      "",
+      "Signed.",
       "",
       "______________________________",
       "{{DIRECTOR_NAME}}",
@@ -291,64 +298,46 @@
   },
   "company_profile": {
     "title": "COMPANY PROFILE",
-    "recipient": {
-      "default": [
-        "{{COMPANY_NAME}}",
-        "Corporate Information Document",
-        "{{DATE}}"
-      ]
-    },
-    "salutation": "",
-    "body": [
-      "<b>BUSINESS SUMMARY</b>",
-      "{{COMPANY_NAME}} is a Ghanaian health-tech company building the privacy layer for healthcare delivery. We enable young adults to access sensitive reproductive health products without fear, judgment, or stigma. Incorporated under the Companies Act, 2019 (Act 992).",
-      "",
-      "<b>MISSION & TAGLINE</b>",
-      "<b>Mission:</b> To remove the social barriers to healthcare by providing a dignified, anonymous, and fast access route to essential products.",
-      "<b>Tagline:</b> Skip the awkward.",
-      "",
-      "<b>MARKET OPPORTUNITY</b>",
-      "The consumer health market is losing revenue to stigma. With 15,290 new HIV infections recorded in 2024 and over 334,000 people living with HIV in Ghana, the need for testing is critical. However, social embarrassment prevents thousands from entering pharmacies. Government data confirms that 60% of users prefer confidential testing. We capture this 'hidden' market.",
-      "",
-      "<b>WHAT WE DO</b>",
-      "We operate a digital ordering platform for:",
-      "• HIV Self-Test Kits",
-      "• Pregnancy Test Kits",
-      "• Emergency Contraceptives & Condoms",
-      "• Lubricants & Intimate Care",
-      "",
-      "<b>HOW WE OPERATE</b>",
-      "<b>No Inventory Risk:</b> We partner with licensed pharmacies to hold stock.",
-      "<b>Tech-Enabled:</b> Orders are routed via our secure platform.",
-      "<b>Anonymous Logistics:</b> Delivery is handled by unbranded riders in plain packaging.",
-      "",
-      "<b>LEADERSHIP TEAM</b>",
-      "• <b>Naeem Abdul-Aziz (CEO):</b> leads strategy and partnerships.",
-      "• <b>Benedict Dela Tordzro (COO):</b> oversees operations and regulatory compliance.",
-      "• <b>Derrick Kwadjo Debrah (CTO):</b> manages the technology stack and data security."
+    "company_name": "Access Discreetkit Ltd",
+    "registration_number": "CS236931025",
+    "tagline": "Skip the awkward.",
+    "sections": [
+      {
+        "heading": "Business Summary",
+        "content": "Access Discreetkit Ltd is a Ghanaian health-tech company building the privacy layer for healthcare delivery. We enable young adults to access sensitive reproductive health products without fear, judgment, or stigma. Incorporated under the Companies Act, 2019 (Act 992)."
+      },
+      {
+        "heading": "Mission",
+        "content": "To remove the social barriers to healthcare by providing a dignified, anonymous, and fast access route to essential products."
+      },
+      {
+        "heading": "Market Opportunity",
+        "content": "The consumer health market is losing revenue to stigma. With 15,290 new HIV infections recorded in 2024 and over 334,000 people living with HIV in Ghana, the need for testing is critical. However, social embarrassment prevents thousands from entering pharmacies. Government data confirms that 60% of users prefer confidential testing. We capture this 'hidden' market."
+      },
+      {
+        "heading": "What We Do",
+        "content": "We operate a digital ordering platform for HIV Self-Test Kits, Pregnancy Test Kits, Emergency Contraceptives, Condoms, and Intimate Care products."
+      },
+      {
+        "heading": "How We Operate",
+        "content": "• No Inventory Risk: We partner with licensed pharmacies to hold stock.\n• Tech-Enabled: Orders are routed via our secure platform.\n• Anonymous Logistics: Delivery is handled by unbranded riders in plain packaging."
+      },
+      {
+        "heading": "Leadership Team",
+        "content": "• Naeem Abdul-Aziz (CEO): Leads strategy and partnerships.\n• Benedict Dela Tordzro (COO): Oversees operations and regulatory compliance.\n• Derrick Kwadjo Debrah (CTO): Manages the technology stack and data security."
+      },
+      {
+        "heading": "Contact Details",
+        "content": "Address: House No 57, Kofi Annan East Ave, Madina, Accra\nPost: P.O. Box LG 918, Legon\nPhone: 0203001107\nEmail: dscreetkit@gmail.com"
+      }
     ],
-    "closing": "",
     "signature": [
-      "",
+      "Signed.",
       "",
       "______________________________",
       "{{DIRECTOR_NAME}}",
       "{{DIRECTOR_TITLE}}",
       "{{COMPANY_NAME}}"
-    ],
-    "footer": {
-        "contact_info": {
-          "email": "{{email}}",
-          "phone": "{{phone}}"
-        },
-        "follow_us": {
-          "Instagram": "@discreetkit",
-          "TikTok": "@discreetkit"
-        },
-        "address": {
-          "main": "{{address}}",
-          "post": "{{post_address}}"
-        }
-      }
+    ]
   }
 }

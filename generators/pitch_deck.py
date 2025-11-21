@@ -16,13 +16,26 @@ class PitchDeckGenerator(DocumentTemplate):
             return None
         if custom_data is None:
             custom_data = {}
+        # Transform slides structure into body paragraphs for renderer
+        slides = template_content.get('slides', [])
+        body = []
+        for slide in slides:
+            stitle = slide.get('title', '').strip()
+            headline = slide.get('headline', '').strip()
+            if stitle:
+                body.append(f"<b>{stitle}</b>")
+            if headline:
+                body.append(f"<i>{headline}</i>")
+            for line in slide.get('body', []):
+                body.append(line)
+            body.append("")  # spacer paragraph
         content = {
             "date": custom_data.get('date', datetime.now().strftime("%d %B %Y")),
-            "recipient": [custom_data.get('recipient', r) for r in template_content.get('recipient', {}).get('default', [])],
+            "recipient": [],
             "title": template_content.get('title', ''),
-            "salutation": template_content.get('salutation', ''),
-            "body": template_content.get('body', []),
-            "closing": template_content.get('closing', ''),
+            "salutation": '',
+            "body": body,
+            "closing": '',
             "signature": template_content.get('signature', [])
         }
         filename = "pitch_deck_presentation.pdf"
