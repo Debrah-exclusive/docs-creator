@@ -223,16 +223,16 @@ def draw_header_footer(canv, doc):
     footer_style = styles['Footer']
 
     # Footer content derived from settings (with graceful fallbacks)
-    address = getattr(cfg, 'COMPANY_ADDRESS', 'Company Address Line')
-    email = getattr(cfg, 'COMPANY_EMAIL', 'email@example.com')
-    phone = getattr(cfg, 'COMPANY_PHONE', '+000 000 0000')
-    twitter = getattr(cfg, 'COMPANY_TWITTER', '@company')
-    linkedin = getattr(cfg, 'COMPANY_LINKEDIN', '/company/example')
+    address = getattr(cfg, 'COMPANY_ADDRESS', 'House No. 57, Kofi Annan East Avenue,<br/>Madina, Accra, Ghana<br/>P.O. Box LG 918, Legon')
+    email = getattr(cfg, 'COMPANY_EMAIL', 'dscreetkit@gmail.com')
+    phone = getattr(cfg, 'COMPANY_PHONE', '+233 20 300 1107')
+    instagram = '@discreetkit'
+    tiktok = '@discreetkit'
 
     cols = [
         f"<b>Address</b><br/>{address}",
         f"<b>Contact</b><br/>Email: {email}<br/>Phone: {phone}",
-        f"<b>Follow Us</b><br/>Twitter: {twitter}<br/>LinkedIn: {linkedin}",
+        f"<b>Follow Us</b><br/>Instagram: {instagram}<br/>TikTok: {tiktok}",
     ]
 
     col_width = usable_width / 3.0

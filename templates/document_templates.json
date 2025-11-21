@@ -272,9 +272,12 @@
       "<b>THE ASK</b>",
       "<b>We are raising:</b> $40,000.00",
       "<b>Deployment:</b>",
-      "• <b>Marketing:</b> Aggressive campus takeover (Legon, UPSA)",
-      "• <b>Network:</b> Setting up the initial delivery fleet",
-      "• <b>Inventory Deposits:</b> Securing stock availability"
+      "• <b>Product Development:</b> Scale website infrastructure, secure hosting, and integrate seamless payments & SMS automation.",
+      "• <b>Compliance & Legal:</b> Finalize contracts, NDAs, and MOUs; ensure full regulatory alignment for health products.",
+      "• <b>Market Expansion:</b> Execute aggressive campus activations, digital campaigns, and ambassador programs at Legon, UPSA, KNUST and other major campuses nationwide.",
+      "• <b>Partnerships:</b> Onboard network of pharmacies for inventory and labs/hospitals for referral care.",
+      "• <b>Operations:</b> Establish customer support channels, upgrade to custom discreet packaging, and optimize rider logistics.",
+      "• <b>Data & Research:</b> Track health statistics and impact metrics to support future fundraising and government collaboration."
     ],
     "closing": "Ready to transform healthcare privacy in Africa.",
     "signature": [
@@ -322,13 +325,7 @@
       "<b>LEADERSHIP TEAM</b>",
       "• <b>Naeem Abdul-Aziz (CEO):</b> leads strategy and partnerships.",
       "• <b>Benedict Dela Tordzro (COO):</b> oversees operations and regulatory compliance.",
-      "• <b>Derrick Kwadjo Debrah (CTO):</b> manages the technology stack and data security.",
-      "",
-      "<b>CONTACT DETAILS</b>",
-      "<b>Address:</b> House No 57, Kofi Annan East Ave, Madina (Near Agrimat Irrigation), Accra.",
-      "<b>Post:</b> P.O. Box LG 918, Legon.",
-      "<b>Phone:</b> 0203001107",
-      "<b>Email:</b> dscreetkit@gmail.com"
+      "• <b>Derrick Kwadjo Debrah (CTO):</b> manages the technology stack and data security."
     ],
     "closing": "",
     "signature": [
@@ -338,6 +335,20 @@
       "{{DIRECTOR_NAME}}",
       "{{DIRECTOR_TITLE}}",
       "{{COMPANY_NAME}}"
-    ]
+    ],
+    "footer": {
+        "contact_info": {
+          "email": "{{email}}",
+          "phone": "{{phone}}"
+        },
+        "follow_us": {
+          "Instagram": "@discreetkit",
+          "TikTok": "@discreetkit"
+        },
+        "address": {
+          "main": "{{address}}",
+          "post": "{{post_address}}"
+        }
+      }
   }
 }
