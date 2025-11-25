@@ -34,6 +34,7 @@ from generators.investor_brief import InvestorBriefGenerator
 from generators.contributor_charter import ContributorCharterGenerator
 from generators.pitch_deck import PitchDeckGenerator
 from generators.company_profile import CompanyProfileGenerator
+from generators.brand_bible import BrandBibleGenerator
 
 # --- CONFIGURATION: CLI TO TEMPLATE MAPPING ---
 # This maps the variable name in this script to the [Placeholder] in your JSON template.
@@ -102,6 +103,7 @@ def get_placeholders_for_type(doc_type):
         'contributor_charter': ['contributor_name', 'circle_name', 'date'],
         'pitch_deck': ['date'],
         'company_profile': ['date'],
+        'brand_and_model_bible': ['date'],
     }
     return mapping.get(doc_type, [])
 
@@ -117,7 +119,8 @@ class DocumentSuite:
             'investor_brief': InvestorBriefGenerator(),
             'contributor_charter': ContributorCharterGenerator(),
             'pitch_deck': PitchDeckGenerator(),
-            'company_profile': CompanyProfileGenerator()
+            'company_profile': CompanyProfileGenerator(),
+            'brand_and_model_bible': BrandBibleGenerator()
         }
         self.setup_output_directories()
     
@@ -131,7 +134,8 @@ class DocumentSuite:
             'Employment_Contracts',
             'Investor_Relations',
             'General_Documents',
-            'Pitch_Decks'
+            'Pitch_Decks',
+            'Brand_Guidelines'
         ]
         for directory in directories:
             dir_path = os.path.join(base_output, directory)
@@ -165,6 +169,8 @@ class DocumentSuite:
                 filename = self.generators[doc_type].generate_pitch_deck(custom_data)
             elif doc_type == 'company_profile':
                 filename = self.generators[doc_type].generate_company_profile(custom_data)
+            elif doc_type == 'brand_and_model_bible':
+                filename = self.generators[doc_type].generate_brand_bible(custom_data)
             
             if filename:
                 display_name = os.path.basename(filename)

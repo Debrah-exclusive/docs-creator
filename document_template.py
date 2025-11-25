@@ -22,22 +22,22 @@ except ImportError:  # Fallback if settings not found
         DEFAULT_DIRECTOR = "Jane Doe"
         DEFAULT_DIRECTOR_TITLE = "Director"
         COLORS = {
-            'cyan_turquoise': "#187f76",
-            'indigo': "#1e3a5f",
-            'aztec_gold': "#c48c52",
-            'metallic_yellow': "#ffce07",
-            'light_silver': "#d7d9db"
+            'cyan_turquoise': "#11534a",  # Darker cyan-turquoise
+            'indigo': "#14213d",         # Darker indigo/navy
+            'aztec_gold': "#8c6a2f",     # Deeper gold/bronze
+            'metallic_yellow': "#bfa100", # Muted/darker yellow
+            'light_silver': "#8a8d91"     # Darker silver/grey
         }
         ASSETS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets')
         TEMPLATES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
     cfg = FallbackCfg()
 
 # --- Configuration ---
-COLOR_CYAN_TURQUOISE = colors.HexColor(cfg.COLORS.get('cyan_turquoise', "#187f76"))
-COLOR_INDIGO = colors.HexColor(cfg.COLORS.get('indigo', "#1e3a5f"))
-COLOR_AZTEC_GOLD = colors.HexColor(cfg.COLORS.get('aztec_gold', "#c48c52"))
-COLOR_METALLIC_YELLOW = colors.HexColor(cfg.COLORS.get('metallic_yellow', "#ffce07"))
-COLOR_LIGHT_SILVER = colors.HexColor(cfg.COLORS.get('light_silver', "#d7d9db"))
+COLOR_CYAN_TURQUOISE = colors.HexColor(cfg.COLORS.get('cyan_turquoise', "#11534a"))
+COLOR_INDIGO = colors.HexColor(cfg.COLORS.get('indigo', "#14213d"))
+COLOR_AZTEC_GOLD = colors.HexColor(cfg.COLORS.get('aztec_gold', "#8c6a2f"))
+COLOR_METALLIC_YELLOW = colors.HexColor(cfg.COLORS.get('metallic_yellow', "#bfa100"))
+COLOR_LIGHT_SILVER = colors.HexColor(cfg.COLORS.get('light_silver', "#8a8d91"))
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = os.path.join(BASE_DIR, "output")  # Output stays internal; not user-configurable yet
@@ -61,9 +61,10 @@ CATEGORY_MAP = {
     "nda": "Legal_Documents",
     "employment_contract": "Employment_Contracts",
     "investor_brief": "Investor_Relations",
-    "contributor_charter": "General_Documents",
+    "contributor_charter": "Legal_Documents",
     "pitch_deck": "Pitch_Decks",
-    "company_profile": "General_Documents"
+    "company_profile": "General_Documents",
+    "brand_and_model_bible": "Brand_Guidelines"
 }
 
 def get_output_path(document_type: str) -> str:
