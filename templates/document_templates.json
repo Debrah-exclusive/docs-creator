@@ -148,7 +148,7 @@
       "<b>The Model:</b>",
       "• <b>Asset-Light, Platform-First:</b> We partner with pharmacies. Zero inventory cost. Our infrastructure is digital and scalable—we can launch in 10 cities without buying 10 buildings. Our platform routes orders, manages partners, and scales instantly as demand grows.",
       "• <b>High Trust:</b> 100% unbranded delivery means 80%+ retention.",
-      "• <b>Team:</b> Built by students, for students. Roots in Tech, Law, and Business.",
+      "• <b>Team:</b> Strong founding trio with complementary skills—CEO (strategy/partnerships), COO (operations/compliance), CTO (product/security). Lean, circle-based structure inspired by FAANG for speed and execution.",
       "<b>Scalability:</b> Our technology and partnerships allow us to expand rapidly across regions, leveraging existing pharmacy networks and logistics without heavy capital expenditure.",
       "<b>The Ask:</b>",
       "We are raising <b>[Investment Amount]</b> to expand our scalable platform across campuses and cities nationwide. Our activations target universities across Ghana, not just Accra. We have the tech. We have the team. We just need the fuel."
@@ -258,11 +258,23 @@
       },
       {
         "title": "THE TEAM",
-        "headline": "Leadership & Experience",
+        "headline": "Leadership & Organizational Structure",
         "body": [
-          "• Naeem Abdul-Aziz (CEO): Vision, Investor Relations, Strategy.",
-          "• Benedict Dela Tordzro (COO): Operations, Compliance, Partnerships.",
-          "• Derrick Kwadjo Debrah (CTO): Technology, Product Security, Systems Architecture."
+          "Founding Team:",
+          "• Naeem Abdul-Aziz (CEO): Leads strategy, brand direction, partnerships, and company vision.",
+          "• Benedict Dela Tordzro (COO): Owns operations, regulatory compliance, and partner relationships.",
+          "• Derrick Kwadjo Debrah (CTO): Architects the product, infrastructure, and security.",
+          "Execution Model: Lean, modular structure with Strategic Circles (Marketing, Product, Legal, Medical) + Operations Hub for high-velocity execution. FAANG-inspired for speed and clarity."
+        ]
+      },
+      {
+        "title": "TRACTION & VALIDATION",
+        "headline": "Market Demand Is Real",
+        "body": [
+          "• Government validation through Ghana AIDS Commission's privacy-first vending machine rollout.",
+          "• 60% of HIV test users prefer confidential methods—proving demand for our solution.",
+          "• 635,000+ tertiary students represent a concentrated, addressable market.",
+          "• Asset-light model enables immediate market entry without heavy upfront investment."
         ]
       },
       {
@@ -275,13 +287,14 @@
         ]
       },
       {
-        "title": "THE ASK",
-        "headline": "We are raising: GHS 500,000.00",
+        "title": "PARTNERSHIP OPPORTUNITY",
+        "headline": "Beyond Capital: Strategic Partnership",
         "body": [
-          "Deployment:",
-          "• Market Expansion: Aggressive activations at campuses across Ghana.",
-          "• Infrastructure: Setting up the initial delivery fleet and scaling our digital platform.",
-          "• Operations: Securing logistics partnerships and custom packaging (no inventory stocking)."
+          "We are raising GHS 500,000 for market expansion across Ghana's campuses, but we value strategic partnership beyond funding:",
+          "• Capital: Scale our digital platform and establish logistics partnerships.",
+          "• Mentorship: Healthcare sector insights and scaling guidance.",
+          "• Network: Connections to regulatory bodies, health institutions, and corporate partners.",
+          "• Expertise: Support in navigating health-tech compliance and market expansion."
         ]
       }
     ],
@@ -317,7 +330,15 @@
       },
       {
         "heading": "Leadership Team",
-        "content": "• Naeem Abdul-Aziz (CEO): Leads strategy and partnerships.\n• Benedict Dela Tordzro (COO): Oversees operations and regulatory compliance.\n• Derrick Kwadjo Debrah (CTO): Manages the technology stack and data security."
+        "content": "• Naeem Abdul-Aziz (CEO): Leads strategy, brand direction, partnerships, and company vision. Oversees all Circles to ensure alignment and speed.\n• Benedict Dela Tordzro (COO): Owns operations, regulatory compliance, partner relationships, and internal coordination. Ensures operational discipline.\n• Derrick Kwadjo Debrah (CTO): Architects the product, infrastructure, and security. Leads the technical roadmap and engineering decisions."
+      },
+      {
+        "heading": "Organizational Structure",
+        "content": "We operate with a lean, modular structure: Small leadership core + specialist Circles + an Ops hub for execution. This allows speed, clarity, and minimal overhead. Our Strategic Circles include Marketing & Growth, Product & Technical, Legal & Compliance, and Medical & Research, supported by an Operations Hub for day-to-day execution."
+      },
+      {
+        "heading": "Advisory Board",
+        "content": "Independent strategic oversight focused on governance, partnerships, and long-term scaling. Advisory members include strategic advisors for policy, growth, and technical depth as needed."
       },
       {
         "heading": "Contact Details",
