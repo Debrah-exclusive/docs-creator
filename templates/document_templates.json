@@ -15,19 +15,20 @@
       "We write to inform you that the board of directors of {{COMPANY_NAME}} have resolved on [Date] to open a corporate bank account with Fidelity Bank Ghana LTD.",
       "<b>It was resolved that:</b>",
       "1. An account be opened in the name of <b>{{COMPANY_NAME}}</b>.",
-      "2. The authorized signatories to the account shall be:",
-      "   • <b>Naeem Abdul-Aziz (CEO)</b> – Primary Signatory",
-      "   • <b>Benedict Dela Tordzro (COO)</b> – Co-Signatory",
+      "2. The authorized signatories to the account shall be as follows:",
+      "   • <b>Naeem Abdul-Aziz (Director)</b> – may sign singly.",
+      "   • <b>Derrick Kwadjo Debrah (Director)</b> – must sign together with Naeem Abdul-Aziz.",
       "Kindly find attached the Certificate of Incorporation, Company Constitution, and the specific Board Resolution signed by the directors."
     ],
     "closing": "Yours faithfully,",
     "signature": [
       "",
+      "______________________________",
+      "Naeem Abdul-Aziz (Secretary)",
       "",
       "______________________________",
-      "{{DIRECTOR_NAME}}",
-      "{{DIRECTOR_TITLE}}",
-      "{{COMPANY_NAME}}"
+      "Derrick Kwadjo Debrah (Director)",
+      "Access Discreetkit Ltd"
     ]
   },
   "partnership_proposal": {
@@ -35,7 +36,6 @@
     "recipient": {
       "default": [
         "The Chief Pharmacist / Manager",
-        "[Pharmacy Name]",
         "[Partner Address]",
         "Accra, Ghana"
       ]
@@ -55,25 +55,21 @@
     ],
     "closing": "Sincerely,",
     "signature": [
-      "",
-      "",
       "______________________________",
-      "{{DIRECTOR_NAME}}",
-      "{{DIRECTOR_TITLE}}",
-      "{{COMPANY_NAME}}"
+      "Naeem Abdul-Aziz (CEO)",
+      "Access Discreetkit Ltd"
     ]
   },
   "nda": {
     "title": "NON-DISCLOSURE AGREEMENT (NDA)",
     "recipient": {
       "default": [
-        "[Recipient Name]",
         "[Recipient Title]",
         "[Recipient Company]",
         "[Company Address]"
       ]
     },
-    "salutation": "Dear [Recipient Name],",
+    "salutation": "Dear [Recipient Title],",
     "body": [
       "This Non-Disclosure Agreement ('Agreement') is entered into between {{COMPANY_NAME}} ('Disclosing Party') and [Recipient Company] ('Receiving Party') to protect our proprietary business information.",
       "<b>1. Confidential Information:</b> This includes our proprietary logistics models, user data privacy protocols, partnership strategies, and unreleased technical architecture.",
@@ -85,11 +81,9 @@
     "closing": "Yours faithfully,",
     "signature": [
       "",
-      "",
       "______________________________",
-      "{{DIRECTOR_NAME}}",
-      "{{DIRECTOR_TITLE}}",
-      "{{COMPANY_NAME}}",
+      "Naeem Abdul-Aziz (CEO) or Derrick Kwadjo Debrah (Director)",
+      "Access Discreetkit Ltd",
       "",
       "Accepted and Agreed:",
       "",
@@ -105,7 +99,6 @@
     "title": "CASUAL WORKER ENGAGEMENT LETTER",
     "recipient": {
       "default": [
-        "[Worker Name]",
         "[Worker Address]",
         "Accra, Ghana"
       ]
@@ -124,11 +117,9 @@
       "",
       "Yours sincerely,",
       "",
-      "",
       "______________________________",
-      "{{DIRECTOR_NAME}}",
-      "{{DIRECTOR_TITLE}}",
-      "{{COMPANY_NAME}}",
+      "Naeem Abdul-Aziz (CEO)",
+      "Access Discreetkit Ltd",
       "",
       "I accept the terms of this casual engagement:",
       "",
@@ -142,7 +133,6 @@
     "title": "DISCREETKIT: THE 12.7M GHS OPPORTUNITY",
     "recipient": {
       "default": [
-        "[Investor Name]",
         "[Investment Firm]",
         "Accra, Ghana"
       ]
@@ -154,30 +144,28 @@
       "<b>The 12.7 Million GHS Math:</b>",
       "Ghana has <b>635,000 tertiary students</b>. They are young, sexually active, and live on their phones. If we capture just 20% of this market buying 2 discreet kits a year, that is <b>GHS 12.7 Million in revenue.</b>",
       "<b>Why We Win (The Moat):</b>",
-      "Competitors focus on medicine delivery; we focus on <b>dignity</b>. With <b>334,000+ HIV cases</b> and 40% undiagnosed due to fear, the market is screaming for privacy. The Govt is validating us by rolling out vending machines—we are the scalable, digital version of that solution.",
+      "Competitors focus on medicine delivery; we focus on <b>dignity</b> and <b>infrastructure</b>. With <b>334,000+ HIV cases</b> and 40% undiagnosed due to fear, the market is screaming for privacy. The Govt is validating us by rolling out vending machines—we are the scalable, digital version of that solution.",
       "<b>The Model:</b>",
-      "• <b>Asset-Light:</b> We partner with pharmacies. Zero inventory cost.",
+      "• <b>Asset-Light, Platform-First:</b> We partner with pharmacies. Zero inventory cost. Our infrastructure is digital and scalable—we can launch in 10 cities without buying 10 buildings. Our platform routes orders, manages partners, and scales instantly as demand grows.",
       "• <b>High Trust:</b> 100% unbranded delivery means 80%+ retention.",
       "• <b>Team:</b> Built by students, for students. Roots in Tech, Law, and Business.",
+      "<b>Scalability:</b> Our technology and partnerships allow us to expand rapidly across regions, leveraging existing pharmacy networks and logistics without heavy capital expenditure.",
       "<b>The Ask:</b>",
-      "We are raising <b>[Investment Amount]</b> to dominate the Accra campus market. We have the tech. We have the team. We just need the fuel."
+      "We are raising <b>[Investment Amount]</b> to expand our scalable platform across campuses and cities nationwide. Our activations target universities across Ghana, not just Accra. We have the tech. We have the team. We just need the fuel."
     ],
     "closing": "Let's talk numbers,",
     "signature": [
       "",
-      "",
       "______________________________",
-      "{{DIRECTOR_NAME}}",
-      "{{DIRECTOR_TITLE}}",
-      "{{COMPANY_NAME}}"
+      "Naeem Abdul-Aziz (CEO)",
+      "Access Discreetkit Ltd"
     ]
   },
-  "contributor_charter": {
-    "title": "ACCESS DISCREETKIT LTD CONTRIBUTOR ENGAGEMENT CHARTER & NDA",
+  "invitation_to_the_circle": {
+    "title": "ACCESS DISCREETKIT LTD CIRCLE INVITATION & NDA",
     "recipient": {
       "default": [
         "Date: {{DATE}}",
-        "Name: [Contributor Name]",
         "Circle: [Circle Name]"
       ]
     },
@@ -191,7 +179,7 @@
       "• <b>Portfolio Rights:</b> You have the explicit right to showcase the work you create here in your personal portfolio (once the product is public).",
       "• <b>First Right of Hire:</b> As we scale and raise capital, active Contributors get first priority for paid full-time roles.",
       "• <b>Reference & Reputation:</b> The Founders commit to providing detailed, high-level recommendations and referrals for your future career steps.",
-      "• <b>Commissions:</b> Specific roles (like sales/growth) may be eligible for performance-based commissions as defined in separate memos.",
+      "• <b>Service Rewards:</b> Some services you provide (such as design, tech, or growth) will be duly paid for—full payment will be made when we secure funding.",
       "<b>3. THE CODE OF SILENCE (Confidentiality)</b>",
       "We deal with sexual health. <b>Privacy is our product.</b>",
       "• <b>User Data is Sacred:</b> You may never, under any circumstances, share, save, or discuss customer data (names, locations, orders). A breach here is not just a firing offense; it is a legal one under the Data Protection Act, 2012 (Act 843).",
@@ -214,10 +202,9 @@
       "______________________________",
       "[Contributor Name]",
       "",
-      "",
       "______________________________",
-      "{{DIRECTOR_NAME}}",
-      "CEO, {{COMPANY_NAME}}"
+      "Naeem Abdul-Aziz (CEO)",
+      "Access Discreetkit Ltd"
     ]
   },
   "pitch_deck": {
@@ -255,21 +242,23 @@
           "1. Order: Customer orders anonymously online (No account needed).",
           "2. Fulfillment: We route the order to a partner pharmacy.",
           "3. Delivery: Our riders deliver in 100% unbranded, plain packaging.",
-          "Result: Dignity for the user, revenue for the partner."
+          "Result: Dignity for the user, revenue for the partner.",
+          "Our platform is built for scale: we can launch in 10 cities without buying 10 buildings. The infrastructure is digital, not physical—orders, partners, and logistics are managed centrally and can expand instantly as demand grows."
         ]
       },
       {
         "title": "BUSINESS MODEL",
-        "headline": "Asset-Light & Scalable",
+        "headline": "Asset-Light, Platform-First & Scalable",
         "body": [
           "• Zero Inventory Risk: We partner with licensed pharmacies to hold stock.",
+          "• Platform Infrastructure: Our technology routes orders, manages partners, and scales instantly—no need for physical expansion to new cities.",
           "• Revenue Streams: Margin on products + Partner commissions + Delivery fees.",
           "• High Retention: Trust = Loyalty. Global benchmarks show 80%+ retention for privacy-first services."
         ]
       },
       {
         "title": "THE TEAM",
-        "headline": "Built by Students, For Students",
+        "headline": "Leadership & Experience",
         "body": [
           "• Naeem Abdul-Aziz (CEO): Vision, Investor Relations, Strategy.",
           "• Benedict Dela Tordzro (COO): Operations, Compliance, Partnerships.",
@@ -277,23 +266,27 @@
         ]
       },
       {
+        "title": "SCALABILITY",
+        "headline": "Built to Expand Rapidly",
+        "body": [
+          "• Our digital infrastructure allows us to launch in new cities and regions without heavy capital expenditure.",
+          "• We leverage existing pharmacy networks and logistics partners, enabling rapid, cost-effective expansion.",
+          "• The platform is designed for national scale from day one."
+        ]
+      },
+      {
         "title": "THE ASK",
         "headline": "We are raising: GHS 500,000.00",
         "body": [
           "Deployment:",
-          "• Market Expansion: Aggressive campus activations at Legon & UPSA.",
-          "• Infrastructure: Setting up the initial delivery fleet.",
-          "• Operations: Securing inventory deposits and custom packaging."
+          "• Market Expansion: Aggressive activations at campuses across Ghana.",
+          "• Infrastructure: Setting up the initial delivery fleet and scaling our digital platform.",
+          "• Operations: Securing logistics partnerships and custom packaging (no inventory stocking)."
         ]
       }
     ],
     "signature": [
-      "Signed.",
-      "",
-      "______________________________",
-      "{{DIRECTOR_NAME}}",
-      "{{DIRECTOR_TITLE}}",
-      "{{COMPANY_NAME}}"
+      ""
     ]
   },
   "company_profile": {
@@ -332,12 +325,9 @@
       }
     ],
     "signature": [
-      "Signed.",
-      "",
       "______________________________",
-      "{{DIRECTOR_NAME}}",
-      "{{DIRECTOR_TITLE}}",
-      "{{COMPANY_NAME}}"
+      "Naeem Abdul-Aziz (CEO)",
+      "Access Discreetkit Ltd"
     ]
   },
   "brand_and_model_bible": {
@@ -410,11 +400,7 @@
     ],
     "closing": "",
     "signature": [
-      "",
-      "",
-      "______________________________",
-      "{{DIRECTOR_NAME}}",
-      "CEO, {{COMPANY_NAME}}"
+      ""
     ]
   }
 }

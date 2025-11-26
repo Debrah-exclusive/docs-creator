@@ -36,7 +36,7 @@ class CompanyProfileGenerator(DocumentTemplate):
             "closing": '',
             "signature": template_content.get('signature', [])
         }
-        filename = "company_profile_document.pdf"
+        filename = "CompanyProfile.pdf"
         return self.generate_document(filename, content, "company_profile")
 
 if __name__ == "__main__":

@@ -9,19 +9,24 @@ class ContributorCharterGenerator(DocumentTemplate):
     """Generator for Contributor Engagement Charter & NDA documents."""
     
     def generate_charter(self, contributor_name="[Contributor Name]", circle_name="[Circle Name]", custom_data=None):
-        """Generate a Contributor Charter document with dynamic date and custom_data."""
+        """Generate an Invitation to the Circle document with dynamic date and custom_data."""
         if custom_data is None:
             custom_data = {}
         # Fill custom_data with CLI or defaults
         custom_data.setdefault("[Contributor Name]", contributor_name)
         custom_data.setdefault("[Circle Name]", circle_name)
-        custom_data.setdefault("{{DATE}}", custom_data.get('date', datetime.now().strftime("%d %B %Y")))
-        template_content = self.get_template_content('contributor_charter', custom_data)
+        # Use the date provided by the user, or generate the current date if not provided
+        date_value = custom_data.get('date')
+        if not date_value or not str(date_value).strip():
+            date_value = datetime.now().strftime("%d %B %Y")
+        custom_data['date'] = date_value
+        custom_data['{{DATE}}'] = date_value
+        template_content = self.get_template_content('invitation_to_the_circle', custom_data)
         if template_content is None:
-            print("❌ No template found for contributor_charter")
+            print("❌ No template found for invitation_to_the_circle")
             return None
         content = {
-            "date": custom_data["{{DATE}}"],
+            "date": date_value,
             "recipient": template_content.get('recipient', {}).get('default', []),
             "title": template_content.get('title', ''),
             "salutation": template_content.get('salutation', ''),
@@ -30,15 +35,15 @@ class ContributorCharterGenerator(DocumentTemplate):
             "signature": template_content.get('signature', [])
         }
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        safe_contributor = contributor_name.strip().replace(' ', '_').replace('[', '').replace(']', '').lower()
-        safe_circle = circle_name.strip().replace(' ', '_').replace('[', '').replace(']', '').lower()
+        safe_contributor = contributor_name.strip().replace('[', '').replace(']', '').replace('_', '').replace('  ', ' ').replace(' ', '').lower()
+        safe_circle = circle_name.strip().replace('[', '').replace(']', '').replace('_', '').replace('  ', ' ').replace(' ', '').lower()
         if safe_contributor and safe_circle:
-            filename = f"contributor_charter_{safe_contributor}_{safe_circle}.pdf"
+            filename = f"InvitationToTheCircle-{safe_contributor}-{safe_circle}.pdf"
         elif safe_contributor:
-            filename = f"contributor_charter_{safe_contributor}.pdf"
+            filename = f"InvitationToTheCircle-{safe_contributor}.pdf"
         else:
-            filename = "contributor_charter_document.pdf"
-        return self.generate_document(filename, content, "contributor_charter")
+            filename = "InvitationToTheCircle.pdf"
+        return self.generate_document(filename, content, "invitation_to_the_circle")
     
 if __name__ == "__main__":
     generator = ContributorCharterGenerator()

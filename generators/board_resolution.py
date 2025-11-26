@@ -35,14 +35,14 @@ class BoardResolutionGenerator(DocumentTemplate):
             "signature": template_content.get('signature', [])
         }
         # Use recipient/branch for filename if provided
-        recipient = custom_data.get('recipient', '').strip().replace(' ', '_').lower() if custom_data.get('recipient') else None
-        branch = custom_data.get('branch', '').strip().replace(' ', '_').lower() if custom_data.get('branch') else None
+        recipient = custom_data.get('recipient', '').strip().replace(' ', '').replace('_', '').lower() if custom_data.get('recipient') else None
+        branch = custom_data.get('branch', '').strip().replace(' ', '').replace('_', '').lower() if custom_data.get('branch') else None
         if branch:
-            filename = f"board_resolution_{branch}.pdf"
+            filename = f"BoardResolution-{branch}.pdf"
         elif recipient:
-            filename = f"board_resolution_{recipient}.pdf"
+            filename = f"BoardResolution-{recipient}.pdf"
         else:
-            filename = "board_resolution_document.pdf"
+            filename = "BoardResolution.pdf"
         return self.generate_document(filename, content, "board_resolution")
 
 if __name__ == "__main__":

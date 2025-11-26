@@ -1,3 +1,9 @@
+def format_name_title(name):
+    """Convert a name string to title case, handling None and trimming whitespace."""
+    if not name or not isinstance(name, str):
+        return name
+    return ' '.join([w.capitalize() for w in name.strip().split()])
+
 import os
 import sys
 from datetime import datetime
@@ -61,7 +67,7 @@ CATEGORY_MAP = {
     "nda": "Legal_Documents",
     "employment_contract": "Employment_Contracts",
     "investor_brief": "Investor_Relations",
-    "contributor_charter": "Legal_Documents",
+    "invitation_to_the_circle": "Legal_Documents",
     "pitch_deck": "Pitch_Decks",
     "company_profile": "General_Documents",
     "brand_and_model_bible": "Brand_Guidelines"
@@ -108,32 +114,51 @@ def get_document_styles():
     """Return a stylesheet with professional standards."""
     styles = getSampleStyleSheet()
 
-    # Base Normal style
+    # --- Professional, Crisp, Mobile-Friendly Styles ---
     styles["Normal"].fontName = FONT_REGULAR_NAME
-    styles["Normal"].fontSize = 10
-    styles["Normal"].leading = 14
-    styles["Normal"].textColor = COLOR_INDIGO
+    styles["Normal"].fontSize = 13  # Larger for readability
+    styles["Normal"].leading = 18   # More line spacing
+    styles["Normal"].textColor = colors.HexColor("#111111")  # Near-black for max contrast
 
-    add_or_update_style(styles, "Recipient", spaceBefore=10)
-    add_or_update_style(styles, "Date", alignment=TA_RIGHT)
+    add_or_update_style(styles, "Recipient", spaceBefore=10, fontSize=13, leading=18, textColor=colors.HexColor("#111111"))
+    add_or_update_style(styles, "Date", alignment=TA_RIGHT, fontSize=13, leading=18, textColor=colors.HexColor("#111111"))
     add_or_update_style(
         styles,
         "Heading1",
         fontName=FONT_BOLD_NAME,
-        fontSize=14,  # Professional standard for subject lines
-        textColor=COLOR_INDIGO,
+        fontSize=17,
+        leading=22,
+        textColor=colors.HexColor("#0a2540"),  # Deep blue for headings
         spaceBefore=16,
-        spaceAfter=12,
-        alignment=TA_CENTER,  # Center-aligned for formal documents
+        spaceAfter=14,
+        alignment=TA_CENTER,
     )
-    add_or_update_style(styles, "Body", spaceAfter=14, fontSize=11, leading=16)  # Standard body text
+    add_or_update_style(
+        styles,
+        "Heading2",
+        fontName=FONT_BOLD_NAME,
+        fontSize=14,
+        leading=19,
+        textColor=colors.HexColor("#0a2540"),
+        spaceAfter=12,
+    )
+    add_or_update_style(styles, "Body", spaceAfter=14, fontSize=13, leading=18, textColor=colors.HexColor("#111111"))
+    add_or_update_style(
+        styles,
+        "Signature",
+        fontName=FONT_REGULAR_NAME,
+        fontSize=13,
+        leading=18,
+        textColor=colors.HexColor("#111111"),
+        spaceAfter=18,
+    )
     add_or_update_style(
         styles,
         "Footer",
         fontName=FONT_REGULAR_NAME,
-        fontSize=8,
-        leading=10,
-        textColor=COLOR_INDIGO,
+        fontSize=9,
+        leading=11,
+        textColor=colors.HexColor("#8a8d91"),
     )
 
     return styles
@@ -277,59 +302,72 @@ class DocumentTemplate:
 
         template = self.templates[document_type].copy()
 
-        # Replace placeholders with actual values
+
+        # Only these placeholders should be title-cased (actual person names)
+        NAME_PLACEHOLDERS = [
+            '[Contributor Name]', '[Worker Name]', '[Investor Name]', '[Recipient Name]', '[CEO Name]', '[Director Name]', '[Circle Name]',
+            '{{CONTRIBUTOR_NAME}}', '{{WORKER_NAME}}', '{{INVESTOR_NAME}}', '{{RECIPIENT_NAME}}', '{{CEO_NAME}}', '{{DIRECTOR_NAME}}', '{{CIRCLE_NAME}}', '{{NAME}}'
+        ]
+
+        # Replace placeholders with actual values, enforcing title case for names only
         replacements = {
             '{{COMPANY_NAME}}': COMPANY_NAME,
             '{{COMPANY_TAGLINE}}': COMPANY_TAGLINE,
-            '{{DIRECTOR_NAME}}': DEFAULT_DIRECTOR,
+            '{{DIRECTOR_NAME}}': format_name_title(DEFAULT_DIRECTOR),
             '{{DIRECTOR_TITLE}}': DEFAULT_DIRECTOR_TITLE,
             '{{DATE}}': datetime.now().strftime("%d %B %Y")
         }
 
-        # Add custom replacements
+        # Add custom replacements, title-casing only if key is a name placeholder
         if custom_data:
-            replacements.update(custom_data)
+            for k, v in custom_data.items():
+                if k in NAME_PLACEHOLDERS:
+                    replacements[k] = format_name_title(v)
+                else:
+                    replacements[k] = v
+
+
+        # Helper to replace and enforce uppercase for name placeholders in a string
+        def replace_and_format(text):
+            for placeholder, value in replacements.items():
+                if placeholder in NAME_PLACEHOLDERS:
+                    text = text.replace(placeholder, format_name_title(value))
+                else:
+                    text = text.replace(placeholder, str(value))
+            return text
 
         # Replace placeholders in title
         if 'title' in template and isinstance(template['title'], str):
-            for placeholder, value in replacements.items():
-                template['title'] = template['title'].replace(placeholder, str(value))
+            template['title'] = replace_and_format(template['title'])
 
-        # Replace placeholders in recipient lines
+        # Replace placeholders in recipient lines, skipping date lines if already present at top
         if 'recipient' in template and isinstance(template['recipient'], dict):
             for key, lines in template['recipient'].items():
                 if isinstance(lines, list):
                     new_lines = []
                     for line in lines:
-                        updated_line = line
-                        for placeholder, value in replacements.items():
-                            updated_line = updated_line.replace(placeholder, str(value))
-                        new_lines.append(updated_line)
+                        # Remove date lines if they duplicate the main date
+                        if line.strip().lower().startswith('date:'):
+                            continue
+                        new_lines.append(replace_and_format(line))
                     template['recipient'][key] = new_lines
 
         # Replace placeholders in salutation and closing
         for key in ['salutation', 'closing']:
             if key in template and isinstance(template[key], str):
-                for placeholder, value in replacements.items():
-                    template[key] = template[key].replace(placeholder, str(value))
+                template[key] = replace_and_format(template[key])
 
         # Replace placeholders in body paragraphs
         if 'body' in template and isinstance(template['body'], list):
             for i, item in enumerate(template['body']):
                 if isinstance(item, str):
-                    updated_item = item
-                    for placeholder, value in replacements.items():
-                        updated_item = updated_item.replace(placeholder, str(value))
-                    template['body'][i] = updated_item
+                    template['body'][i] = replace_and_format(item)
 
         # Replace placeholders in signature lines
         if 'signature' in template and isinstance(template['signature'], list):
             for i, item in enumerate(template['signature']):
                 if isinstance(item, str):
-                    updated_item = item
-                    for placeholder, value in replacements.items():
-                        updated_item = updated_item.replace(placeholder, str(value))
-                    template['signature'][i] = updated_item
+                    template['signature'][i] = replace_and_format(item)
 
         return template
     

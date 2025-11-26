@@ -100,7 +100,7 @@ def get_placeholders_for_type(doc_type):
         'nda': ['recipient_name', 'recipient_company', 'recipient_address', 'date'],
         'employment_contract': ['worker_name', 'worker_address', 'role', 'start_date', 'rate', 'unit', 'basis', 'payment_frequency', 'notice_period', 'date'],
         'investor_brief': ['investor_name', 'investment_firm', 'investment_amount', 'date'],
-        'contributor_charter': ['contributor_name', 'circle_name', 'date'],
+        'invitation_to_the_circle': ['contributor_name', 'circle_name', 'date'],
         'pitch_deck': ['date'],
         'company_profile': ['date'],
         'brand_and_model_bible': ['date'],
@@ -117,7 +117,7 @@ class DocumentSuite:
             'nda': NDAGenerator(),
             'employment_contract': EmploymentContractGenerator(),
             'investor_brief': InvestorBriefGenerator(),
-            'contributor_charter': ContributorCharterGenerator(),
+            'invitation_to_the_circle': ContributorCharterGenerator(),
             'pitch_deck': PitchDeckGenerator(),
             'company_profile': CompanyProfileGenerator(),
             'brand_and_model_bible': BrandBibleGenerator()
@@ -161,7 +161,7 @@ class DocumentSuite:
                 filename = self.generators[doc_type].generate_employment_contract(custom_data)
             elif doc_type == 'investor_brief':
                 filename = self.generators[doc_type].generate_investor_brief(custom_data)
-            elif doc_type == 'contributor_charter':
+            elif doc_type == 'invitation_to_the_circle':
                 c_name = custom_data.get('contributor_name', '[Contributor Name]') if custom_data else '[Contributor Name]'
                 c_circle = custom_data.get('circle_name', '[Circle Name]') if custom_data else '[Circle Name]'
                 filename = self.generators[doc_type].generate_charter(c_name, c_circle, custom_data)

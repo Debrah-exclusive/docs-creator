@@ -85,6 +85,7 @@ SHAREHOLDERS = [
     }
 ]
 
+
 # --- Secretary ---
 SECRETARY = {
     "first_name": "NAEEM",
@@ -103,6 +104,42 @@ SECRETARY = {
     "nationality": "GHANAIAN",
     "email": "naeemabdulaziz202@gmail.com",
     "phone": "0203001107"
+}
+
+# --- Board Resolution Signing Rules & Roles ---
+BOARD_RESOLUTION_SIGNING = {
+    # For Fidelity Bank: Naeem (Director) can sign singly; Debrah must sign together with Naeem.
+    "fidelity_bank": {
+        "single_signatory": {
+            "name": "Naeem Abdul-Aziz",
+            "role": "Director"
+        },
+        "joint_signatories": [
+            {
+                "name": "Naeem Abdul-Aziz",
+                "role": "Director"
+            },
+            {
+                "name": "Derrick Kwadjo Debrah",
+                "role": "Director"
+            }
+        ],
+        "notes": "Tordzro cannot be added as signatory for now as his name is not on Form 3; he is only a shareholder."
+    },
+    # Default: Where secretary and director must sign, use Naeem as Secretary and Debrah as Director.
+    "default_secretary": {
+        "name": "Naeem Abdul-Aziz",
+        "role": "Secretary"
+    },
+    "default_director": {
+        "name": "Derrick Kwadjo Debrah",
+        "role": "Director"
+    },
+    # Future: Tordzro will become company secretary.
+    "future_secretary": {
+        "name": "Benedict Dela Tordzro",
+        "role": "Secretary"
+    }
 }
 
 

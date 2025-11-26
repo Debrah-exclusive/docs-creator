@@ -34,7 +34,7 @@ class BrandBibleGenerator(DocumentTemplate):
             "closing": template_content.get('closing', ''),
             "signature": template_content.get('signature', [])
         }
-        filename = "DiscreetKit_Brand_Bible.pdf"
+        filename = "BrandAndModelBible.pdf"
         return self.generate_document(filename, content, "brand_and_model_bible")
 
 if __name__ == "__main__":

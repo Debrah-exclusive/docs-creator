@@ -38,7 +38,7 @@ class PitchDeckGenerator(DocumentTemplate):
             "closing": '',
             "signature": template_content.get('signature', [])
         }
-        filename = "pitch_deck_presentation.pdf"
+        filename = "PitchDeck.pdf"
         return self.generate_document(filename, content, "pitch_deck")
 
 if __name__ == "__main__":

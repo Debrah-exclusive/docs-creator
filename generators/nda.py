@@ -25,14 +25,14 @@ class NDAGenerator(DocumentTemplate):
             "closing": template_content.get('closing', ''),
             "signature": template_content.get('signature', [])
         }
-        recipient_name = custom_data.get('recipient_name', '').strip().replace(' ', '_').lower() if custom_data.get('recipient_name') else None
-        recipient_company = custom_data.get('recipient_company', '').strip().replace(' ', '_').lower() if custom_data.get('recipient_company') else None
+        recipient_name = custom_data.get('recipient_name', '').strip().replace(' ', '').replace('_', '').lower() if custom_data.get('recipient_name') else None
+        recipient_company = custom_data.get('recipient_company', '').strip().replace(' ', '').replace('_', '').lower() if custom_data.get('recipient_company') else None
         if recipient_company:
-            filename = f"nda_{recipient_company}.pdf"
+            filename = f"NDA-{recipient_company}.pdf"
         elif recipient_name:
-            filename = f"nda_{recipient_name}.pdf"
+            filename = f"NDA-{recipient_name}.pdf"
         else:
-            filename = "nda_document.pdf"
+            filename = "NDA.pdf"
         return self.generate_document(filename, content, "nda")
     
 if __name__ == "__main__":

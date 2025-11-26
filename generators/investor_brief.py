@@ -32,16 +32,14 @@ class InvestorBriefGenerator(DocumentTemplate):
             "signature": template_content.get('signature', [])
         }
         
-        investor = custom_data.get('investor_name', '').strip().replace(' ', '_').lower()
-        firm = custom_data.get('investment_firm', '').strip().replace(' ', '_').lower()
-        
+        investor = custom_data.get('investor_name', '').strip().replace(' ', '').replace('_', '').lower()
+        firm = custom_data.get('investment_firm', '').strip().replace(' ', '').replace('_', '').lower()
         if firm:
-            filename = f"investor_brief_{firm}.pdf"
+            filename = f"InvestorBrief-{firm}.pdf"
         elif investor:
-            filename = f"investor_brief_{investor}.pdf"
+            filename = f"InvestorBrief-{investor}.pdf"
         else:
-            filename = "investor_brief_template.pdf"
-            
+            filename = "InvestorBrief.pdf"
         return self.generate_document(filename, content, "investor_brief")
     
 if __name__ == "__main__":

@@ -32,12 +32,11 @@ class EmploymentContractGenerator(DocumentTemplate):
         }
         
         # Filename based on worker name
-        worker_name = custom_data.get('worker_name', '').strip().replace(' ', '_').lower()
+        worker_name = custom_data.get('worker_name', '').strip().replace(' ', '').replace('_', '').lower()
         if worker_name:
-            filename = f"casual_worker_agreement_{worker_name}.pdf"
+            filename = f"EmploymentContract-{worker_name}.pdf"
         else:
-            filename = "casual_worker_agreement_template.pdf"
-            
+            filename = "EmploymentContract.pdf"
         return self.generate_document(filename, content, "employment_contract")
 
 if __name__ == "__main__":

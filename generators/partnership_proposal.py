@@ -30,13 +30,11 @@ class PartnershipProposalGenerator(DocumentTemplate):
             "signature": template_content.get('signature', [])
         }
         
-        pharmacy = custom_data.get('pharmacy_name', '').strip().replace(' ', '_').lower()
-        
+        pharmacy = custom_data.get('pharmacy_name', '').strip().replace(' ', '').replace('_', '').lower()
         if pharmacy:
-            filename = f"partnership_proposal_{pharmacy}.pdf"
+            filename = f"PartnershipProposal-{pharmacy}.pdf"
         else:
-            filename = "partnership_proposal_template.pdf"
-            
+            filename = "PartnershipProposal.pdf"
         return self.generate_document(filename, content, "partnership_proposal")
 
 if __name__ == "__main__":
