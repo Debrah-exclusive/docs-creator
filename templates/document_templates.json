@@ -148,6 +148,7 @@
       "<b>The Model:</b>",
       "• <b>Asset-Light, Platform-First:</b> We partner with pharmacies. Zero inventory cost. Our infrastructure is digital and scalable—we can launch in 10 cities without buying 10 buildings. Our platform routes orders, manages partners, and scales instantly as demand grows.",
       "• <b>High Trust:</b> 100% unbranded delivery means 80%+ retention.",
+      "• <b>Diverse Revenue:</b> Beyond product margins, we monetize through partner referrals for confirmatory testing and counseling services.",
       "• <b>Team:</b> Strong founding trio with complementary skills—CEO (strategy/partnerships), COO (operations/compliance), CTO (product/security). Lean, circle-based structure inspired by FAANG for speed and execution.",
       "<b>Scalability:</b> Our technology and partnerships allow us to expand rapidly across regions, leveraging existing pharmacy networks and logistics without heavy capital expenditure.",
       "<b>The Ask:</b>",
@@ -252,7 +253,7 @@
         "body": [
           "• Zero Inventory Risk: We partner with licensed pharmacies to hold stock.",
           "• Platform Infrastructure: Our technology routes orders, manages partners, and scales instantly—no need for physical expansion to new cities.",
-          "• Revenue Streams: Margin on products + Partner commissions + Delivery fees.",
+          "• Revenue Streams: Margin on products + Partner commissions + Delivery fees + Partner Referrals (Confirmatory Testing, Counseling).",
           "• High Retention: Trust = Loyalty. Global benchmarks show 80%+ retention for privacy-first services."
         ]
       },
@@ -326,11 +327,7 @@
       },
       {
         "heading": "How We Operate",
-        "content": "• No Inventory Risk: We partner with licensed pharmacies to hold stock.\n• Tech-Enabled: Orders are routed via our secure platform.\n• Anonymous Logistics: Delivery is handled by unbranded riders in plain packaging."
-      },
-      {
-        "heading": "Leadership Team",
-        "content": "• Naeem Abdul-Aziz (CEO): Leads strategy, brand direction, partnerships, and company vision. Oversees all Circles to ensure alignment and speed.\n• Benedict Dela Tordzro (COO): Owns operations, regulatory compliance, partner relationships, and internal coordination. Ensures operational discipline.\n• Derrick Kwadjo Debrah (CTO): Architects the product, infrastructure, and security. Leads the technical roadmap and engineering decisions."
+        "content": "• No Inventory Risk: We partner with licensed pharmacies to hold stock.\n• Tech-Enabled: Orders are routed via our secure platform.\n• Anonymous Logistics: Delivery is handled by unbranded riders in plain packaging.\n• Holistic Care: We monetize referrals for confirmatory testing and counseling."
       },
       {
         "heading": "Organizational Structure",
@@ -339,33 +336,21 @@
       {
         "heading": "Advisory Board",
         "content": "Independent strategic oversight focused on governance, partnerships, and long-term scaling. Advisory members include strategic advisors for policy, growth, and technical depth as needed."
-      },
-      {
-        "heading": "Contact Details",
-        "content": "Address: House No 57, Kofi Annan East Ave, Madina, Accra\nPost: P.O. Box LG 918, Legon\nPhone: 0203001107\nEmail: dscreetkit@gmail.com"
       }
     ],
     "signature": [
+      "Signed:",
+      "",
       "______________________________",
       "Naeem Abdul-Aziz (CEO)",
       "Access Discreetkit Ltd"
     ]
   },
   "brand_and_model_bible": {
-    "title": "THE DISCREETKIT BRAND & OPERATING MODEL BIBLE",
-    "recipient": {
-      "default": [
-        "For Internal Use & Partners",
-        "Strictly Confidential",
-        "Version 1.0"
-      ]
-    },
-    "salutation": "",
-    "body": [
-      "<b>1. WHO WE ARE (AND WHO WE ARE NOT)</b>",
-      "<b>We are NOT a 'Medical Company'.</b> We do not diagnose patients. We do not manufacture drugs. We do not give prescriptions. <b>We do not stock or sell products.</b>",
-      "<b>We ARE a 'Privacy Infrastructure Company'.</b> We are a digital logistics platform. We sell dignity. We sell anonymity. We sell the ability for a young Ghanaian to take control of their health without fear of judgment.",
-      "When you design for us, write for us, or code for us, you are building <b>Trust</b>, not just a shop.",
+    "title": "BRAND & MODEL BIBLE",
+    "sections": [
+      "<b>1. THE MISSION</b>",
+      "We exist to remove the social barriers to healthcare. We believe that no one should risk their health because they are afraid of being judged.",
       "",
       "<b>2. THE CORE PROBLEM: THE 'PHARMACY STARE'</b>",
       "Our entire business exists to solve one specific moment: The moment a young person walks into a pharmacy, asks for an HIV test or condom, and feels the entire room judging them.",
@@ -389,6 +374,7 @@
       "• <b>Product Margin:</b> We mark up the pharmacy price to cover logistics and platform costs.",
       "• <b>Delivery Fees:</b> Customers pay for the convenience of anonymous delivery.",
       "• <b>Partner Commissions:</b> Pharmacies pay us to access the 'invisible customers' who would never walk through their door.",
+      "• <b>Partner Referrals:</b> We generate revenue by referring users to partners for confirmatory testing, counseling, and other health services.",
       "We are NOT selling HIV tests. We are selling <b>the ability to order an HIV test without anyone knowing.</b>",
       "",
       "<b>5. DESIGN & VOICE GUIDELINES</b>",
@@ -417,11 +403,98 @@
       "• <b>Privacy is our moat.</b> If we lose customer trust, we lose everything.",
       "• <b>Speed matters.</b> The longer someone waits for their test, the more anxious they become. Fast delivery = better experience.",
       "Your job is to protect the user's dignity at every touchpoint. That is the brand."
-    
     ],
     "closing": "",
     "signature": [
-      ""
+      "Signed:",
+      "",
+      "______________________________",
+      "Naeem Abdul-Aziz (CEO)",
+      "Access Discreetkit Ltd"
+    ]
+  },
+  "circle_mandate": {
+    "title": "INTERNAL MEMORANDUM",
+    "recipient": {
+      "default": [
+        "<b>TO:</b> Marketing Circle",
+        "<b>FROM:</b> Office of the CEO",
+        "<b>DATE:</b> 27 November 2025",
+        "<b>SUBJECT:</b> CIRCLE MANDATE: PHASE 1 – FOUNDATION & VALIDATION"
+      ]
+    },
+    "salutation": "",
+    "body": [
+      "<b>1. THE OBJECTIVE</b>",
+      "We are moving from \"Building\" to \"Validation.\" Our system (Web App) is ready. Our technology (Guest Checkout, Auto-Wipe) is our moat. Our immediate goal is <b>Leverage.</b>",
+      "With schools on vacation and SRCs inactive until January, we are using this window to build our infrastructure without pressure. We are not rushing a launch; we are securing the deals and numbers that make us a real company so that when schools resume, we are fully operational.",
+      "<b>The Two Numbers That Matter:</b>",
+      "By <b>January 12, 2025</b>, the Marketing Circle must deliver:",
+      "1. <b>Supply Security:</b> <b>10 Signed Letters of Intent (LOIs)</b> from Partner Pharmacies with favorable pricing terms.",
+      "2. <b>Demand Proof:</b> <b>500+ Student Sign-ups</b> on our Waitlist.",
+      "Any activity that does not directly contribute to these two numbers is suspended.",
+      "",
+      "<b>2. STRATEGIC DIRECTION: B2B (THE SUPPLY & MARGIN OFFENSIVE)</b>",
+      "<i>Focus: Physical Outreach (Now – Mid Dec)</i>",
+      "Pharmacy managers are less overwhelmed right now. This is the window to secure relationships. Marketing to pharmacies is a direct sales function. We do not pitch \"innovation\"; we pitch <b>Revenue.</b>",
+      "<b>The Narrative: \"Volume for Margin\"</b>",
+      "• <b>Direction:</b> Position DiscreetKit as a \"Digital Vending Machine\" that moves their dead stock.",
+      "• <b>The Deal Protocol (CRITICAL):</b> We cannot sell at their shelf price plus our markup (it becomes too expensive). We must negotiate a <b>subsidized (wholesale) base price</b> from Day 1.",
+      "• <b>The Pitch:</b> \"We have a waiting list of 500+ students who want to buy discreetly. We will route this volume to you. In exchange for this new revenue stream, we require a <b>partner rate (subsidized price)</b> so we can cover our logistics and keep the total cost affordable for the student.\"",
+      "<b>Tactics to Execute:</b>",
+      "• <b>Physical Deployment:</b> The \"Manager’s Morning\" strategy (9:00 AM - 11:00 AM).",
+      "• <b>Collateral:</b> High-quality print versions of the <i>Partnership Proposal</i> with attached LOIs.",
+      "• <b>The \"Price Check\" Rule:</b> Do not leave a meeting without knowing their base price. If their base price is too high, do not sign. We need margin control to survive.",
+      "",
+      "<b>3. STRATEGIC DIRECTION: B2C (THE TRUST ENGINE)</b>",
+      "<i>Focus: Content Creation & Waitlist Building (Dec – Jan)</i>",
+      "Since we cannot do physical campus activations yet, we must use digital channels to answer the question: <i>\"Is this safe?\"</i> before we ask them to buy.",
+      "<b>The Narrative: \"The 60-Second Secret\"</b>",
+      "Our core value proposition is <b>Anonymity</b>. The marketing must prove that we are safer than a physical pharmacy.",
+      "<b>Content Themes to Develop:</b>",
+      "• <b>Theme A: The Product Advantage (Speed & Safety)</b>",
+      "  - <i>Visual:</i> A screen recording showing how to order. Show the user clicking \"Checkout\" <i>without</i> creating an account.",
+      "  - <i>Message:</i> \"No Sign-up. No History. Data Wiped Daily.\"",
+      "• <b>Theme B: The Legal Shield (Institutional Trust)</b>",
+      "  - <i>Visual:</i> Professional graphics quoting the <b>Data Protection Act</b>.",
+      "  - <i>Message:</i> \"We don't just promise privacy. We are legally bound by it.\"",
+      "• <b>Theme C: The \"Anti-Stigma\" Reality</b>",
+      "  - <i>Visual:</i> Relatable scenarios highlighting the \"Pharmacy Stare\" (the awkwardness of public buying) vs. the relief of DiscreetKit.",
+      "",
+      "<b>4. RESOURCE ALLOCATION (THE BUDGET)</b>",
+      "We have allocated a dedicated execution budget of <b>GHS 5,000 – 10,000</b> for this phase. This is our \"seed fuel.\" It must be deployed with extreme efficiency.",
+      "<b>Approved Spend Categories:</b>",
+      "1. <b>High-Impact Print (priority):</b> Professional printing of Partnership Proposals (on premium paper) for pharmacy visits. This is our \"face\" in the B2B meetings.",
+      "2. <b>Content Production:</b> Data and basic tools required to film and edit the \"Ghost Demo\" and \"Trust\" content.",
+      "3. <b>Influencer Barter:</b> We will <b>not</b> pay cash for shoutouts. We will use this budget to provide product samples or small stipends <i>only</i> to trusted campus figures who create \"Privacy Check\" reviews.",
+      "4. <b>Emergency Ops:</b> Reserved for initial rider logistics and fulfillment testing.",
+      "<b>Restricted Spend (Strict Compliance Required):</b>",
+      "• <b>No Paid Ads:</b> We will not spend capital on sponsored posts in this phase. Strategic influencer marketing will be done after we have built a scalable system.",
+      "• <b>Organic Strategy:</b> We rely entirely on organic reach through <b>personal and voluntary channels</b>. Every contributor is expected to leverage their own networks and \"whisper networks\" to drive traffic without burning cash.",
+      "• <b>No Mass Printing:</b> Do not print thousands of flyers/stickers yet. Save that capital for the January campus reopening.",
+      "",
+      "<b>5. EXECUTION TIMELINE</b>",
+      "<i>We have extended the timeline to accommodate the holiday season.</i>",
+      "• <b>Sprint 1 (Nov 27 – Dec 10): The Pharmacy Lock-In.</b>",
+      "  - <i>Action:</i> Visit 15 pharmacies using the \"Manager's Morning\" tactic.",
+      "  - <i>Goal:</i> Secure 5-10 Signed LOIs with <b>subsidized pricing</b> before managers go on break.",
+      "• <b>Sprint 2 (Dec 11 – Jan 1): The Digital Trust Build.</b>",
+      "  - <i>Action:</i> Launch the Waitlist Page. Populate social channels with \"Ghost Demo\" and \"Legal Shield\" content.",
+      "  - <i>Goal:</i> 300 Waitlist Sign-ups.",
+      "• <b>Sprint 3 (Jan 2 – Jan 12): The SRC Prep.</b>",
+      "  - <i>Action:</i> Draft the \"Student Wellness\" proposal for the incoming SRC. Identify Health Committee heads.",
+      "  - <i>Goal:</i> Have the proposal ready for Day 1 of the semester.",
+      "",
+      "<b>Directive Status:</b> ACTIVE.",
+      "<b>Execution:</b> IMMEDIATE."
+    ],
+    "closing": "",
+    "signature": [
+      "Signed:",
+      "",
+      "______________________________",
+      "Naeem Abdul-Aziz (CEO)",
+      "Access Discreetkit Ltd"
     ]
   }
 }

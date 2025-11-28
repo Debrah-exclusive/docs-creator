@@ -6,12 +6,12 @@ Enhanced modular document generator with organized output structure.
 This CLI tool bridges the gap between user input and the PDF templates.
 
 Features:
-- ✅ Organized output folders by document category
-- ✅ Template-based content system 
-- ✅ Timestamped file naming
-- ✅ Consistent branding across all documents
-- ✅ Smart placeholder mapping
-- ✅ Automatic Currency Formatting (GHS)
+- Organized output folders by document category
+- Template-based content system 
+- Timestamped file naming
+- Consistent branding across all documents
+- Smart placeholder mapping
+- Automatic Currency Formatting (GHS)
 
 Usage:
     python generate_documents.py [document_type] [arguments]
@@ -35,6 +35,7 @@ from generators.contributor_charter import ContributorCharterGenerator
 from generators.pitch_deck import PitchDeckGenerator
 from generators.company_profile import CompanyProfileGenerator
 from generators.brand_bible import BrandBibleGenerator
+from generators.circle_mandate import CircleMandateGenerator
 
 # --- CONFIGURATION: CLI TO TEMPLATE MAPPING ---
 # This maps the variable name in this script to the [Placeholder] in your JSON template.
@@ -100,10 +101,11 @@ def get_placeholders_for_type(doc_type):
         'nda': ['recipient_name', 'recipient_company', 'recipient_address', 'date'],
         'employment_contract': ['worker_name', 'worker_address', 'role', 'start_date', 'rate', 'unit', 'basis', 'payment_frequency', 'notice_period', 'date'],
         'investor_brief': ['investor_name', 'investment_firm', 'investment_amount', 'date'],
-        'invitation_to_the_circle': ['contributor_name', 'circle_name', 'date'],
+        'contributor_charter': ['contributor_name', 'circle_name', 'date'],
         'pitch_deck': ['date'],
         'company_profile': ['date'],
-        'brand_and_model_bible': ['date'],
+        'brand_bible': ['date'],
+        'circle_mandate': ['date'],
     }
     return mapping.get(doc_type, [])
 
@@ -117,10 +119,11 @@ class DocumentSuite:
             'nda': NDAGenerator(),
             'employment_contract': EmploymentContractGenerator(),
             'investor_brief': InvestorBriefGenerator(),
-            'invitation_to_the_circle': ContributorCharterGenerator(),
+            'contributor_charter': ContributorCharterGenerator(),
             'pitch_deck': PitchDeckGenerator(),
             'company_profile': CompanyProfileGenerator(),
-            'brand_and_model_bible': BrandBibleGenerator()
+            'brand_bible': BrandBibleGenerator(),
+            'circle_mandate': CircleMandateGenerator()
         }
         self.setup_output_directories()
     
@@ -135,7 +138,8 @@ class DocumentSuite:
             'Investor_Relations',
             'General_Documents',
             'Pitch_Decks',
-            'Brand_Guidelines'
+            'Brand_Guidelines',
+            'Internal_Memos'
         ]
         for directory in directories:
             dir_path = os.path.join(base_output, directory)
@@ -144,10 +148,10 @@ class DocumentSuite:
     def generate_document(self, doc_type, custom_data=None):
         """Generate a specific document type with passed data."""
         if doc_type not in self.generators:
-            print(f"❌ Unknown document type: {doc_type}")
+            print(f"[ERROR] Unknown document type: {doc_type}")
             return None
         
-        print(f"🔄 Generating {doc_type.replace('_', ' ').title()}...")
+        print(f"[PROCESSING] Generating {doc_type.replace('_', ' ').title()}...")
         
         try:
             # Pass custom_data to all generators
@@ -161,7 +165,7 @@ class DocumentSuite:
                 filename = self.generators[doc_type].generate_employment_contract(custom_data)
             elif doc_type == 'investor_brief':
                 filename = self.generators[doc_type].generate_investor_brief(custom_data)
-            elif doc_type == 'invitation_to_the_circle':
+            elif doc_type == 'contributor_charter':
                 c_name = custom_data.get('contributor_name', '[Contributor Name]') if custom_data else '[Contributor Name]'
                 c_circle = custom_data.get('circle_name', '[Circle Name]') if custom_data else '[Circle Name]'
                 filename = self.generators[doc_type].generate_charter(c_name, c_circle, custom_data)
@@ -169,27 +173,29 @@ class DocumentSuite:
                 filename = self.generators[doc_type].generate_pitch_deck(custom_data)
             elif doc_type == 'company_profile':
                 filename = self.generators[doc_type].generate_company_profile(custom_data)
-            elif doc_type == 'brand_and_model_bible':
+            elif doc_type == 'brand_bible':
                 filename = self.generators[doc_type].generate_brand_bible(custom_data)
+            elif doc_type == 'circle_mandate':
+                filename = self.generators[doc_type].generate_circle_mandate(custom_data)
             
             if filename:
                 display_name = os.path.basename(filename)
                 folder_name = os.path.basename(os.path.dirname(filename))
-                print(f"✅ Generated: {folder_name}/{display_name}")
+                print(f"[SUCCESS] Generated: {folder_name}/{display_name}")
                 return filename
             else:
-                print(f"❌ Failed to generate {doc_type}")
+                print(f"[ERROR] Failed to generate {doc_type}")
                 return None
                 
         except Exception as e:
-            print(f"❌ Error generating {doc_type}: {e}")
+            print(f"[ERROR] Error generating {doc_type}: {e}")
             # Debugging: un-comment next line to see full stack trace
             # import traceback; traceback.print_exc()
             return None
     
     def generate_all(self):
         """Generate all available document types using defaults."""
-        print("🚀 DiscreetKit Document Suite - Generating All Documents")
+        print("[START] DiscreetKit Document Suite - Generating All Documents")
         generated_files = []
         for doc_type in self.generators.keys():
             filename = self.generate_document(doc_type, {})
@@ -197,12 +203,12 @@ class DocumentSuite:
                 generated_files.append(filename)
             print()
         
-        print(f"📊 Summary: Generated {len(generated_files)} of {len(self.generators)} documents")
+        print(f"[SUMMARY] Generated {len(generated_files)} of {len(self.generators)} documents")
         return generated_files
 
     def list_available(self):
         """List available document types."""
-        print("📋 Available Document Types:")
+        print("[LIST] Available Document Types:")
         types = {
             'board_resolution': 'Bank/Admin Resolutions',
             'partnership_proposal': 'Pharmacy/Lab Proposals',
@@ -211,10 +217,12 @@ class DocumentSuite:
             'investor_brief': 'Seed Round Brief',
             'contributor_charter': 'Contributor Onboarding',
             'pitch_deck': 'Investment Pitch Deck',
-            'company_profile': 'Company Profile Document'
+            'company_profile': 'Company Profile Document',
+            'brand_bible': 'Brand & Model Guidelines',
+            'circle_mandate': 'Internal Memorandum'
         }
         for dt, desc in types.items():
-            print(f"  • {dt:<22} - {desc}")
+            print(f"  * {dt:<22} - {desc}")
 
 def main():
     """Main entry point."""
@@ -276,7 +284,7 @@ def main():
     
     # If user didn't provide arguments via flags, ask interactively
     if doc_type in suite.generators:
-        print(f"📝 Enter details for {doc_type.replace('_', ' ').title()}:")
+        print(f"[INPUT] Enter details for {doc_type.replace('_', ' ').title()}:")
         for field in required_fields:
             # Check if provided via CLI flag
             val = getattr(args, field, None)
@@ -300,7 +308,7 @@ def main():
         # 3. Generate
         suite.generate_document(doc_type, custom_data)
     else:
-        print(f"❌ Error: '{doc_type}' is not a valid document type.")
+        print(f"[ERROR] Error: '{doc_type}' is not a valid document type.")
         suite.list_available()
 
 if __name__ == "__main__":

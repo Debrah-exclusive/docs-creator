@@ -12,7 +12,7 @@ class PitchDeckGenerator(DocumentTemplate):
         """Generate a pitch deck document using template system and custom_data."""
         template_content = self.get_template_content('pitch_deck', custom_data)
         if template_content is None:
-            print("❌ No template found for pitch_deck")
+            print("[ERROR] No template found for pitch_deck")
             return None
         if custom_data is None:
             custom_data = {}

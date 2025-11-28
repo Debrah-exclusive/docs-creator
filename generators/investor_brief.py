@@ -19,7 +19,7 @@ class InvestorBriefGenerator(DocumentTemplate):
         # This line relies on custom_data having '[Investment Amount]' key from the CLI mapping
         template_content = self.get_template_content('investor_brief', custom_data)
         if template_content is None:
-            print("❌ No template found for investor_brief")
+            print("[ERROR] No template found for investor_brief")
             return None
             
         content = {
