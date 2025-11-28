@@ -36,6 +36,7 @@ from generators.pitch_deck import PitchDeckGenerator
 from generators.company_profile import CompanyProfileGenerator
 from generators.brand_bible import BrandBibleGenerator
 from generators.circle_mandate import CircleMandateGenerator
+from generators.pharmacy_loi import PharmacyLOIGenerator
 
 # --- CONFIGURATION: CLI TO TEMPLATE MAPPING ---
 # This maps the variable name in this script to the [Placeholder] in your JSON template.
@@ -106,6 +107,7 @@ def get_placeholders_for_type(doc_type):
         'company_profile': ['date'],
         'brand_bible': ['date'],
         'circle_mandate': ['date'],
+        'pharmacy_loi': ['pharmacy_name', 'date'],
     }
     return mapping.get(doc_type, [])
 
@@ -123,7 +125,8 @@ class DocumentSuite:
             'pitch_deck': PitchDeckGenerator(),
             'company_profile': CompanyProfileGenerator(),
             'brand_bible': BrandBibleGenerator(),
-            'circle_mandate': CircleMandateGenerator()
+            'circle_mandate': CircleMandateGenerator(),
+            'pharmacy_loi': PharmacyLOIGenerator()
         }
         self.setup_output_directories()
     
@@ -139,7 +142,8 @@ class DocumentSuite:
             'General_Documents',
             'Pitch_Decks',
             'Brand_Guidelines',
-            'Internal_Memos'
+            'Internal_Memos',
+            'Pharmacy_LOIs'
         ]
         for directory in directories:
             dir_path = os.path.join(base_output, directory)
@@ -177,6 +181,8 @@ class DocumentSuite:
                 filename = self.generators[doc_type].generate_brand_bible(custom_data)
             elif doc_type == 'circle_mandate':
                 filename = self.generators[doc_type].generate_circle_mandate(custom_data)
+            elif doc_type == 'pharmacy_loi':
+                filename = self.generators[doc_type].generate_pharmacy_loi(custom_data)
             
             if filename:
                 display_name = os.path.basename(filename)
@@ -219,7 +225,8 @@ class DocumentSuite:
             'pitch_deck': 'Investment Pitch Deck',
             'company_profile': 'Company Profile Document',
             'brand_bible': 'Brand & Model Guidelines',
-            'circle_mandate': 'Internal Memorandum'
+            'circle_mandate': 'Internal Memorandum',
+            'pharmacy_loi': 'Pharmacy Letter of Intent'
         }
         for dt, desc in types.items():
             print(f"  * {dt:<22} - {desc}")

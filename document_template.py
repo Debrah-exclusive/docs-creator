@@ -48,7 +48,8 @@ CATEGORY_MAP = {
     "pitch_deck": "Pitch_Decks",
     "company_profile": "General_Documents",
     "brand_and_model_bible": "Brand_Guidelines",
-    "circle_mandate": "Internal_Memos"
+    "circle_mandate": "Internal_Memos",
+    "pharmacy_loi": "Pharmacy_LOIs"
 }
 
 def format_name_title(name):

@@ -48,7 +48,7 @@
       "<b>The Solution: We Bring Them to You.</b>",
       "DiscreetKit is the digital bridge. We let customers order anonymously online, and we route those orders directly to you. We are the <b>'Uber for Privacy.'</b>",
       "<b>Partnership Benefits:</b>",
-      "• <b>New Revenue Stream:</b> We capture the 635,000+ tertiary students who are currently too shy to buy. You get the sale; we handle the customer.",
+      "• <b>New Revenue Stream:</b> We capture the <b>young adult market (including 635,000+ tertiary students)</b> who are currently too shy to buy. You get the sale; we handle the customer.",
       "• <b>Zero Logistics:</b> Our unbranded riders handle the pickup and delivery. You just pack the item.",
       "• <b>Future-Proof:</b> The Govt is rolling out vending machines to fight stigma. Partnering with us puts your pharmacy ahead of the curve.",
       "We would welcome the opportunity to discuss a commission structure."
@@ -341,21 +341,10 @@
     "signature": [
       "Signed:",
       "",
-      "______________________________",
-      "Naeem Abdul-Aziz (CEO)",
-      "Access Discreetkit Ltd"
-    ]
-  },
-  "brand_and_model_bible": {
-    "title": "BRAND & MODEL BIBLE",
-    "sections": [
-      "<b>1. THE MISSION</b>",
-      "We exist to remove the social barriers to healthcare. We believe that no one should risk their health because they are afraid of being judged.",
-      "",
       "<b>2. THE CORE PROBLEM: THE 'PHARMACY STARE'</b>",
       "Our entire business exists to solve one specific moment: The moment a young person walks into a pharmacy, asks for an HIV test or condom, and feels the entire room judging them.",
       "That moment of shame prevents millions of cedis in sales and costs lives (15,000+ new HIV infections last year). We eliminate that moment.",
-      "<b>The Hidden Market:</b> There are 635,000+ tertiary students in Ghana. They need these products but won't buy them publicly. That is a <b>GHS 12.7 Million opportunity</b> walking away from pharmacies every year.",
+      "<b>The Hidden Market:</b> There are millions of <b>young adults</b> (including 635,000+ tertiary <b>students</b>) in Ghana. They need these products but won't buy them publicly. That is a <b>GHS 12.7 Million opportunity</b> walking away from pharmacies every year.",
       "",
       "<b>3. OUR OPERATING MODEL: 'THE UBER FOR PRIVACY'</b>",
       "We are an <b>asset-light logistics platform</b>. We do NOT hold inventory. We do NOT buy stock. We do NOT warehouse products. Here is the flow:",
@@ -431,7 +420,7 @@
       "<b>The Two Numbers That Matter:</b>",
       "By <b>January 12, 2025</b>, the Marketing Circle must deliver:",
       "1. <b>Supply Security:</b> <b>10 Signed Letters of Intent (LOIs)</b> from Partner Pharmacies with favorable pricing terms.",
-      "2. <b>Demand Proof:</b> <b>500+ Student Sign-ups</b> on our Waitlist.",
+      "2. <b>Demand Proof:</b> <b>500+ Young Adult Sign-ups</b> on our Waitlist.",
       "Any activity that does not directly contribute to these two numbers is suspended.",
       "",
       "<b>2. STRATEGIC DIRECTION: B2B (THE SUPPLY & MARGIN OFFENSIVE)</b>",
@@ -440,7 +429,7 @@
       "<b>The Narrative: \"Volume for Margin\"</b>",
       "• <b>Direction:</b> Position DiscreetKit as a \"Digital Vending Machine\" that moves their dead stock.",
       "• <b>The Deal Protocol (CRITICAL):</b> We cannot sell at their shelf price plus our markup (it becomes too expensive). We must negotiate a <b>subsidized (wholesale) base price</b> from Day 1.",
-      "• <b>The Pitch:</b> \"We have a waiting list of 500+ students who want to buy discreetly. We will route this volume to you. In exchange for this new revenue stream, we require a <b>partner rate (subsidized price)</b> so we can cover our logistics and keep the total cost affordable for the student.\"",
+      "• <b>The Pitch:</b> \"We have a waiting list of 500+ <b>young adults</b> who want to buy discreetly. We will route this volume to you. In exchange for this new revenue stream, we require a <b>partner rate (subsidized price)</b> so we can cover our logistics and keep the total cost affordable for the <b>young adult</b>.\"",
       "<b>Tactics to Execute:</b>",
       "• <b>Physical Deployment:</b> The \"Manager’s Morning\" strategy (9:00 AM - 11:00 AM).",
       "• <b>Collateral:</b> High-quality print versions of the <i>Partnership Proposal</i> with attached LOIs.",
@@ -495,6 +484,37 @@
       "______________________________",
       "Naeem Abdul-Aziz (CEO)",
       "Access Discreetkit Ltd"
+    ]
+  },
+  "pharmacy_loi": {
+    "title": "LETTER OF INTENT: STRATEGIC FULFILLMENT PARTNER",
+    "recipient": {
+      "default": [
+        "The CEO",
+        "Access Discreetkit Ltd",
+        "Accra, Ghana"
+      ]
+    },
+    "salutation": "Dear CEO,",
+    "body": [
+      "<b>RE: EXPRESSION OF INTEREST TO JOIN THE DISCREETKIT FULFILLMENT NETWORK</b>",
+      "This letter serves to confirm that <b>[Pharmacy Name]</b> expresses its intent to partner with Access Discreetkit Ltd as a Fulfillment Partner.",
+      "We understand that DiscreetKit operates as a digital infrastructure layer, routing anonymous orders from <b>young adults</b> directly to our pharmacy, allowing us to capture a market segment previously lost to stigma.",
+      "<b>By signing this Letter of Intent, we confirm our willingness to:</b>",
+      "1. <b>Serve as a Fulfillment Partner:</b> We agree to receive and fulfill orders routed to us by the DiscreetKit platform.",
+      "2. <b>Provide Partner Pricing:</b> To ensure the service remains affordable for <b>young adults</b>, we agree to supply products at a <b>negotiated partner rate (wholesale/subsidized price)</b> rather than standard retail shelf price.",
+      "3. <b>Uphold Privacy:</b> We agree to maintain strict confidentiality regarding the identity of any customers routed to us.",
+      "We understand this letter signals our strategic intent to proceed with a formal Service Level Agreement (SLA) upon the launch of the platform."
+    ],
+    "closing": "Authorized Signature,",
+    "signature": [
+      "",
+      "______________________________",
+      "Name:",
+      "Title: Manager / Chief Pharmacist",
+      "For and on behalf of: <b>[Pharmacy Name]</b>",
+      "",
+      "Date: _______________"
     ]
   }
 }
