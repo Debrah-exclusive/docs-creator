@@ -36,8 +36,8 @@
     "recipient": {
       "default": [
         "The Chief Pharmacist / Manager",
-        "[Partner Address]",
-        "Accra, Ghana"
+        "[Pharmacy Name]",
+        "[Partner Address]"
       ]
     },
     "salutation": "Dear Manager,",
@@ -55,7 +55,7 @@
     ],
     "closing": "Sincerely,",
     "signature": [
-      "______________________________",
+      "[SIGNATURE:signature.svg]",
       "Naeem Abdul-Aziz (CEO)",
       "Access Discreetkit Ltd"
     ]
@@ -81,7 +81,7 @@
     "closing": "Yours faithfully,",
     "signature": [
       "",
-      "______________________________",
+      "[SIGNATURE:signature.svg]",
       "Naeem Abdul-Aziz (CEO) or Derrick Kwadjo Debrah (Director)",
       "Access Discreetkit Ltd",
       "",

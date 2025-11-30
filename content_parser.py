@@ -1,6 +1,9 @@
-from reportlab.platypus import Paragraph, Spacer, Table, TableStyle, ListFlowable, ListItem, KeepTogether
+from reportlab.platypus import Paragraph, Spacer, Table, TableStyle, ListFlowable, ListItem, KeepTogether, Image
 from reportlab.lib import colors
 from reportlab.lib.units import inch, mm
+import os
+from svglib.svglib import svg2rlg
+from reportlab.graphics import renderPDF
 
 class ContentParser:
     """
@@ -52,12 +55,41 @@ class ContentParser:
         """
         Parses signature block. Keeps lines together.
         Expects a list of strings.
+        Supports [SIGNATURE:filename] marker for SVG signatures.
         """
         if not signature_data or not isinstance(signature_data, list):
             return []
 
         elements = []
         for line in signature_data:
-            elements.append(Paragraph(line, self.styles.get_style("Signature")))
+            if line.startswith("[SIGNATURE:") and line.endswith("]"):
+                # Extract filename
+                filename = line[11:-1]
+                # Assume assets dir is relative to this file or passed in styles? 
+                # Styles has assets_dir, let's try to use that if possible, or just assume standard location
+                # But ContentParser doesn't know about assets_dir directly unless we pass it.
+                # doc_styles has it.
+                assets_dir = getattr(self.styles, 'assets_dir', os.path.join(os.path.dirname(__file__), 'assets'))
+                svg_path = os.path.join(assets_dir, filename)
+                
+                if os.path.exists(svg_path):
+                    try:
+                        drawing = svg2rlg(svg_path)
+                        # Scale it down if needed. Default size might be too big.
+                        # Let's target a width of ~1.5 inches
+                        target_width = 1.5 * inch
+                        scale_factor = target_width / drawing.width
+                        drawing.width *= scale_factor
+                        drawing.height *= scale_factor
+                        drawing.scale(scale_factor, scale_factor)
+                        elements.append(drawing)
+                        elements.append(Spacer(1, 5*mm)) # Add some space after signature
+                    except Exception as e:
+                        print(f"Error loading signature SVG: {e}")
+                        elements.append(Paragraph(f"[Error loading signature: {filename}]", self.styles.get_style("Signature")))
+                else:
+                     elements.append(Paragraph(f"[Signature file not found: {filename}]", self.styles.get_style("Signature")))
+            else:
+                elements.append(Paragraph(line, self.styles.get_style("Signature")))
         
         return [KeepTogether(elements)]
