@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiscreetKit Document Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>DiscreetKit Document Portal</h1>
+            <p class="subtitle">Generate tailored professional documents in seconds</p>
+        </header>
+
+        <div class="grid">
+            <!-- Partnership Proposal Card -->
+            <div class="card">
+                <h2>
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Partnership Proposal
+                </h2>
+                <form id="pp-form" onsubmit="event.preventDefault(); submitForm('pp-form', '/api/generate/partnership_proposal', fd => ({ 
+                    pharmacy_name: fd.get('pharmacy_name') || '', 
+                    partner_address: fd.get('partner_address') || '', 
+                    date: fd.get('date') || '' 
+                }))">
+                    <div class="form-group">
+                        <label for="pp-pharmacy">Pharmacy Name</label>
+                        <input id="pp-pharmacy" name="pharmacy_name" placeholder="e.g. AlphaCare Pharmacy" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pp-address">Partner Address</label>
+                        <input id="pp-address" name="partner_address" placeholder="e.g. Accra, Ghana" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pp-date">Date</label>
+                        <input type="date" id="pp-date" name="date">
+                    </div>
+
+                    <button type="submit">
+                        <span>Generate Proposal</span>
+                        <div class="spinner"></div>
+                    </button>
+                    <div class="result"></div>
+                </form>
+            </div>
+
+            <!-- Pharmacy LOI Card -->
+            <div class="card">
+                <h2>
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+                    </svg>
+                    Pharmacy LOI
+                </h2>
+                <form id="loi-form" onsubmit="event.preventDefault(); submitForm('loi-form', '/api/generate/pharmacy_loi', fd => ({ 
+                    pharmacy_name: fd.get('pharmacy_name') || '', 
+                    date: fd.get('date') || '' 
+                }))">
+                    <div class="form-group">
+                        <label for="loi-pharmacy">Pharmacy Name</label>
+                        <input id="loi-pharmacy" name="pharmacy_name" placeholder="e.g. AlphaCare Pharmacy" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loi-date">Date</label>
+                        <input type="date" id="loi-date" name="date">
+                    </div>
+
+                    <button type="submit">
+                        <span>Generate LOI</span>
+                        <div class="spinner"></div>
+                    </button>
+                    <div class="result"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

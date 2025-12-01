@@ -108,37 +108,6 @@ def get_placeholders_for_type(doc_type):
         'brand_bible': ['date'],
         'circle_mandate': ['date'],
         'pharmacy_loi': ['pharmacy_name', 'date'],
-    }
-    return mapping.get(doc_type, [])
-
-class DocumentSuite:
-    """Enhanced document generation suite with organized output."""
-    
-    def __init__(self):
-        self.generators = {
-            'board_resolution': BoardResolutionGenerator(),
-            'partnership_proposal': PartnershipProposalGenerator(),
-            'nda': NDAGenerator(),
-            'employment_contract': EmploymentContractGenerator(),
-            'investor_brief': InvestorBriefGenerator(),
-            'contributor_charter': ContributorCharterGenerator(),
-            'pitch_deck': PitchDeckGenerator(),
-            'company_profile': CompanyProfileGenerator(),
-            'brand_bible': BrandBibleGenerator(),
-            'circle_mandate': CircleMandateGenerator(),
-            'pharmacy_loi': PharmacyLOIGenerator()
-        }
-        self.setup_output_directories()
-    
-    def setup_output_directories(self):
-        """Create organized output directory structure."""
-        base_output = os.path.join(os.path.dirname(__file__), 'output')
-        directories = [
-            'Board_Resolutions',
-            'Partnership_Proposals', 
-            'Legal_Documents',
-            'Employment_Contracts',
-            'Investor_Relations',
             'General_Documents',
             'Pitch_Decks',
             'Brand_Guidelines',
