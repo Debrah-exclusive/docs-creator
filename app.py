@@ -47,6 +47,15 @@ INDEX_HTML = """
         btn.disabled = false;
       }
     }
+    document.addEventListener('DOMContentLoaded', () => {
+      const today = new Date().toISOString().slice(0,10);
+      document.querySelectorAll('input[name="date"]').forEach(el => {
+        if (!el.value) el.value = today;
+        const openPicker = () => { if (el.showPicker) try { el.showPicker(); } catch(e) {} };
+        el.addEventListener('focus', openPicker);
+        el.addEventListener('click', openPicker);
+      });
+    });
   </script>
 </head>
 <body>
@@ -60,7 +69,7 @@ INDEX_HTML = """
         <label>Partner Address</label>
         <input name="partner_address" placeholder="e.g. Accra, Ghana" />
         <label>Date</label>
-        <input name="date" placeholder="e.g. 12 December 2025" />
+        <input type="date" name="date" />
         <button type="submit">Generate Proposal</button>
         <div class="result"></div>
       </form>
@@ -71,19 +80,35 @@ INDEX_HTML = """
         <label>Pharmacy Name</label>
         <input name="pharmacy_name" placeholder="e.g. AlphaCare Pharmacy" />
         <label>Date</label>
-        <input name="date" placeholder="e.g. 12 December 2025" />
+        <input type="date" name="date" />
         <button type="submit">Generate LOI</button>
         <div class="result"></div>
       </form>
     </div>
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const today = new Date().toISOString().slice(0,10);
+      document.querySelectorAll('input[name="date"]').forEach(el => {
+        if (!el.value) el.value = today;
+      });
+    });
+  </script>
 </body>
 </html>
 """
 
 def ensure_date(val):
     v = (val or '').strip()
-    return v if v else datetime.now().strftime('%d %B %Y')
+    if not v:
+        return datetime.now().strftime('%d %B %Y')
+    try:
+        # Handle ISO date from <input type="date"> (YYYY-MM-DD)
+        dt = datetime.strptime(v, '%Y-%m-%d')
+        return dt.strftime('%d %B %Y')
+    except Exception:
+        # Assume already in desired format; return as-is
+        return v
 
 def relpath_from_output(full_path):
     rp = os.path.relpath(full_path, OUTPUT_DIR)
@@ -102,8 +127,14 @@ def api_generate_pp():
     data = request.get_json(silent=True) or {}
     custom = {}
     custom['[Date]'] = ensure_date(data.get('date'))
-    custom['pharmacy_name'] = (data.get('pharmacy_name') or '').strip()
-    custom['partner_address'] = (data.get('partner_address') or '').strip()
+    # Map to placeholders expected by templates
+    pharmacy_name = (data.get('pharmacy_name') or '').strip()
+    partner_address = (data.get('partner_address') or '').strip()
+    custom['[Pharmacy Name]'] = pharmacy_name
+    custom['[Partner Address]'] = partner_address
+    # Keep original keys for filename logic used by generators
+    custom['pharmacy_name'] = pharmacy_name
+    custom['partner_address'] = partner_address
     path = suite.generate_document('partnership_proposal', custom)
     if not path:
         return jsonify({ 'ok': False, 'error': 'generation_failed' }), 400
@@ -115,7 +146,11 @@ def api_generate_loi():
     data = request.get_json(silent=True) or {}
     custom = {}
     custom['[Date]'] = ensure_date(data.get('date'))
-    custom['pharmacy_name'] = (data.get('pharmacy_name') or '').strip()
+    # Map to placeholders expected by templates
+    pharmacy_name = (data.get('pharmacy_name') or '').strip()
+    custom['[Pharmacy Name]'] = pharmacy_name
+    # Keep original key for filename logic
+    custom['pharmacy_name'] = pharmacy_name
     path = suite.generate_document('pharmacy_loi', custom)
     if not path:
         return jsonify({ 'ok': False, 'error': 'generation_failed' }), 400
@@ -125,4 +160,3 @@ def api_generate_loi():
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', '5000'))
     app.run(host='0.0.0.0', port=port)
-
