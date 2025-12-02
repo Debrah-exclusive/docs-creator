@@ -14,6 +14,18 @@ else:
 
 suite = DocumentSuite(output_dir=OUTPUT_DIR)
 
+def ensure_date(val):
+    v = (val or '').strip()
+    if not v:
+        return datetime.now().strftime('%d %B %Y')
+    try:
+        # Handle ISO date from <input type="date"> (YYYY-MM-DD)
+        dt = datetime.strptime(v, '%Y-%m-%d')
+        return dt.strftime('%d %B %Y')
+    except Exception:
+        # Assume already in desired format; return as-is
+        return v
+
 @app.get('/')
 def index():
     return render_template('index.html')

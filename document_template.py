@@ -52,34 +52,6 @@ CATEGORY_MAP = {
     "pharmacy_loi": "Pharmacy_LOIs"
 }
 
-def format_name_title(name):
-    """Convert a name string to title case, handling None and trimming whitespace."""
-    if not name or not isinstance(name, str):
-        return name
-    return ' '.join([w.capitalize() for w in name.strip().split()])
-
-def get_output_path(document_type: str) -> str:
-    """Resolve the output folder for a given document type, creating it if needed."""
-    category = CATEGORY_MAP.get(document_type, "General_Documents")
-    folder_path = os.path.join(OUTPUT_DIR, category)
-    os.makedirs(folder_path, exist_ok=True)
-    return folder_path
-
-class DocumentTemplate:
-    """
-    Layout Engine & Orchestrator.
-    Assembles the final PDF using DocumentStyles and ContentParser.
-    """
-    
-    def __init__(self):
-        self.doc_styles = DocumentStyles(ASSETS_DIR)
-        self.parser = ContentParser(self.doc_styles)
-        self.load_templates()
-    
-    def load_templates(self):
-        """Load document templates from JSON file."""
-        templates_file = os.path.join(TEMPLATES_DIR, "document_templates.json")
-        try:
             with open(templates_file, 'r', encoding='utf-8') as f:
                 self.templates = json.load(f)
         except FileNotFoundError:
@@ -219,7 +191,8 @@ class DocumentTemplate:
     def generate_document(self, filename: str, content: dict, document_type: str = ""):
         """Generate the PDF document."""
         if document_type:
-            output_path = get_output_path(document_type)
+        if document_type:
+            output_path = self.get_output_path(document_type)
             full_filename = os.path.join(output_path, filename)
             print(f"Saving to: {os.path.relpath(output_path)}/{filename}")
         else:

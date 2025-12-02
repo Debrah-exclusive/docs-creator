@@ -178,30 +178,6 @@ def get_placeholders_for_type(doc_type):
                 generated_files.append(filename)
             print()
         
-        print(f"[SUMMARY] Generated {len(generated_files)} of {len(self.generators)} documents")
-        return generated_files
-
-    def list_available(self):
-        """List available document types."""
-        print("[LIST] Available Document Types:")
-        types = {
-            'board_resolution': 'Bank/Admin Resolutions',
-            'partnership_proposal': 'Pharmacy/Lab Proposals',
-            'nda': 'Standard NDA',
-            'employment_contract': 'Casual Worker Agreements',
-            'investor_brief': 'Seed Round Brief',
-            'contributor_charter': 'Contributor Onboarding',
-            'pitch_deck': 'Investment Pitch Deck',
-            'company_profile': 'Company Profile Document',
-            'brand_bible': 'Brand & Model Guidelines',
-            'circle_mandate': 'Internal Memorandum',
-            'pharmacy_loi': 'Pharmacy Letter of Intent'
-        }
-        for dt, desc in types.items():
-            print(f"  * {dt:<22} - {desc}")
-
-def main():
-    """Main entry point."""
     suite = DocumentSuite()
     parser = argparse.ArgumentParser(description="DiscreetKit Document Generator")
     parser.add_argument('doc_type', type=str, help='Type of document to generate (or "all")')
