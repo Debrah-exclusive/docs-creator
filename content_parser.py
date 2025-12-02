@@ -2,8 +2,12 @@ from reportlab.platypus import Paragraph, Spacer, Table, TableStyle, ListFlowabl
 from reportlab.lib import colors
 from reportlab.lib.units import inch, mm
 import os
-from svglib.svglib import svg2rlg
-from reportlab.graphics import renderPDF
+SVG_ENABLED = True
+try:
+    from svglib.svglib import svg2rlg
+    from reportlab.graphics import renderPDF
+except Exception:
+    SVG_ENABLED = False
 
 class ContentParser:
     """
@@ -72,23 +76,21 @@ class ContentParser:
                 assets_dir = getattr(self.styles, 'assets_dir', os.path.join(os.path.dirname(__file__), 'assets'))
                 svg_path = os.path.join(assets_dir, filename)
                 
-                if os.path.exists(svg_path):
+                if os.path.exists(svg_path) and SVG_ENABLED:
                     try:
                         drawing = svg2rlg(svg_path)
-                        # Scale it down if needed. Default size might be too big.
-                        # Let's target a width of ~1.5 inches
                         target_width = 1.5 * inch
                         scale_factor = target_width / drawing.width
                         drawing.width *= scale_factor
                         drawing.height *= scale_factor
                         drawing.scale(scale_factor, scale_factor)
                         elements.append(drawing)
-                        elements.append(Spacer(1, 5*mm)) # Add some space after signature
+                        elements.append(Spacer(1, 5*mm))
                     except Exception as e:
-                        print(f"Error loading signature SVG: {e}")
                         elements.append(Paragraph(f"[Error loading signature: {filename}]", self.styles.get_style("Signature")))
                 else:
-                     elements.append(Paragraph(f"[Signature file not found: {filename}]", self.styles.get_style("Signature")))
+                    msg = f"[Signature file not available: {filename}]" if SVG_ENABLED else f"[SVG support unavailable: {filename}]"
+                    elements.append(Paragraph(msg, self.styles.get_style("Signature")))
             else:
                 elements.append(Paragraph(line, self.styles.get_style("Signature")))
         

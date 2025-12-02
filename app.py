@@ -39,6 +39,14 @@ def index():
         import traceback
         return f"<h1>Error starting app</h1><pre>{traceback.format_exc()}</pre>", 500
 
+@app.get('/favicon.ico')
+def favicon():
+    assets_dir = os.path.join(BASE_DIR, 'assets')
+    icon_path = os.path.join(assets_dir, 'favicon.ico')
+    if os.path.exists(icon_path):
+        return send_from_directory(assets_dir, 'favicon.ico', as_attachment=False)
+    return ('', 204)
+
 @app.get('/files/<path:subpath>')
 def serve_file(subpath):
     return send_from_directory(OUTPUT_DIR, subpath, as_attachment=False)
