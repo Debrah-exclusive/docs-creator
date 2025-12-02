@@ -1,24 +1,23 @@
 import os
 from datetime import datetime
 from flask import Flask, request, jsonify, send_from_directory, render_template, send_file
-from generate_documents import DocumentSuite
-
-app = Flask(__name__)
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-# Use /tmp for Vercel or if explicitly requested, otherwise default local output
-if os.environ.get('VERCEL'):
-    OUTPUT_DIR = '/tmp'
-else:
-    OUTPUT_DIR = os.path.join(BASE_DIR, 'output')
-
 # Lazy initialization
 suite = None
 def get_suite():
     global suite
     if suite is None:
+        from generate_documents import DocumentSuite
         suite = DocumentSuite(output_dir=OUTPUT_DIR)
     return suite
+
+@app.get('/debug')
+def debug_import():
+    try:
+        from generate_documents import DocumentSuite
+        return "Import Successful! App should work."
+    except Exception:
+        import traceback
+        return f"<pre>{traceback.format_exc()}</pre>", 500
 
 def ensure_date(val):
     v = (val or '').strip()
