@@ -107,16 +107,28 @@ def get_placeholders_for_type(doc_type):
         'company_profile': ['date'],
         'brand_bible': ['date'],
         'circle_mandate': ['date'],
-        'pharmacy_loi': ['pharmacy_name', 'date'],
-            'General_Documents',
-            'Pitch_Decks',
-            'Brand_Guidelines',
-            'Internal_Memos',
-            'Pharmacy_LOIs'
-        ]
-        for directory in directories:
-            dir_path = os.path.join(base_output, directory)
-            os.makedirs(dir_path, exist_ok=True)
+        'pharmacy_loi': ['pharmacy_name', 'date']
+    }
+    return mapping.get(doc_type, [])
+
+class DocumentSuite:
+    """Enhanced document generation suite with organized output."""
+    
+    def __init__(self, output_dir=None):
+        self.output_dir = output_dir
+        self.generators = {
+            'board_resolution': BoardResolutionGenerator(self.output_dir),
+            'partnership_proposal': PartnershipProposalGenerator(self.output_dir),
+            'nda': NDAGenerator(self.output_dir),
+            'employment_contract': EmploymentContractGenerator(self.output_dir),
+            'investor_brief': InvestorBriefGenerator(self.output_dir),
+            'contributor_charter': ContributorCharterGenerator(self.output_dir),
+            'pitch_deck': PitchDeckGenerator(self.output_dir),
+            'company_profile': CompanyProfileGenerator(self.output_dir),
+            'brand_bible': BrandBibleGenerator(self.output_dir),
+            'circle_mandate': CircleMandateGenerator(self.output_dir),
+            'pharmacy_loi': PharmacyLOIGenerator(self.output_dir)
+        }
     
     def generate_document(self, doc_type, custom_data=None):
         """Generate a specific document type with passed data."""
@@ -178,6 +190,30 @@ def get_placeholders_for_type(doc_type):
                 generated_files.append(filename)
             print()
         
+        print(f"[SUMMARY] Generated {len(generated_files)} of {len(self.generators)} documents")
+        return generated_files
+
+    def list_available(self):
+        """List available document types."""
+        print("[LIST] Available Document Types:")
+        types = {
+            'board_resolution': 'Bank/Admin Resolutions',
+            'partnership_proposal': 'Pharmacy/Lab Proposals',
+            'nda': 'Standard NDA',
+            'employment_contract': 'Casual Worker Agreements',
+            'investor_brief': 'Seed Round Brief',
+            'contributor_charter': 'Contributor Onboarding',
+            'pitch_deck': 'Investment Pitch Deck',
+            'company_profile': 'Company Profile Document',
+            'brand_bible': 'Brand & Model Guidelines',
+            'circle_mandate': 'Internal Memorandum',
+            'pharmacy_loi': 'Pharmacy Letter of Intent'
+        }
+        for dt, desc in types.items():
+            print(f"  * {dt:<22} - {desc}")
+
+def main():
+    """Main entry point."""
     suite = DocumentSuite()
     parser = argparse.ArgumentParser(description="DiscreetKit Document Generator")
     parser.add_argument('doc_type', type=str, help='Type of document to generate (or "all")')
