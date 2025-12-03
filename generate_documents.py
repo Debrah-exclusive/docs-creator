@@ -144,6 +144,12 @@ class DocumentSuite:
                 filename = self.generators[doc_type].generate_board_resolution(custom_data)
             elif doc_type == 'partnership_proposal':
                 filename = self.generators[doc_type].generate_partnership_proposal(custom_data)
+                try:
+                    c_name = (custom_data or {}).get('contributor_name', '[Contributor Name]')
+                    c_circle = (custom_data or {}).get('circle_name', 'Marketing Circle')
+                    self.generators['contributor_charter'].generate_charter(c_name, c_circle, custom_data)
+                except Exception:
+                    pass
             elif doc_type == 'nda':
                 filename = self.generators[doc_type].generate_nda(custom_data)
             elif doc_type == 'employment_contract':
@@ -164,6 +170,12 @@ class DocumentSuite:
                 filename = self.generators[doc_type].generate_circle_mandate(custom_data)
             elif doc_type == 'pharmacy_loi':
                 filename = self.generators[doc_type].generate_pharmacy_loi(custom_data)
+                try:
+                    c_name = (custom_data or {}).get('contributor_name', '[Contributor Name]')
+                    c_circle = (custom_data or {}).get('circle_name', 'Marketing Circle')
+                    self.generators['contributor_charter'].generate_charter(c_name, c_circle, custom_data)
+                except Exception:
+                    pass
             
             if filename:
                 display_name = os.path.basename(filename)
