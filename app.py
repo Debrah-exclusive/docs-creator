@@ -69,10 +69,15 @@ def generate_document(document_type):
 
         if 'date' in data:
             data['[Date]'] = ensure_date(data['date'])
+            data['{{DATE}}'] = ensure_date(data['date'])
         if 'pharmacy_name' in data:
             data['[Pharmacy Name]'] = data['pharmacy_name']
         if 'partner_address' in data:
             data['[Partner Address]'] = data['partner_address']
+        if 'contributor_name' in data:
+            data['[Contributor Name]'] = data['contributor_name']
+        if 'circle_name' in data:
+            data['[Circle Name]'] = data['circle_name']
 
         path = s.generate_document(document_type, data)
         if not path:

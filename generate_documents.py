@@ -37,6 +37,7 @@ from generators.company_profile import CompanyProfileGenerator
 from generators.brand_bible import BrandBibleGenerator
 from generators.circle_mandate import CircleMandateGenerator
 from generators.pharmacy_loi import PharmacyLOIGenerator
+from document_template import DocumentTemplate
 
 # --- CONFIGURATION: CLI TO TEMPLATE MAPPING ---
 # This maps the variable name in this script to the [Placeholder] in your JSON template.
@@ -107,9 +108,31 @@ def get_placeholders_for_type(doc_type):
         'company_profile': ['date'],
         'brand_bible': ['date'],
         'circle_mandate': ['date'],
-        'pharmacy_loi': ['pharmacy_name', 'date']
+        'pharmacy_loi': ['pharmacy_name', 'date'],
+        'invitation_to_the_circle': ['contributor_name', 'circle_name', 'date']
     }
     return mapping.get(doc_type, [])
+
+class InvitationToCircleGenerator(DocumentTemplate):
+    """Generator for Contributor Invitation document."""
+    def generate_invitation(self, custom_data=None):
+        template_content = self.get_template_content('invitation_to_the_circle', custom_data)
+        if template_content is None:
+            print("[ERROR] No template found for invitation_to_the_circle")
+            return None
+        if custom_data is None:
+            custom_data = {}
+        content = {
+            'date': custom_data.get('date', datetime.now().strftime('%d %B %Y')),
+            'recipient': template_content.get('recipient', {}).get('default', []),
+            'title': template_content.get('title', ''),
+            'salutation': template_content.get('salutation', ''),
+            'body': template_content.get('body', []),
+            'closing': template_content.get('closing', ''),
+            'signature': template_content.get('signature', [])
+        }
+        filename = "CircleInvitation.pdf"
+        return self.generate_document(filename, content, 'invitation_to_the_circle')
 
 class DocumentSuite:
     """Enhanced document generation suite with organized output."""
@@ -127,7 +150,8 @@ class DocumentSuite:
             'company_profile': CompanyProfileGenerator(self.output_dir),
             'brand_bible': BrandBibleGenerator(self.output_dir),
             'circle_mandate': CircleMandateGenerator(self.output_dir),
-            'pharmacy_loi': PharmacyLOIGenerator(self.output_dir)
+            'pharmacy_loi': PharmacyLOIGenerator(self.output_dir),
+            'invitation_to_the_circle': InvitationToCircleGenerator(self.output_dir)
         }
     
     def generate_document(self, doc_type, custom_data=None):
@@ -144,12 +168,6 @@ class DocumentSuite:
                 filename = self.generators[doc_type].generate_board_resolution(custom_data)
             elif doc_type == 'partnership_proposal':
                 filename = self.generators[doc_type].generate_partnership_proposal(custom_data)
-                try:
-                    c_name = (custom_data or {}).get('contributor_name', '[Contributor Name]')
-                    c_circle = (custom_data or {}).get('circle_name', 'Marketing Circle')
-                    self.generators['contributor_charter'].generate_charter(c_name, c_circle, custom_data)
-                except Exception:
-                    pass
             elif doc_type == 'nda':
                 filename = self.generators[doc_type].generate_nda(custom_data)
             elif doc_type == 'employment_contract':
@@ -170,12 +188,8 @@ class DocumentSuite:
                 filename = self.generators[doc_type].generate_circle_mandate(custom_data)
             elif doc_type == 'pharmacy_loi':
                 filename = self.generators[doc_type].generate_pharmacy_loi(custom_data)
-                try:
-                    c_name = (custom_data or {}).get('contributor_name', '[Contributor Name]')
-                    c_circle = (custom_data or {}).get('circle_name', 'Marketing Circle')
-                    self.generators['contributor_charter'].generate_charter(c_name, c_circle, custom_data)
-                except Exception:
-                    pass
+            elif doc_type == 'invitation_to_the_circle':
+                filename = self.generators[doc_type].generate_invitation(custom_data)
             
             if filename:
                 display_name = os.path.basename(filename)
@@ -219,7 +233,8 @@ class DocumentSuite:
             'company_profile': 'Company Profile Document',
             'brand_bible': 'Brand & Model Guidelines',
             'circle_mandate': 'Internal Memorandum',
-            'pharmacy_loi': 'Pharmacy Letter of Intent'
+            'pharmacy_loi': 'Pharmacy Letter of Intent',
+            'invitation_to_the_circle': 'Contributor Invitation'
         }
         for dt, desc in types.items():
             print(f"  * {dt:<22} - {desc}")
