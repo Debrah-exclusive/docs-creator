@@ -47,6 +47,14 @@ def favicon():
         return send_from_directory(assets_dir, 'favicon.ico', as_attachment=False)
     return ('', 204)
 
+@app.get('/favicon.png')
+def favicon_png():
+    assets_dir = os.path.join(BASE_DIR, 'assets')
+    icon_path = os.path.join(assets_dir, 'favicon.png')
+    if os.path.exists(icon_path):
+        return send_from_directory(assets_dir, 'favicon.png', as_attachment=False)
+    return ('', 204)
+
 @app.get('/files/<path:subpath>')
 def serve_file(subpath):
     return send_from_directory(OUTPUT_DIR, subpath, as_attachment=False)
