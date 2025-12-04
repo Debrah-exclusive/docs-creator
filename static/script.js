@@ -84,4 +84,45 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         el.addEventListener('click', openPicker);
     });
+
+    const hasInvite = document.getElementById('invite-form');
+    if (!hasInvite) {
+        const grid = document.querySelector('.grid');
+        if (grid) {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <h2>
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Contributor Invitation
+                </h2>
+                <form id="invite-form" onsubmit="event.preventDefault(); submitForm('invite-form', '/api/generate/invitation_to_the_circle', fd => ({
+                    contributor_name: fd.get('contributor_name') || '',
+                    circle_name: fd.get('circle_name') || '',
+                    date: fd.get('date') || ''
+                }))">
+                    <div class="form-group">
+                        <label for="invite-name">Contributor Name</label>
+                        <input id="invite-name" name="contributor_name" placeholder="e.g. Jane Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="invite-circle">Circle Name</label>
+                        <input id="invite-circle" name="circle_name" placeholder="e.g. Marketing" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="invite-date">Date</label>
+                        <input type="date" id="invite-date" name="date" value="${today}">
+                    </div>
+                    <button type="submit">
+                        <span>Generate Invitation</span>
+                        <div class="spinner"></div>
+                    </button>
+                    <div class="result"></div>
+                </form>
+            `;
+            grid.appendChild(card);
+        }
+    }
 });

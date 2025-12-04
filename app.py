@@ -5,7 +5,7 @@ from generate_documents import DocumentSuite
 
 app = Flask(__name__)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-OUTPUT_DIR = '/tmp' if os.environ.get('VERCEL') else os.path.join(BASE_DIR, 'output')
+OUTPUT_DIR = os.path.join(BASE_DIR, 'output')
 
 suite = None
 def get_suite():
@@ -36,6 +36,13 @@ def debug_import():
 @app.get('/')
 def index():
     try:
+        print('[INDEX] template paths:', getattr(app.jinja_loader, 'searchpath', None))
+        tpl_path = os.path.join(BASE_DIR, 'templates', 'index.html')
+        if os.path.exists(tpl_path):
+            try:
+                print('[INDEX] index.html size:', os.path.getsize(tpl_path))
+            except Exception:
+                pass
         return render_template('index.html')
     except Exception:
         import traceback
@@ -67,6 +74,8 @@ def generate_document(document_type):
         data = request.get_json(silent=True) or {}
         s = get_suite()
 
+        print('[API] generate', document_type, data)
+
         if 'date' in data:
             data['[Date]'] = ensure_date(data['date'])
             data['{{DATE}}'] = ensure_date(data['date'])
@@ -80,6 +89,7 @@ def generate_document(document_type):
             data['[Circle Name]'] = data['circle_name']
 
         path = s.generate_document(document_type, data)
+        print('[API] result path:', path)
         if not path:
             return jsonify({'ok': False, 'error': 'Generation failed'}), 500
 
@@ -95,4 +105,4 @@ def generate_document(document_type):
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', '5000'))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=port, debug=True)
