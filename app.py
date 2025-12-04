@@ -5,7 +5,10 @@ from generate_documents import DocumentSuite
 
 app = Flask(__name__)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-OUTPUT_DIR = os.path.join(BASE_DIR, 'output')
+if os.environ.get('VERCEL'):
+    OUTPUT_DIR = '/tmp'
+else:
+    OUTPUT_DIR = os.path.join(BASE_DIR, 'output')
 
 suite = None
 def get_suite():
