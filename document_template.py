@@ -278,4 +278,4 @@ class DocumentTemplate:
             print(f"Error generating PDF: {e}")
             import traceback
             traceback.print_exc()
-            return None
+            raise e

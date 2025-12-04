@@ -23,8 +23,7 @@ class ContributorCharterGenerator(DocumentTemplate):
         custom_data['{{DATE}}'] = date_value
         template_content = self.get_template_content('invitation_to_the_circle', custom_data)
         if template_content is None:
-            print("❌ No template found for invitation_to_the_circle")
-            return None
+            raise ValueError("No template found for invitation_to_the_circle")
         content = {
             "date": date_value,
             "recipient": template_content.get('recipient', {}).get('default', []),

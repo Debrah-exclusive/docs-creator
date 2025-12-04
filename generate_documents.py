@@ -116,14 +116,15 @@ def get_placeholders_for_type(doc_type):
 class InvitationToCircleGenerator(DocumentTemplate):
     """Generator for Contributor Invitation document."""
     def generate_invitation(self, custom_data=None):
+        print('[INVITE] custom_data:', custom_data)
         template_content = self.get_template_content('invitation_to_the_circle', custom_data)
         if template_content is None:
-            print("[ERROR] No template found for invitation_to_the_circle")
-            return None
+            raise ValueError("No template found for invitation_to_the_circle")
         if custom_data is None:
             custom_data = {}
+        # Prefer formatted '[Date]' if present
         content = {
-            'date': custom_data.get('date', datetime.now().strftime('%d %B %Y')),
+            'date': custom_data.get('[Date]', custom_data.get('date', datetime.now().strftime('%d %B %Y'))),
             'recipient': template_content.get('recipient', {}).get('default', []),
             'title': template_content.get('title', ''),
             'salutation': template_content.get('salutation', ''),
@@ -132,7 +133,9 @@ class InvitationToCircleGenerator(DocumentTemplate):
             'signature': template_content.get('signature', [])
         }
         filename = "CircleInvitation.pdf"
-        return self.generate_document(filename, content, 'invitation_to_the_circle')
+        result = self.generate_document(filename, content, 'invitation_to_the_circle')
+        print('[INVITE] result path:', result)
+        return result
 
 class DocumentSuite:
     """Enhanced document generation suite with organized output."""
@@ -151,7 +154,7 @@ class DocumentSuite:
             'brand_bible': BrandBibleGenerator(self.output_dir),
             'circle_mandate': CircleMandateGenerator(self.output_dir),
             'pharmacy_loi': PharmacyLOIGenerator(self.output_dir),
-            'invitation_to_the_circle': InvitationToCircleGenerator(self.output_dir)
+            'invitation_to_the_circle': ContributorCharterGenerator(self.output_dir)
         }
     
     def generate_document(self, doc_type, custom_data=None):
@@ -163,6 +166,9 @@ class DocumentSuite:
         print(f"[PROCESSING] Generating {doc_type.replace('_', ' ').title()}...")
         
         try:
+            # Ensure templates are freshly loaded
+            if hasattr(self.generators[doc_type], 'load_templates'):
+                self.generators[doc_type].load_templates()
             # Pass custom_data to all generators
             if doc_type == 'board_resolution':
                 filename = self.generators[doc_type].generate_board_resolution(custom_data)
@@ -189,7 +195,9 @@ class DocumentSuite:
             elif doc_type == 'pharmacy_loi':
                 filename = self.generators[doc_type].generate_pharmacy_loi(custom_data)
             elif doc_type == 'invitation_to_the_circle':
-                filename = self.generators[doc_type].generate_invitation(custom_data)
+                c_name = custom_data.get('contributor_name', '[Contributor Name]') if custom_data else '[Contributor Name]'
+                c_circle = custom_data.get('circle_name', '[Circle Name]') if custom_data else '[Circle Name]'
+                filename = self.generators[doc_type].generate_charter(c_name, c_circle, custom_data)
             
             if filename:
                 display_name = os.path.basename(filename)
@@ -202,8 +210,8 @@ class DocumentSuite:
                 
         except Exception as e:
             print(f"[ERROR] Error generating {doc_type}: {e}")
-            # Debugging: un-comment next line to see full stack trace
-            # import traceback; traceback.print_exc()
+            import traceback
+            traceback.print_exc()
             return None
     
     def generate_all(self):
