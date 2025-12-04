@@ -1,4 +1,4 @@
 reportlab
 Pillow
 flask
-svglib
+

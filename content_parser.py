@@ -69,28 +69,40 @@ class ContentParser:
             if line.startswith("[SIGNATURE:") and line.endswith("]"):
                 # Extract filename
                 filename = line[11:-1]
-                # Assume assets dir is relative to this file or passed in styles? 
-                # Styles has assets_dir, let's try to use that if possible, or just assume standard location
-                # But ContentParser doesn't know about assets_dir directly unless we pass it.
-                # doc_styles has it.
                 assets_dir = getattr(self.styles, 'assets_dir', os.path.join(os.path.dirname(__file__), 'assets'))
-                svg_path = os.path.join(assets_dir, filename)
+                file_path = os.path.join(assets_dir, filename)
                 
-                if os.path.exists(svg_path) and SVG_ENABLED:
+                if os.path.exists(file_path):
                     try:
-                        drawing = svg2rlg(svg_path)
-                        target_width = 1.5 * inch
-                        scale_factor = target_width / drawing.width
-                        drawing.width *= scale_factor
-                        drawing.height *= scale_factor
-                        drawing.scale(scale_factor, scale_factor)
-                        elements.append(drawing)
-                        elements.append(Spacer(1, 5*mm))
+                        if filename.lower().endswith('.svg') and SVG_ENABLED:
+                            drawing = svg2rlg(file_path)
+                            target_width = 1.5 * inch
+                            scale_factor = target_width / drawing.width
+                            drawing.width *= scale_factor
+                            drawing.height *= scale_factor
+                            drawing.scale(scale_factor, scale_factor)
+                            elements.append(drawing)
+                            elements.append(Spacer(1, 5*mm))
+                        elif filename.lower().endswith('.png') or filename.lower().endswith('.jpg') or filename.lower().endswith('.jpeg'):
+                            # Handle raster images (PNG, JPG)
+                            img = Image(file_path)
+                            # Resize to reasonable width (e.g. 1.5 inch) while maintaining aspect ratio
+                            target_width = 1.5 * inch
+                            img_width = img.drawWidth
+                            img_height = img.drawHeight
+                            aspect = img_height / float(img_width)
+                            
+                            img.drawWidth = target_width
+                            img.drawHeight = target_width * aspect
+                            elements.append(img)
+                            elements.append(Spacer(1, 5*mm))
+                        else:
+                            msg = f"[Unsupported signature format: {filename}]"
+                            elements.append(Paragraph(msg, self.styles.get_style("Signature")))
                     except Exception as e:
                         elements.append(Paragraph(f"[Error loading signature: {filename}]", self.styles.get_style("Signature")))
                 else:
-                    msg = f"[Signature file not available: {filename}]" if SVG_ENABLED else f"[SVG support unavailable: {filename}]"
-                    elements.append(Paragraph(msg, self.styles.get_style("Signature")))
+                    elements.append(Paragraph(f"[Signature file not found: {filename}]", self.styles.get_style("Signature")))
             else:
                 elements.append(Paragraph(line, self.styles.get_style("Signature")))
         
