@@ -212,7 +212,7 @@ class DocumentSuite:
             print(f"[ERROR] Error generating {doc_type}: {e}")
             import traceback
             traceback.print_exc()
-            return None
+            raise e
     
     def generate_all(self):
         """Generate all available document types using defaults."""
