@@ -119,29 +119,52 @@ class ContentParser:
                             drawing.scale(scale_factor, scale_factor)
                             elements.append(drawing)
                         elif filename.lower().endswith('.png') or filename.lower().endswith('.jpg') or filename.lower().endswith('.jpeg'):
-                            img = None
-                            pil = None
                             try:
                                 pil = PILImage.open(file_path)
                                 try:
                                     pil = pil.convert('RGBA')
                                 except Exception:
                                     pass
-                                if (opts.get('trim') or 'false').lower() in ('true','1','yes','y'):
+                                
+                                should_trim = (opts.get('trim') or 'false').lower() in ('true','1','yes','y')
+                                
+                                if should_trim:
                                     try:
-                                        bbox = None
+                                        # Calculate Alpha BBox
+                                        bbox_alpha = None
                                         if 'A' in pil.mode:
                                             alpha = pil.split()[-1]
-                                            bbox = alpha.getbbox()
+                                            bbox_alpha = alpha.getbbox()
                                         
-                                        # If no alpha or alpha is empty/full, try grayscale threshold for white background
-                                        if not bbox:
-                                            gray = pil.convert('L')
-                                            # Assume white background: keep pixels < 250 (dark ink)
-                                            mask = gray.point(lambda p: 255 if p < 250 else 0)
-                                            bbox = mask.getbbox()
+                                        # Calculate Grayscale BBox (Dark pixels on Light background)
+                                        gray = pil.convert('L')
+                                        mask = gray.point(lambda p: 255 if p < 250 else 0)
+                                        bbox_gray = mask.getbbox()
+
+                                        # Determine best bbox
+                                        bbox = None
+                                        if bbox_alpha and bbox_gray:
+                                            # Intersection
+                                            left = max(bbox_alpha[0], bbox_gray[0])
+                                            top = max(bbox_alpha[1], bbox_gray[1])
+                                            right = min(bbox_alpha[2], bbox_gray[2])
+                                            bottom = min(bbox_alpha[3], bbox_gray[3])
+                                            if left < right and top < bottom:
+                                                bbox = (left, top, right, bottom)
+                                            else:
+                                                bbox = bbox_gray # Fallback if intersection is empty
+                                        elif bbox_alpha:
+                                            bbox = bbox_alpha
+                                        elif bbox_gray:
+                                            bbox = bbox_gray
                                         
                                         if bbox:
+                                            # Check if bbox is full image (meaning no trim happened)
+                                            if bbox == (0, 0, pil.width, pil.height):
+                                                # If alpha was full but grayscale is smaller, use grayscale
+                                                if bbox_gray and bbox_gray != bbox:
+                                                    bbox = bbox_gray
+
                                             pil = pil.crop(bbox)
                                     except Exception:
                                         pass
